@@ -6,6 +6,7 @@ export default {
         jumbotron,
     }
 }
+
 </script>
 
 <template>

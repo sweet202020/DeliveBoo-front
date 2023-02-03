@@ -1,7 +1,15 @@
 <script>
+import btnCustom from './btnCustom.vue';
+import inputText from './inputText.vue';
+
 export default {
     name: "jumbotron",
+    components: {
+        btnCustom,
+        inputText,
+    }
 }
+
 </script>
 
 <template>
@@ -19,25 +27,47 @@ export default {
             <span></span>
             <span></span>
         </div>
-
+        <!--jumbo-->
         <div class="container">
-            <div class="row">
-                <div class="col-6 burger">
-                    <img src="../assets/img/burger-1.png" alt="">
+            <div class="row row-cols-1 row-cols-md-2">
+                <div class="col d-none  d-md-block">
+                    <div id="carouselExampleSlidesOnly " class="carousel slide burger" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="../assets/img/burger-1.png" class="d-block" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../assets/img/taco.png" class="d-block" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../assets/img/pizza.png" class="d-block" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="../assets/img/sushi.png" class="d-block" alt="...">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="bg-jumbo col-6 d-flex justify-content-center align-items-center">
+                <div class="bg-jumbo col d-flex justify-content-center align-items-center">
                     <div>
                         <h1 class="fw-bolder text-uppercase">I piatti dei ristoranti che ami ,a domicilio</h1>
-                        <div class="input-group my-5">
-                            <input type="text" class="form-control" placeholder="Cerca...">
-                            <button class="btn btn-primary" type="button" id="button-addon2">Button</button>
+                        <div class="my-5 d-flex">
+                            <!--elimina w-100 se vuoi l'imput piu piccolo-->
+                            <div class="w-100">
+                                <inputText />
+                            </div>
+                            <div>
+                                <btnCustom />
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!--onde bg-->
+
+        <!--onde bg jumbo-->
         <div class="wave">
             <img src="../assets/img/wave.png" alt="">
         </div>
@@ -172,13 +202,18 @@ export default {
 /*#endregion jumbo-effect*/
 
 
-.burger img {
-    width: 60%;
+.burger {
+
+    img {
+        object-fit: contain;
+        width: 400px;
+        height: 500px;
+    }
 
 }
 
 .bg-jumbo {
-    background-image: url(../assets/img/5a28ef67c5d5d0.3674839715126321678103.png);
+    background-image: url(../assets/img/circle-red.png);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -186,6 +221,10 @@ export default {
 .jumbotron-bg {
     background: rgb(255, 158, 69);
     background: linear-gradient(180deg, rgba(255, 158, 69, 1) 40%, rgba(245, 97, 44, 1) 100%);
+
+h1{
+    color:#0086A8 ;
+}
 }
 
 .wave img {
@@ -196,33 +235,5 @@ export default {
 .space {
     background-color: rgb(255, 255, 255);
     height: 1100px;
-}
-
-h2 {
-    color: #FF9E45;
-}
-
-h1 {
-    color: #0086A8;
-}
-
-p {
-    color: #0086A8;
-}
-
-/*seconda sezione*/
-
-.function img{
-    max-width: 100%;
-}
-
-.function p {
-    font-weight: bold;
-}
-
-.card img {
-    height: 80px;
-    width: auto;
-    filter: invert(29%) sepia(96%) saturate(1412%) hue-rotate(166deg) brightness(98%) contrast(101%);
 }
 </style>

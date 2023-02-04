@@ -1,0 +1,103 @@
+<script>
+
+export default {
+    name: 'navBar'
+}
+
+window.addEventListener('scroll', (e) => {
+    const nav = document.querySelector('.bg_nav');
+    if (window.pageYOffset > 0) {
+        nav.classList.add("add_shadow");
+    } else {
+        nav.classList.remove("add_shadow");
+    }
+});
+
+</script>
+
+<template>
+    <div class="bg_nav fixed">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+            <div class="container">
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse d-lg-flex justify-content-between text-uppercase fs-4 fw-bolder "
+                    id="navbarSupportedContent">
+                    <!--logo-->
+                    <div class="d-none d-lg-block logo">
+                        <img src="../assets/img/logobool.png" alt="">
+                    </div>
+                    <!--nav-dx-->
+                    <div>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" aria-current="page" href="#">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" aria-current="page" href="#">menu</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" aria-current="page" href="#">resturant</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--nav-sx-->
+                    <div>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                            <li class="nav-item">
+                                <a class="nav-link text-light" aria-current="page" href="#">car <i
+                                        class="fa-solid fa-cart-shopping"></i></a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" aria-current="page" href="#">log-in <i
+                                        class="fa-solid fa-user-group"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+
+</template>
+
+<style lang="scss">
+@use '../styles/partials/variables.scss' as *;
+
+.bg_nav {
+    background-color: $light-orange;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.logo img{
+        height: 50px;
+    }
+
+.add_shadow{
+    box-shadow: red 0 0 10px 0;
+}
+
+a {
+    padding: 0.5rem !important;
+}
+
+a:hover {
+    color: red !important;
+    background-color: rgba(252, 252, 252, 0.703);
+    border-radius: 10px;
+
+}
+</style>

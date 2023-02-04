@@ -17,6 +17,9 @@ export default {
 </template>
 
 <style lang="scss">
+
+@use '../styles/partials/variables.scss' as *;
+
 .form__group {
     position: relative;
 }
@@ -56,15 +59,15 @@ export default {
 }
 
 .form__field:focus {
-    border: 1px solid #0086A8 !important;
+    border: 1px solid $dark-blue !important;
     outline: none;
 }
 
 .form__field:focus~.form__label {
     background-color: white;
-    border-right: 1px solid #0086A8;
-    border-left: 1px solid #0086A8;
-    color: #0086A8;
+    border-right: 1px solid $dark-blue;
+    border-left: 1px solid $dark-blue;
+    color: $dark-blue;
     font-size: .9em;
     margin-left: 10px;
     padding: 0 10px;

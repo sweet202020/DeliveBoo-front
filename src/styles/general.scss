@@ -1,2 +1,15 @@
 // Import all of Bootstrap's CSS
 @import "/node_modules/bootstrap/scss/bootstrap";
+
+//standard color
+.bg_blue{
+    background: #0086A8;
+}
+
+
+//hover color
+.hover_blu_light{
+    &:hover{
+        background: #2CCCF5;
+    }
+}

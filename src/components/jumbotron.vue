@@ -33,7 +33,7 @@ export default {
                 <div class="col d-none  d-md-block">
                     <div id="carouselExampleSlidesOnly " class="carousel slide burger" data-bs-ride="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
+                            <div class="carousel-item active ">
                                 <img src="../assets/img/burger-1.png" class="d-block" alt="...">
                             </div>
                             <div class="carousel-item">
@@ -55,10 +55,10 @@ export default {
                         <div class="my-5 d-flex">
                             <!--elimina w-100 se vuoi l'imput piu piccolo-->
                             <div class="w-100">
-                                <inputText />
+                                <inputText text="Cerca..."/>
                             </div>
                             <div>
-                                <btnCustom />
+                                <btnCustom text="Search" iconFw="fa-solid fa-magnifying-glass" bg_btn="bg_blue" bg_hover="hover_blu_light"/>
                             </div>
                         </div>
 
@@ -205,9 +205,11 @@ export default {
 .burger {
 
     img {
+        
         object-fit: contain;
         width: 400px;
         height: 500px;
+        margin: auto;
     }
 
 }

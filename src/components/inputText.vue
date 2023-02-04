@@ -1,11 +1,18 @@
 <script>
 
+export default {
+    name: 'inputText',
+    props: {
+        text: String,
+    }
+}
+
 </script>
 
 <template>
     <div class="form__group">
         <input type="text" class="form__field w-100" placeholder="Input text">
-        <label for="name" class="form__label"> Cerca... </label>
+        <label for="name" class="form__label"> {{ text }} </label>
     </div>
 </template>
 

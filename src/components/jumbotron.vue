@@ -30,9 +30,14 @@ export default {
         <!--jumbo-->
         <div class="container">
             <div class="row row-cols-1 row-cols-md-2">
-                <div class="col d-none  d-md-block">
+                <div class="col ">
                     <div id="carouselExampleSlidesOnly " class="carousel slide burger" data-bs-ride="carousel">
-                        <div class="carousel-inner">
+                        <!--img mobile-->
+                        <div class="d-md-block d-lg-none">
+                            <img src="../assets/img/burger-1.png" class="d-block" alt="...">
+                        </div>
+                        <!--img desktop-->
+                        <div class="carousel-inner d-none d-lg-block">
                             <div class="carousel-item active ">
                                 <img src="../assets/img/burger-1.png" class="d-block" alt="...">
                             </div>
@@ -75,6 +80,51 @@ export default {
 </template>
 
 <style lang="scss" scoped>
+
+@use '../styles/partials/variables.scss' as *;
+
+.burger {
+
+    img {
+        
+        object-fit: contain;
+        width: 400px;
+        height: 500px;
+        margin: auto;
+    }
+
+}
+
+.bg-jumbo {
+    background-image: url(../assets/img/circle-red.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+.jumbotron-bg {
+    background: $light-orange;
+    background: linear-gradient(180deg, $light-orange 40%,  100%);
+    margin-top: 50px;
+    h1{
+        color: $dark-blue;
+    }
+
+}
+
+.wave img {
+    width: 100%;
+    height: 100px;
+}
+
+.space {
+    background-color: rgb(255, 255, 255);
+    height: 1100px;
+}
+
+
+
+
 /*#region jumbo-effect */
 .wrapper span {
     position: absolute;
@@ -158,7 +208,6 @@ export default {
 @keyframes animate {
     0% {
         bottom: 0;
-        margin-left: 40px;
         margin-right: 0;
         opacity: 1;
     }
@@ -166,13 +215,11 @@ export default {
     20% {
         bottom: 20%;
         margin-left: 0;
-        margin-right: 40px;
         opacity: 0.8;
     }
 
     40% {
         bottom: 40%;
-        margin-left: 40px;
         margin-right: 0;
         opacity: 0.6;
     }
@@ -180,13 +227,11 @@ export default {
     60% {
         bottom: 60%;
         margin-left: 0;
-        margin-right: 40px;
         opacity: 0.4;
     }
 
     80% {
         bottom: 70%;
-        margin-left: 40px;
         margin-right: 0;
         opacity: 0.2;
     }
@@ -194,48 +239,9 @@ export default {
     100% {
         bottom: 80%;
         margin-left: 0;
-        margin-right: 40px;
         opacity: 0;
     }
 }
 
 /*#endregion jumbo-effect*/
-
-
-.burger {
-
-    img {
-        
-        object-fit: contain;
-        width: 400px;
-        height: 500px;
-        margin: auto;
-    }
-
-}
-
-.bg-jumbo {
-    background-image: url(../assets/img/circle-red.png);
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-.jumbotron-bg {
-    background: rgb(255, 158, 69);
-    background: linear-gradient(180deg, rgba(255, 158, 69, 1) 40%, rgba(245, 97, 44, 1) 100%);
-
-h1{
-    color:#0086A8 ;
-}
-}
-
-.wave img {
-    width: 100%;
-    height: 100px;
-}
-
-.space {
-    background-color: rgb(255, 255, 255);
-    height: 1100px;
-}
 </style>

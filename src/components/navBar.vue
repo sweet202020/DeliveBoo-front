@@ -40,11 +40,11 @@ window.addEventListener('scroll', (e) => {
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">menu</a>
+                                <a class="nav-link text-light" aria-current="page" href="#">resturant</a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">resturant</a>
+                                <a class="nav-link text-light" aria-current="page" href="#">menu</a>
                             </li>
                         </ul>
                     </div>

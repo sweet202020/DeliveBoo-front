@@ -104,7 +104,7 @@ export default {
 
 .jumbotron-bg {
     background: $light-orange;
-    background: linear-gradient(180deg, $light-orange 40%,  100%);
+    background: linear-gradient(180deg, $light-orange 40%, $dark-orange 100%);
     margin-top: 50px;
     h1{
         color: $dark-blue;

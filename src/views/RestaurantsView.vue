@@ -9,6 +9,7 @@ export default {
 
 <template>
     <navBar />
+   
     <div class="container py-5">
         <h1>pagina elenco ristoranti</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, necessitatibus dolores, voluptatem velit

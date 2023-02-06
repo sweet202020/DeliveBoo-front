@@ -111,7 +111,7 @@ a {
 }
 
 a:hover {
-    color: red !important;
+    color: #f5612c !important;
     background-color: rgba(252, 252, 252, 0.703);
     border-radius: 10px;
 

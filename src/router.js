@@ -20,6 +20,7 @@ const router = createRouter({
         },
         {
             //PROMEMORIA: MENU = soluzione temporanea per poter vedere la pagina
+            path: '/menu',
             name: 'menu',
             component: MenuView
         }

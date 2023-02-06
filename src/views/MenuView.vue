@@ -25,7 +25,7 @@ export default {
           <h3>Boa pizza</h3>
           <div>pizza | bibite</div>
           <div>Via delle vie, Il mio paese (PAESE)</div>
-          <div>Telefono: 3474067309</div>
+          <div>Telefono: 349.4044257</div>
           <div>orari di apertura:</div>
           <ul>
             <li>mar-gio --> 12:00/14:00 + 19:00/22:00</li>

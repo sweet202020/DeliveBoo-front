@@ -12,18 +12,21 @@ export default {
 </script>
 
 <template>
-    <navBar/>
-    <jumbotron/>
+    <navBar />
+    <!-- <jumbotron /> -->
 
-    <div class="space">
+    <router-view></router-view>
+    
 
-    </div>
+   <!--  <div class="container space">
+        <p>test text</p>
+    </div> -->
 </template>
 
 <style lang="scss">
 @use './styles/general.scss';
 
-.space{
+.space {
     height: 1000px;
 }
 </style>

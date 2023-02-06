@@ -2,7 +2,11 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import './styles/general.scss';
 import * as bootstrap from 'bootstrap'
-createApp(App).mount('#app')
+//import router per le rotte
+import {router} from './router.js'
+//createApp(App).mount('#app')
+//installazione view router per collegamento pagine
+createApp(App).use(router).mount('#app')
 
 
 //installazione fontawesome
@@ -16,5 +20,6 @@ import { far } from '@fortawesome/free-regular-svg-icons';
 library.add(far);
 import { dom } from "@fortawesome/fontawesome-svg-core";
 dom.watch();
+
 
 

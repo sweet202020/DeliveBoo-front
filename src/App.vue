@@ -12,15 +12,12 @@ export default {
 </script>
 
 <template>
-    <navBar />
-    <jumbotron />
-
-    <router-view></router-view>
     
+    <navBar />
+    <!-- <jumbotron /> -->
+    
+    <router-view></router-view>
 
-   <!--  <div class="container space">
-        <p>test text</p>
-    </div> -->
 </template>
 
 <style lang="scss">

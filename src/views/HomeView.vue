@@ -15,7 +15,7 @@ export default {
 <template>
     <navBar />
     <jumbotron />
-  
+
 </template>
 
 

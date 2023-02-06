@@ -13,7 +13,7 @@ export default {
 
 <template>
     <navBar />
-    <!-- <jumbotron /> -->
+    <jumbotron />
 
     <router-view></router-view>
     

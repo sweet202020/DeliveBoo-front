@@ -56,7 +56,7 @@ export default {
 
                 <div class="bg-jumbo col d-flex justify-content-center align-items-center">
                     <div>
-                        <h1 class="fw-bolder text-uppercase">I piatti dei ristoranti che ami ,a domicilio</h1>
+                        <h1 class="fw-bolder">Il cibo che vuoi tu, <br> dove vuoi tu</h1>
                         <div class="my-5 d-flex">
                             <!--elimina w-100 se vuoi l'imput piu piccolo-->
                             <div class="w-100">
@@ -107,7 +107,8 @@ export default {
     background: linear-gradient(180deg, $light-orange 40%, $dark-orange 100%);
     margin-top: 50px;
     h1{
-        color: $dark-blue;
+        color: $deliveboo-white;
+        font-family: 'Unbounded', cursive;
     }
 
 }

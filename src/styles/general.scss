@@ -3,15 +3,35 @@
 //variables
 @import '../styles/partials/variables.scss';
 
-//standard color
-.bg_blue{
+//import google fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300&family=Unbounded:wght@200;300;400&display=swap');
+
+//font-family: 'Inter', sans-serif;
+//font-family: 'Unbounded', cursive;
+
+//classi btn color
+.bg_blue {
     background: $dark-blue;
 }
 
-
-//hover color
-.hover_blu_light{
-    &:hover{
+//classi btn hover color
+.hover_blu_light {
+    &:hover {
         background: $light-blue;
     }
+}
+
+//layout
+p {
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Unbounded', cursive;
 }

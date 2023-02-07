@@ -116,7 +116,7 @@ export default {
 .restaurant_details,
 .order_details {
   background-color: #fcfcfc;
-  border: 3px solid $deliveboo-primary-light;
+  border: 2px solid $deliveboo-primary-light;
   border-radius: 10px;
   position: relative;
   top: -100px;

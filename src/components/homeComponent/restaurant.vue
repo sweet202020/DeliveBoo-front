@@ -32,7 +32,7 @@ export default{
                 </div>
             </div>
             <!--onde bot-->
-            <div>
+            <div class="pt-5">
                 <img class="standard" src="../../assets/img/wave.png" alt="">
             </div>
         </div>
@@ -56,6 +56,7 @@ export default{
     .standard {
         width: 100%;
         height: 100px;
+        -webkit-transform: scaleX(-1);
     }
 
     .bg_img {

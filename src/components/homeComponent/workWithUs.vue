@@ -69,6 +69,6 @@ h2 {
 }
 
 .altezza_card{
-    height: 600px;
+    height: 700px;
 }
 </style>

@@ -49,13 +49,13 @@ window.addEventListener('scroll', (e) => {
                             </li>
                         </ul> -->
                     <!-- NavBar con view router -->
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
                                 <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'home' }">Home</router-link>
                             </li>
 
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'restaurants' }">resturant</router-link>
+                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'restaurants' }">restaurant</router-link>
                             </li>
 
                             <li class="nav-item">

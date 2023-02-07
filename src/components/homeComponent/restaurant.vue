@@ -21,7 +21,7 @@ export default{
             <div class="container bg_img my-5 text-center">
                 <h2>I nostri suggerimenti</h2>
                 <h3 class="my-5">Ristoranti popolari</h3>
-                <div class="row row-cols-3">
+                <div class="row row-cols-2 row-cols-md-3">
                     <!--card ristoranti--> <!--TODO fare cilco componente-->
                     <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
                     <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>

@@ -68,8 +68,7 @@ window.addEventListener('scroll', (e) => {
                     <div>
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">car <i
-                                        class="fa-solid fa-cart-shopping"></i></a>
+                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }"><i class="fa-solid fa-cart-shopping"></i></router-link> 
                             </li>
 
                             <li class="nav-item">

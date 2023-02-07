@@ -65,7 +65,7 @@ h2 {
 .icons{
     img{
         width: 100px;
-        height: 100px;
+        aspect-ratio: 1/1;
         filter: invert(38%) sepia(83%) saturate(698%) hue-rotate(151deg) brightness(90%) contrast(102%);
     }
 

@@ -61,6 +61,7 @@ export default {
                             <div class="px-4 article_detail">
                                 <div class="my-2">{{ prodotto.nome }}</div>
                                 <div class="my-2">prezzo:
+                                    <!--TODO risolvere bug prezzo-->
                                     <span v-if="store.prezzoTot == 0">{{ prodotto.prezzo }}</span>
                                     <span v-else>{{ store.prezzoTot }}</span>
                                     $

@@ -67,7 +67,8 @@ export default {
                             <div>
                                 <!-- <btnCustom text="Search" iconFw="fa-solid fa-magnifying-glass" bg_btn="bg_blue" bg_hover="hover_blu_light"/> -->
                                 <router-link :to="{ name: 'restaurants' }">
-                                    <btnCustomRounded text="ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" />
+                                    <btnCustomRounded text="ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                        bg_hover="hover_blu_light" />
                                 </router-link>
 
                             </div>
@@ -131,9 +132,10 @@ a {
     background-color: transparent;
     color: transparent;
     text-decoration: none;
+
     &:hover {
         background-color: transparent;
-    color: transparent;
+        color: transparent;
     }
 }
 

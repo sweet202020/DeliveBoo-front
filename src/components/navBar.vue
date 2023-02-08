@@ -34,8 +34,8 @@ window.addEventListener('scroll', (e) => {
                     </div>
                     <!--nav-dx-->
                     <div>
-                    <!-- NavBar originale di federico -->
-                       <!--  <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                        <!-- NavBar originale di federico -->
+                        <!--  <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
                                 <a class="nav-link text-light" aria-current="page" href="#">Home</a>
                             </li>
@@ -48,18 +48,21 @@ window.addEventListener('scroll', (e) => {
                                 <a class="nav-link text-light" aria-current="page" href="#">menu</a>
                             </li>
                         </ul> -->
-                    <!-- NavBar con view router -->
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                        <!-- NavBar con view router -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'home' }">Home</router-link>
+                                <router-link class="nav-link text-light" aria-current="page"
+                                    :to="{ name: 'home' }">Home</router-link>
                             </li>
 
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'restaurants' }">restaurant</router-link>
+                                <router-link class="nav-link text-light" aria-current="page"
+                                    :to="{ name: 'restaurants' }">restaurant</router-link>
                             </li>
 
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'menu' }">menu</router-link>
+                                <router-link class="nav-link text-light" aria-current="page"
+                                    :to="{ name: 'menu' }">menu</router-link>
                             </li>
                         </ul>
 
@@ -68,7 +71,8 @@ window.addEventListener('scroll', (e) => {
                     <div>
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }"><i class="fa-solid fa-cart-shopping"></i></router-link> 
+                                <router-link class="nav-link text-light" aria-current="page"
+                                    :to="{ name: 'carrello' }"><i class="fa-solid fa-cart-shopping"></i></router-link>
                             </li>
 
                             <li class="nav-item">
@@ -97,22 +101,33 @@ window.addEventListener('scroll', (e) => {
     z-index: 999;
 }
 
-.logo img{
-        height: 50px;
-    }
+.logo img {
+    height: 50px;
+}
 
-.add_shadow{
+.add_shadow {
     box-shadow: red 0 0 10px 0;
 }
 
 a {
     padding: 0.5rem !important;
+    font-family: 'Unbounded', cursive;
+    border-radius: 5px;
+    transition: 0.5s;
+        
+    &:hover {
+        color: $deliveboo-primary !important;
+        background-color: $deliveboo-white;
+        font-family: 'Unbounded', cursive;
+        border-radius: 5px;
+    }
+
+
 }
 
-a:hover {
+/* a:hover {
     color: #f5612c !important;
     background-color: rgba(252, 252, 252, 0.703);
     border-radius: 10px;
-
-}
+} */
 </style>

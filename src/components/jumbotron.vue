@@ -1,11 +1,13 @@
 <script>
 import btnCustom from './btnCustom.vue';
+import btnCustomRounded from './btnCustomRounded.vue';
 import inputText from './inputText.vue';
 
 export default {
     name: "jumbotron",
     components: {
         btnCustom,
+        btnCustomRounded,
         inputText,
     }
 }
@@ -57,13 +59,17 @@ export default {
                 <div class="bg-jumbo col d-flex justify-content-center align-items-center">
                     <div>
                         <h1 class="fw-bolder">Il cibo che vuoi tu, <br> dove vuoi tu</h1>
-                        <div class="my-5 d-flex">
+                        <div class="my-3 d-flex">
                             <!--elimina w-100 se vuoi l'imput piu piccolo-->
-                            <div class="w-100">
+                            <!--  <div class="w-100">
                                 <inputText text="Cerca..."/>
-                            </div>
+                            </div> -->
                             <div>
-                                <btnCustom text="Search" iconFw="fa-solid fa-magnifying-glass" bg_btn="bg_blue" bg_hover="hover_blu_light"/>
+                                <!-- <btnCustom text="Search" iconFw="fa-solid fa-magnifying-glass" bg_btn="bg_blue" bg_hover="hover_blu_light"/> -->
+                                <router-link :to="{ name: 'restaurants' }">
+                                    <btnCustomRounded text="ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" />
+                                </router-link>
+
                             </div>
                         </div>
 
@@ -71,42 +77,39 @@ export default {
                 </div>
             </div>
         </div>
-
         <!--onde bg jumbo-->
         <div class="wave">
             <img src="../assets/img/wave.png" alt="">
         </div>
     </div>
+
+
 </template>
 
 <style lang="scss" scoped>
-
 @use '../styles/partials/variables.scss' as *;
 
 .burger {
-
     img {
-        
         object-fit: contain;
         width: 400px;
         height: 500px;
         margin: auto;
     }
-
 }
 
 .bg-jumbo {
     background-image: url(../assets/img/circle-red.png);
     background-size: contain;
     background-repeat: no-repeat;
-    
 }
 
 .jumbotron-bg {
     background: $light-orange;
     background: linear-gradient(180deg, $light-orange 40%, $dark-orange 100%);
     margin-top: 50px;
-    h1{
+
+    h1 {
         color: $deliveboo-white;
         font-family: 'Unbounded', cursive;
     }
@@ -124,6 +127,15 @@ export default {
 }
 
 
+a {
+    background-color: transparent;
+    color: transparent;
+    text-decoration: none;
+    &:hover {
+        background-color: transparent;
+    color: transparent;
+    }
+}
 
 
 /*#region jumbo-effect */

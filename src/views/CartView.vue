@@ -1,32 +1,36 @@
 <script>
 
+import MenuView from '../views/MenuView.vue';
+
 export default {
     name: 'CartView',
+    components: {
+        MenuView,
+    },
     data() {
         return {
             carr: [
-                {
-                    img: 'https://picsum.photos/100/100',
-                    nome: 'panino',
-                    prezzo: 3,
-                    prezzoSingoloProdotto: 3,
-                    quantita: 1,
-
-                },
-                {
-                    img: 'https://picsum.photos/100/100',
-                    nome: 'pizza',
-                    prezzo: 5,
-                    prezzoSingoloProdotto: 5, // prezzo singola quantità
-                    quantita: 1
-                },
-                {
-                    img: 'https://picsum.photos/100/100',
-                    nome: 'tacos',
-                    prezzo: 10,
-                    prezzoSingoloProdotto: 10,
-                    quantita: 1
-                },
+                // {
+                //     img: 'https://picsum.photos/100/100',
+                //     nome: 'panino',
+                //     prezzo: 3,
+                //     prezzoSingoloProdotto: 3,
+                //     quantita: 1,
+                // },
+                // {
+                //     img: 'https://picsum.photos/100/100',
+                //     nome: 'pizza',
+                //     prezzo: 5,
+                //     prezzoSingoloProdotto: 5, // prezzo singola quantità
+                //     quantita: 1
+                // },
+                // {
+                //     img: 'https://picsum.photos/100/100',
+                //     nome: 'tacos',
+                //     prezzo: 10,
+                //     prezzoSingoloProdotto: 10,
+                //     quantita: 1
+                // },
             ],
             total: ''
         }
@@ -35,17 +39,15 @@ export default {
         addQuantity(prodotto){
             prodotto.quantita++
             prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
+            console.log(prodotto.prezzoSingoloProdotto ,'aumento++++');
         },
         deleteQuantity(prodotto,i,carr){
             prodotto.quantita--
             prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
+            console.log(prodotto.prezzoSingoloProdotto,'diminuisco');
             if (prodotto.quantita == 0) {
-                console.log('elimina da array');
                 carr.splice(i, 1 )
                 console.log(carr);
-            }
-            else {
-                console.log('lasciami qua');
             }
         },
         totalPrice(carr){
@@ -53,11 +55,12 @@ export default {
             for (let i = 0; i < carr.length; i++) {
                 let element = carr[i];
                 totalEl.push(element.prezzoSingoloProdotto)
+                console.log(element.prezzoSingoloProdotto, 'totalprice');
             }
-            let total = totalEl.reduce((previous, next) => {
-                return previous + next;
+            let totalPrice = totalEl.reduce((total, amount) => {
+                return total + amount;
             })
-            return total
+            return totalPrice
         },
     }
 }
@@ -82,8 +85,7 @@ export default {
                             <div class="px-4 article_detail">
                                 <div class="my-2">{{ prodotto.nome }}</div>
                                 <div class="my-2">prezzo:
-                                    <span v-if="prodotto.prezzoSingoloProdotto == 0">{{ prodotto.prezzo }}</span>
-                                    <span v-else>{{ prodotto.prezzoSingoloProdotto }}</span>
+                                    <span >{{ prodotto.prezzoSingoloProdotto }}</span>
                                     $</div>
                                 <div class=" my-2">quantità:
                                     <button @click="deleteQuantity(prodotto,i,carr)">-</button>
@@ -103,7 +105,7 @@ export default {
                     <div class="payment_container mt-5">
                         <!--<h5>SubTotale: <span>{{  }}</span>$</h5>
                         <h5>Spese di consegna: <span>7</span>$</h5>-->
-                        <h5>Totale: <span v-if="carr != 0">  {{totalPrice(carr), total }} </span>$</h5>
+                        <h5>Totale: <span v-if="carr != 0">  {{totalPrice(carr), totalPrice }} </span>$</h5>
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">
                             <!--TODO metti bottone props / pagamento-->

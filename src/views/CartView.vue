@@ -1,37 +1,12 @@
 <script>
 
-import MenuView from '../views/MenuView.vue';
+import { store } from '../store'
 
 export default {
     name: 'CartView',
-    components: {
-        MenuView,
-    },
     data() {
         return {
-            carr: [
-                // {
-                //     img: 'https://picsum.photos/100/100',
-                //     nome: 'panino',
-                //     prezzo: 3,
-                //     prezzoSingoloProdotto: 3,
-                //     quantita: 1,
-                // },
-                // {
-                //     img: 'https://picsum.photos/100/100',
-                //     nome: 'pizza',
-                //     prezzo: 5,
-                //     prezzoSingoloProdotto: 5, // prezzo singola quantità
-                //     quantita: 1
-                // },
-                // {
-                //     img: 'https://picsum.photos/100/100',
-                //     nome: 'tacos',
-                //     prezzo: 10,
-                //     prezzoSingoloProdotto: 10,
-                //     quantita: 1
-                // },
-            ],
+            store,
             total: ''
         }
     },
@@ -41,19 +16,19 @@ export default {
             prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
             console.log(prodotto.prezzoSingoloProdotto ,'aumento++++');
         },
-        deleteQuantity(prodotto,i,carr){
+        deleteQuantity(prodotto,i,cart){
             prodotto.quantita--
             prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
             console.log(prodotto.prezzoSingoloProdotto,'diminuisco');
             if (prodotto.quantita == 0) {
-                carr.splice(i, 1 )
-                console.log(carr);
+                store.cart.splice(i, 1 )
+                console.log(store.cart);
             }
         },
-        totalPrice(carr){
+        totalPrice(cart){
             let totalEl = []
-            for (let i = 0; i < carr.length; i++) {
-                let element = carr[i];
+            for (let i = 0; i < store.cart.length; i++) {
+                let element = store.cart[i];
                 totalEl.push(element.prezzoSingoloProdotto)
                 console.log(element.prezzoSingoloProdotto, 'totalprice');
             }
@@ -74,8 +49,8 @@ export default {
 
             <div class="col-7 article">
                 <!--prodotto-->
-                <div v-if="carr.length != 0  ">
-                    <div  v-for="prodotto,i in carr" class="card_article my-2">  
+                <div v-if="store.cart.length != 0  ">
+                    <div  v-for="prodotto,i in store.cart" class="card_article my-2">  
                         <div  class="d-flex">
                             <!--img prodotto-->
                             <div class="p-2">
@@ -88,7 +63,7 @@ export default {
                                     <span >{{ prodotto.prezzoSingoloProdotto }}</span>
                                     $</div>
                                 <div class=" my-2">quantità:
-                                    <button @click="deleteQuantity(prodotto,i,carr)">-</button>
+                                    <button @click="deleteQuantity(prodotto,i,store.cart)">-</button>
                                     <span>{{ prodotto.quantita }}</span>
                                     <button @click="addQuantity(prodotto,i)">+</button>
                                 </div>
@@ -97,7 +72,7 @@ export default {
                     </div>
                 </div>
                 <div v-else>
-                    <h4 class="text-center">Non ci sono articoli</h4>
+                    <h4 class="text-center">Non ci sono articoli {{ store.test }}</h4>
                 </div>
 
                 <!--sezione pagamento-->
@@ -105,7 +80,7 @@ export default {
                     <div class="payment_container mt-5">
                         <!--<h5>SubTotale: <span>{{  }}</span>$</h5>
                         <h5>Spese di consegna: <span>7</span>$</h5>-->
-                        <h5>Totale: <span v-if="carr != 0">  {{totalPrice(carr), totalPrice }} </span>$</h5>
+                        <h5>Totale: <span v-if="store.cart != 0">  {{totalPrice(store.cart), totalPrice }} </span>$</h5>
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">
                             <!--TODO metti bottone props / pagamento-->

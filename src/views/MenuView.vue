@@ -9,6 +9,47 @@ export default {
     navBar,
     jumbotronMenu,
     btnCustom
+  },
+  data() {
+    return {
+      plates: [
+        {
+          name: 'margherita',
+          ingredients: 'pomodoro ◦ mozzarella',
+          price: '4.50$'
+        },
+        {
+          name: 'prosciutto e funghi',
+          ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
+          price: '5.00$'
+        },
+        {
+          name: 'primavera',
+          ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
+          price: '5.50$'
+        },
+        {
+          name: 'trevigiana',
+          ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
+          price: '6.50$'
+        },
+        {
+          name: 'diavola',
+          ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
+          price: '6.50$'
+        },
+        {
+          name: 'quattro stagioni',
+          ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
+          price: '6.50$'
+        },
+      ]
+    }
+  },
+  methods:{
+    addPlate(){
+      console.log('hai cliccato su aggiungi pulsante');
+    }
   }
 }
 </script>
@@ -37,40 +78,13 @@ export default {
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>
 
-          <div class="card_plate mt-2 p-3">
+          <div class="card_plate mt-2 p-3" v-for="plate in plates">
             <div class="d-flex justify-content-between">
-              <h6 class="title">Margherita</h6>
-              <h6>5,00 €</h6>
+              <h6 class="name">{{ plate.name }}</h6>
+              <h6 class="price">{{ plate.price }}</h6>
             </div>
-            <p class="text">Pomodoro ◦ mozzarella</p>
-            <div class="btn btn_plate d-flex justify-content-end">+</div>
-          </div>
-
-          <div class="card_plate mt-2 p-3">
-            <div class="d-flex justify-content-between">
-              <h6 class="title">Prosciutto e funghi</h6>
-              <h6>6,50 €</h6>
-            </div>
-            <p class="text">Pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi</p>
-            <div class="btn btn_plate d-flex justify-content-end">+</div>
-          </div>
-
-          <div class="card_plate mt-2 p-3">
-            <div class="d-flex justify-content-between">
-              <h6 class="title">Quattro formaggi</h6>
-              <h6>7,50 €</h6>
-            </div>
-            <p class="text">Pomodoro ◦ mozzarella ◦ brie ◦ taleggio ◦ branzi</p>
-            <div class="btn btn_plate d-flex justify-content-end">+</div>
-          </div>
-
-          <div class="card_plate mt-2 p-3">
-            <div class="d-flex justify-content-between">
-              <h6 class="title">Spek e brie</h6>
-              <h6>7,00 €</h6>
-            </div>
-            <p class="text">Pomodoro ◦ mozzarella ◦ spek ◦ brie</p>
-            <div class="btn btn_plate d-flex justify-content-end">+</div>
+            <p class="ingredients">{{ plate.ingredients }}</p>
+            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate">+</div>
           </div>
 
         </section>
@@ -141,6 +155,12 @@ export default {
     background-color: $deliveboo-white;
     color: $deliveboo-secondary;
     font-weight: bold;
+    transition: 0.5s;
+
+    &:hover {
+      background-color: $deliveboo-secondary;
+      color: $deliveboo-white;
+    }
   }
 }
 </style>

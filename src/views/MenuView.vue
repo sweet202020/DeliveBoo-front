@@ -19,42 +19,36 @@ export default {
           nome: 'margherita',
           ingredients: 'pomodoro ◦ mozzarella',
           prezzo: 3,
-          prezzoSingoloProdotto: 3,
           quantita: 1
         },
         {
           nome: 'prosciutto e funghi',
           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
           prezzo: 5,
-          prezzoSingoloProdotto: 5,
           quantita: 1
         },
         {
           nome: 'primavera',
           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
           prezzo: 10, 
-          prezzoSingoloProdotto: 10,
           quantita: 1
         },
         {
           nome: 'trevigiana',
           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
           prezzo: 3,
-          prezzoSingoloProdotto: 3,
           quantita: 1
         },
         {
           nome: 'diavola',
           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
           prezzo: 4, 
-          prezzoSingoloProdotto: 4,
           quantita: 1
         },
         {
           nome: 'quattro stagioni',
           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
           prezzo: 6, 
-          prezzoSingoloProdotto: 6,
           quantita: 1
         },
       ]

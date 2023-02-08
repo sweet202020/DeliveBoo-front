@@ -11,21 +11,22 @@ export default {
         }
     },
     methods: {
-        addQuantity(prodotto){
+        addQuantity(prodotto) {
             prodotto.quantita++
-            prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
-            console.log(prodotto.prezzoSingoloProdotto ,'aumento++++');
+            store.prezzoTot = prodotto.prezzo * prodotto.quantita
+            console.log(store.prezzoTot);
+            console.log(prodotto.prezzoSingoloProdotto, 'aumento++++');
         },
-        deleteQuantity(prodotto,i,cart){
+        deleteQuantity(prodotto, i, cart) {
             prodotto.quantita--
             prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
-            console.log(prodotto.prezzoSingoloProdotto,'diminuisco');
+            console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');
             if (prodotto.quantita == 0) {
-                store.cart.splice(i, 1 )
+                store.cart.splice(i, 1)
                 console.log(store.cart);
             }
         },
-        totalPrice(cart){
+        totalPrice(cart) {
             let totalEl = []
             for (let i = 0; i < store.cart.length; i++) {
                 let element = store.cart[i];
@@ -49,23 +50,25 @@ export default {
 
             <div class="col-7 article">
                 <!--prodotto-->
-                <div v-if="store.cart.length != 0  ">
-                    <div  v-for="prodotto,i in store.cart" class="card_article my-2">  
-                        <div  class="d-flex">
+                <div v-if="store.cart.length != 0">
+                    <div v-for="prodotto, i in store.cart" class="card_article my-2">
+                        <div class="d-flex">
                             <!--img prodotto-->
                             <div class="p-2">
-                                <img :src=" prodotto.img " alt="">
+                                <img :src="prodotto.img" alt="">
                             </div>
                             <!--Caratteristiche prodotto-->
                             <div class="px-4 article_detail">
                                 <div class="my-2">{{ prodotto.nome }}</div>
                                 <div class="my-2">prezzo:
-                                    <span >{{ prodotto.prezzoSingoloProdotto }}</span>
-                                    $</div>
+                                    <span v-if="store.prezzoTot == 0">{{ prodotto.prezzo }}</span>
+                                    <span v-else>{{ store.prezzoTot }}</span>
+                                    $
+                                </div>
                                 <div class=" my-2">quantità:
-                                    <button @click="deleteQuantity(prodotto,i,store.cart)">-</button>
+                                    <button @click="deleteQuantity(prodotto, i, store.cart)">-</button>
                                     <span>{{ prodotto.quantita }}</span>
-                                    <button @click="addQuantity(prodotto,i)">+</button>
+                                    <button @click="addQuantity(prodotto, i)">+</button>
                                 </div>
                             </div>
                         </div>
@@ -80,7 +83,7 @@ export default {
                     <div class="payment_container mt-5">
                         <!--<h5>SubTotale: <span>{{  }}</span>$</h5>
                         <h5>Spese di consegna: <span>7</span>$</h5>-->
-                        <h5>Totale: <span v-if="store.cart != 0">  {{totalPrice(store.cart), totalPrice }} </span>$</h5>
+                        <h5>Totale: <span v-if="store.cart != 0"> {{ totalPrice(store.cart), totalPrice }} </span>$</h5>
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">
                             <!--TODO metti bottone props / pagamento-->

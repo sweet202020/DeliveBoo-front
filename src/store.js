@@ -7,6 +7,7 @@ import {
 export const store = reactive({
     test: 'store.js funziona',
     cart: [
+        
     ],
     prezzoTot: 0,
 })

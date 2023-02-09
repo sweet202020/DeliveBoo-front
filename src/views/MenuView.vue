@@ -2,6 +2,7 @@
 import navBar from '../components/navBar.vue';
 import jumbotronMenu from '../components/jumbotronMenu.vue';
 import btnCustom from '../components/btnCustom.vue';
+import { store } from '../store'
 
 export default {
   name: 'MenuView',
@@ -12,43 +13,50 @@ export default {
   },
   data() {
     return {
+      store,
       plates: [
         {
-          name: 'margherita',
+          nome: 'margherita',
           ingredients: 'pomodoro ◦ mozzarella',
-          price: '4.50$'
+          prezzo: 4,
+          quantita: 1,
         },
         {
-          name: 'prosciutto e funghi',
+          nome: 'prosciutto e funghi',
           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
-          price: '5.00$'
+          prezzo: 5,
+          quantita: 1,
         },
         {
-          name: 'primavera',
+          nome: 'primavera',
           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
-          price: '5.50$'
+          prezzo: 6,
+          quantita: 1,
         },
         {
-          name: 'trevigiana',
+          nome: 'trevigiana',
           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
-          price: '6.50$'
+          prezzo: 6,
+          quantita: 1,
         },
         {
-          name: 'diavola',
+          nome: 'diavola',
           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
-          price: '6.50$'
+          prezzo: 7,
+          quantita: 1,
         },
         {
-          name: 'quattro stagioni',
+          nome: 'quattro stagioni',
           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
-          price: '6.50$'
+          prezzo: 7,
+          quantita: 1,
         },
       ]
     }
   },
   methods:{
-    addPlate(){
-      console.log('hai cliccato su aggiungi pulsante');
+    addPlate(plates,i){
+    store.cart.push(plates)
     }
   }
 }
@@ -78,13 +86,13 @@ export default {
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>
 
-          <div class="card_plate mt-2 p-3" v-for="plate in plates">
+          <div class="card_plate mt-2 p-3" v-for="plate,i in plates">
             <div class="d-flex justify-content-between">
-              <h6 class="name">{{ plate.name }}</h6>
-              <h6 class="price">{{ plate.price }}</h6>
+              <h6 class="name">{{ plate.nome }}</h6>
+              <h6 class="price">{{ plate.prezzo }} $</h6>
             </div>
             <p class="ingredients">{{ plate.ingredients }}</p>
-            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate">+</div>
+            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate,i)">+</div>
           </div>
 
         </section>

@@ -81,7 +81,7 @@ button:hover .text {
 button:hover .icon {
     width: 150px;
     border-left: none;
-    transform: translateX(0);
+    transform: translateX(20px);
 }
 
 button:focus {

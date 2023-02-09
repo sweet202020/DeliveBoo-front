@@ -2,62 +2,53 @@
 import navBar from '../components/navBar.vue';
 import jumbotronMenu from '../components/jumbotronMenu.vue';
 import btnCustom from '../components/btnCustom.vue';
-import { store } from '../store'
 
 export default {
   name: 'MenuView',
   components: {
     navBar,
     jumbotronMenu,
-    btnCustom,
+    btnCustom
   },
   data() {
     return {
-      store,
       plates: [
         {
-          nome: 'margherita',
+          name: 'margherita',
           ingredients: 'pomodoro ◦ mozzarella',
-          prezzo: 3,
-          quantita: 1
+          price: '4.50$'
         },
         {
-          nome: 'prosciutto e funghi',
+          name: 'prosciutto e funghi',
           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
-          prezzo: 5,
-          quantita: 1
+          price: '5.00$'
         },
         {
-          nome: 'primavera',
+          name: 'primavera',
           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
-          prezzo: 10, 
-          quantita: 1
+          price: '5.50$'
         },
         {
-          nome: 'trevigiana',
+          name: 'trevigiana',
           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
-          prezzo: 3,
-          quantita: 1
+          price: '6.50$'
         },
         {
-          nome: 'diavola',
+          name: 'diavola',
           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
-          prezzo: 4, 
-          quantita: 1
+          price: '6.50$'
         },
         {
-          nome: 'quattro stagioni',
+          name: 'quattro stagioni',
           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
-          prezzo: 6, 
-          quantita: 1
+          price: '6.50$'
         },
       ]
     }
   },
   methods:{
-    addPlate(i){
-      store.cart.push(this.plates[i])
-      console.log(store.cart);
+    addPlate(){
+      console.log('hai cliccato su aggiungi pulsante');
     }
   }
 }
@@ -87,13 +78,13 @@ export default {
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>
 
-          <div class="card_plate mt-2 p-3" v-for="plate,i in plates">
+          <div class="card_plate mt-2 p-3" v-for="plate in plates">
             <div class="d-flex justify-content-between">
-              <h6 class="name">{{ plate.nome }}</h6>
-              <h6 class="price">{{ plate.prezzo }}</h6>
+              <h6 class="name">{{ plate.name }}</h6>
+              <h6 class="price">{{ plate.price }}</h6>
             </div>
             <p class="ingredients">{{ plate.ingredients }}</p>
-            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(i)">+</div>
+            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate">+</div>
           </div>
 
         </section>

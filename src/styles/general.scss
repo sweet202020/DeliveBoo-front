@@ -11,15 +11,16 @@
 
 //classi btn color
 .bg_blue {
-    background: $dark-blue;
+    background: $deliveboo-secondary;
 }
 
 //classi btn hover color
 .hover_blu_light {
     &:hover {
-        background: $light-blue;
+        background: $deliveboo-secondary-light;
     }
 }
+
 
 //layout
 p {

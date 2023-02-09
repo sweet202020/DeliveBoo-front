@@ -1,7 +1,13 @@
 <script>
+import { store } from '../store.js'
 
 export default {
-    name: 'navBar'
+    name: 'navBar',
+    data() {
+        return {
+            store
+        }
+    }
 }
 
 window.addEventListener('scroll', (e) => {
@@ -114,7 +120,7 @@ a {
     font-family: 'Unbounded', cursive;
     border-radius: 5px;
     transition: 0.5s;
-        
+
     &:hover {
         color: $deliveboo-primary !important;
         background-color: $deliveboo-white;

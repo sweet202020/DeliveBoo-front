@@ -1,3 +1,4 @@
+
 <script>
 import navBar from '../components/navBar.vue';
 import jumbotronMenu from '../components/jumbotronMenu.vue';
@@ -54,11 +55,26 @@ export default {
       ]
     }
   },
-  methods:{
-    addPlate(plates,i){
-    store.cart.push(plates)
+  methods: {
+    addPlate(plates, i) {
+      store.cart.push(plates);
+      this.saveCart();
+    }, saveCart() {
+      let parsed = JSON.stringify(store.cart);
+      localStorage.setItem('cart', parsed);
     }
-  }
+  },
+  mounted() {
+
+    if (localStorage.getItem('cart')) {
+      try {
+        store.cart = JSON.parse(localStorage.getItem('cart'));
+      } catch (e) {
+        localStorage.removeItem('cart');
+      }
+    }
+  },
+
 }
 </script>
 
@@ -71,6 +87,7 @@ export default {
       <div class="col sx">
         <!-- restaurant details -->
         <section class="restaurant_details p-3">
+
           <h3>Boa pizza</h3>
           <div>pizza | bibite</div>
           <div>Via delle vie, Il mio paese (PAESE)</div>
@@ -86,13 +103,13 @@ export default {
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>
 
-          <div class="card_plate mt-2 p-3" v-for="plate,i in plates">
+          <div class="card_plate mt-2 p-3" v-for="plate, i in plates">
             <div class="d-flex justify-content-between">
               <h6 class="name">{{ plate.nome }}</h6>
               <h6 class="price">{{ plate.prezzo }} $</h6>
             </div>
             <p class="ingredients">{{ plate.ingredients }}</p>
-            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate,i)">+</div>
+            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate, i)">+</div>
           </div>
 
         </section>

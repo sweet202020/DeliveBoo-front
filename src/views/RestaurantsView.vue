@@ -1,45 +1,164 @@
 <script>
 import navBar from '../components/navBar.vue';
+import jumbotronMenu from '../components/jumbotronMenu.vue';
+
 
 export default {
     name: 'ReastaurantsView',
-    components: { navBar }
+    components: {
+        navBar,
+        jumbotronMenu
+    },
+    data() {
+        return {
+            categories: [
+                {
+                    url: 'pizza.png',
+                    name: 'pizza'
+                },
+                {
+                    url: 'carne-3.png',
+                    name: 'carne'
+                },
+                {
+                    url: 'pasta.png',
+                    name: 'pasta'
+                },
+                {
+                    url: 'sushi.png',
+                    name: 'sushi'
+                },
+                {
+                    url: 'insalate.png',
+                    name: 'insalate'
+                },
+
+                {
+                    url: 'panini-2.png',
+                    name: 'panini'
+                },
+                {
+                    url: 'hamburger.png',
+                    name: 'hamburger'
+                },
+                {
+                    url: 'piadine-2.png',
+                    name: 'piadine'
+                },
+
+                {
+                    url: 'fastfood.png',
+                    name: 'fastfood'
+                },
+
+                {
+                    url: 'messicano.png',
+                    name: 'messicano'
+                },
+            ],
+            restaurants: [
+                {
+                    url: 'pizza.png',
+                    name: 'pizza'
+                },
+                {
+                    url: 'carne-3.png',
+                    name: 'pizzeria boa'
+                },
+                {
+                    url: 'pasta.png',
+                    name: 'ristorante italiano'
+                },
+                {
+                    url: 'sushi.png',
+                    name: 'sushi'
+                },
+                {
+                    url: 'insalate.png',
+                    name: 'insalate'
+                },
+
+                {
+                    url: 'panini-2.png',
+                    name: 'panini'
+                },
+                {
+                    url: 'hamburger.png',
+                    name: 'hamburger'
+                },
+                {
+                    url: 'piadine-2.png',
+                    name: 'piadine'
+                },
+
+                {
+                    url: 'fastfood.png',
+                    name: 'fastfood'
+                },
+
+                {
+                    url: 'messicano.png',
+                    name: 'messicano'
+                },
+            ]
+        }
+    },
+    methods: {
+        getImageUrl(name) {
+            return new URL(`../assets/img/categories/${name}`, import.meta.url).href
+        }
+    }
 }
 </script>
 
 <template>
     <navBar />
-   
-    <div class="container py-5">
-        <h1>pagina elenco ristoranti</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, necessitatibus dolores, voluptatem velit
-            distinctio natus ratione dicta id similique, nesciunt reprehenderit voluptatum mollitia est facere magni.
-            Fugit eligendi earum illo ullam laborum rem unde cupiditate impedit eos! Tempora beatae iusto laborum magni
-            ut eius adipisci hic officia dignissimos quis porro, repudiandae vitae? Nemo, blanditiis sequi tempora,
-            necessitatibus veritatis inventore fuga dolorum magnam ad in iure eius quod ea asperiores error aliquam
-            ipsam. Accusamus, omnis assumenda, odio maiores voluptatum unde excepturi perspiciatis vero non dicta vel
-            pariatur suscipit! Eos dolores accusamus id deleniti possimus, sunt ab animi repellat distinctio quia
-            eligendi impedit? Inventore, quia atque. Cum culpa, veniam asperiores iure tempora alias ratione odio
-            perferendis, eaque inventore atque iste aliquid molestiae vero illo repudiandae! Eum quidem tempore unde
-            dolor explicabo voluptate est. Repudiandae cum sequi repellendus atque, voluptatum nostrum doloribus illum,
-            eaque asperiores repellat, magni facilis consequatur vel porro? Commodi, temporibus iure quia harum ad
-            blanditiis dignissimos recusandae possimus dolor praesentium? Incidunt quia placeat accusantium beatae eius
-            hic ut voluptatem, doloribus, odit amet quisquam eaque sed veritatis nobis saepe quam rerum corrupti
-            aspernatur laborum nihil ex sunt ab. Nesciunt nam minima adipisci, molestias cumque ipsum esse aperiam in
-            accusantium eius impedit unde cupiditate nobis animi vero sequi consectetur est, odit, atque delectus quam
-            libero rerum laboriosam quaerat! Delectus officia aspernatur recusandae ratione autem quod at dignissimos
-            obcaecati laborum? Voluptatum rerum repudiandae quibusdam veniam! Distinctio, reiciendis officia totam, quo
-            quos dolorem quibusdam explicabo eius, quisquam eveniet earum dolores temporibus enim magnam error et
-            maiores quia fugiat similique fugit natus. Quibusdam qui repellat similique consequatur adipisci quam harum
-            quas voluptate tempora placeat at unde ea aliquam ullam in, voluptatibus culpa facere saepe iste sed
-            molestiae quisquam ipsam. Quae alias dignissimos voluptas, consequatur quod a similique explicabo. Beatae
-            itaque perspiciatis voluptate magni, maiores sunt!</p>
+    <jumbotronMenu />
+
+    <!-- ELENCO CATEGORIE -->
+    <div class="container text-center py-5">
+        <h1>SCEGLI LE TUE CATEGORIE</h1>
+        <div class="row">
+            <div class="col card_category p-1 mt-3" v-for="category in categories">
+                <img :src="getImageUrl(category.url)" alt="">
+                <h6 class="py-2">{{ category.name }}</h6>
+            </div>
+        </div>
     </div>
+
+    <!-- ELENCO RISTORANTI -->
 
 
 </template>
 
 
 <style lang="scss" scoped>
+@use '../styles/partials/variables.scss' as *;
 
+h1 {
+    color: $deliveboo-primary;
+    word-spacing: 10px;
+}
+
+.card_category {
+
+    transition: 0.5s;
+
+    &:hover {
+        cursor: pointer;
+        opacity: 50%;
+    }
+
+    img {
+        height: 80px;
+        transition: 0.5s;
+
+
+    }
+
+    h6 {
+        color: $deliveboo-primary;
+    }
+
+}
 </style>

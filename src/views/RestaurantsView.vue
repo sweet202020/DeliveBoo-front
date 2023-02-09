@@ -55,6 +55,51 @@ export default {
                     url: 'messicano.png',
                     name: 'messicano'
                 },
+            ],
+            restaurants: [
+                {
+                    url: 'pizza.png',
+                    name: 'pizza'
+                },
+                {
+                    url: 'carne-3.png',
+                    name: 'pizzeria boa'
+                },
+                {
+                    url: 'pasta.png',
+                    name: 'ristorante italiano'
+                },
+                {
+                    url: 'sushi.png',
+                    name: 'sushi'
+                },
+                {
+                    url: 'insalate.png',
+                    name: 'insalate'
+                },
+
+                {
+                    url: 'panini-2.png',
+                    name: 'panini'
+                },
+                {
+                    url: 'hamburger.png',
+                    name: 'hamburger'
+                },
+                {
+                    url: 'piadine-2.png',
+                    name: 'piadine'
+                },
+
+                {
+                    url: 'fastfood.png',
+                    name: 'fastfood'
+                },
+
+                {
+                    url: 'messicano.png',
+                    name: 'messicano'
+                },
             ]
         }
     },

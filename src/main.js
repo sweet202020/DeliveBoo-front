@@ -3,7 +3,8 @@ import App from './App.vue'
 import './styles/general.scss';
 import * as bootstrap from 'bootstrap'
 //import router per le rotte
-import {router} from './router.js'
+import { router } from './router.js'
+import Vuex from "vuex"
 //createApp(App).mount('#app')
 //installazione view router per collegamento pagine
 createApp(App).use(router).mount('#app')

@@ -29,25 +29,28 @@ export default {
                     name: 'sushi'
                 },
                 {
+                    url: 'insalate.png',
+                    name: 'insalate'
+                },
+
+                {
                     url: 'panini-2.png',
                     name: 'panini'
-                },
-                {
-                    url: 'piadine-2.png',
-                    name: 'piadine'
                 },
                 {
                     url: 'hamburger.png',
                     name: 'hamburger'
                 },
                 {
+                    url: 'piadine-2.png',
+                    name: 'piadine'
+                },
+
+                {
                     url: 'fastfood.png',
                     name: 'fastfood'
                 },
-                {
-                    url: 'insalate.png',
-                    name: 'insalate'
-                },
+
                 {
                     url: 'messicano.png',
                     name: 'messicano'
@@ -67,17 +70,18 @@ export default {
     <navBar />
     <jumbotronMenu />
 
+    <!-- ELENCO CATEGORIE -->
     <div class="container text-center py-5">
         <h1>SCEGLI LE TUE CATEGORIE</h1>
-
-        <div class="d-flex justify-content-center">
-            <div class="card_category p-3 m-2" v-for="category in categories">
+        <div class="row">
+            <div class="col card_category p-1 mt-3" v-for="category in categories">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
         </div>
-
     </div>
+
+    <!-- ELENCO RISTORANTI -->
 
 
 </template>
@@ -91,14 +95,25 @@ h1 {
     word-spacing: 10px;
 }
 
-img {
-    height: 50px;
-    aspect-ratio: 1/1;
-}
+.card_category {
 
-h6 {
-    color: $deliveboo-primary;
-}
+    transition: 0.5s;
 
-;
+    &:hover {
+        cursor: pointer;
+        opacity: 50%;
+    }
+
+    img {
+        height: 80px;
+        transition: 0.5s;
+
+
+    }
+
+    h6 {
+        color: $deliveboo-primary;
+    }
+
+}
 </style>

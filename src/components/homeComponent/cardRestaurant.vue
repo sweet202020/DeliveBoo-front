@@ -1,6 +1,5 @@
 <script>
-import { store } from '../../store.js';
-import axios from 'axios'
+
 
 export default {
     name: 'cardRestaurant',
@@ -10,28 +9,6 @@ export default {
         info: String,
         description: String,
     },
-
-    data() {
-        return {
-            store,
-        }
-    },
-
-    methods: {
-        callApi(url){
-            axios.get(url)
-            .then(response => {
-                console.log(response);
-                /* console.log(response.data.results); */
-
-            })
-        }
-    },
-
-mounted() {
-    this.callApi(store.API_URL + 'api/restaurants')
-}
-
 
 }
 

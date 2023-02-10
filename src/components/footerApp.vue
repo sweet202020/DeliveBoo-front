@@ -11,34 +11,44 @@ export default {
 <template>
     <div class="bg_footer">
         <div class="container py-5">
-            <div class="row">
-                <div class="col">
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="col ">
                     <h4>Servizio clienti</h4>
                     <ul>
                         <li>Domande frequenti</li>
                         <li>Accedi</li>
                         <li>Registrati su Just Eat</li>
-                        <li>Miglior Prezzo Garantito</li>
                         <li>Scarica l'app di Just Eat</li>
+                        <li>Miglior Prezzo Garantito</li>
                     </ul>
                 </div>
 
-                <div class="col">
+                <div class="col ">
                     <h4>Categorie</h4>
-                    <ul>
-                        <li>Pizza</li>
-                        <li>Sushi</li>
-                        <li>Cibo cinese</li>
-                        <li>Kebab</li>
-                        <li>Gelato</li>
-                        <li>Dolci</li>
-                    </ul>
+                    <div class="d-flex">
+                        <ul>
+                            <li>Pizza</li>
+                            <li>Sushi</li>
+                            <li>Cibo cinese</li>
+                            <li>Kebab</li>
+                            <li>Gelato</li>
+                            <li>Dolci</li>
+                        </ul>
+                        <ul>
+                            <li>Pizza</li>
+                            <li>Sushi</li>
+                            <li>Cibo cinese</li>
+                            <li>Kebab</li>
+                            <li>Gelato</li>
+                            <li>Dolci</li>
+                        </ul>
+                    </div>
                 </div>
-
-
                 <div class="col">
-                    <h6>icone</h6>
-                    <h6>social</h6>
+                    <h4>Seguici sui social</h4>
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
             <span>Copyright © 2019 FoodMood by WebGeniusLab. All Rights Reserved.</span>
@@ -52,18 +62,41 @@ export default {
 @use '../styles/partials/variables.scss' as *;
 
 .bg_footer {
-    background-color: $deliveboo-dark;
+    background-color: black;
+    opacity: 85%;
 
     span {
         color: $deliveboo-white;
+        opacity: 50%;
+        font-size: 13px;
     }
 
     h4 {
-        color: $deliveboo-white;
+        color: $deliveboo-primary;
+        opacity: 80%;
     }
 
-    ul li {
+    li {
         color: $deliveboo-white;
+        opacity: 80%;
+        list-style: none;
+        text-decoration: none;
+        transition: 0.5s;
+        margin-right: 0;
+
+        &:hover {
+            cursor: pointer;
+            color: $deliveboo-primary;
+        }
+    }
+
+    a {
+        color: $deliveboo-white;
+        opacity: 80%;
+
+        &:hover {
+            background-color: transparent;
+        }
     }
 
 }

@@ -7,8 +7,9 @@ import {
 
 //import axios from 'axios';
 
+
 export const store = reactive({
-    test: 'store.js funziona',
+    API_URL: 'http://127.0.0.1:8000/',
     cart: [
 
     ],
@@ -27,7 +28,10 @@ export const store = reactive({
          console.log(this.basket);
  
      } */
+
 })
+
+
 
 /* Vue.use(Vuex);
 

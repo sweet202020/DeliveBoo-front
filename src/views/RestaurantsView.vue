@@ -56,7 +56,7 @@ export default {
                     name: 'messicano'
                 },
             ],
-            restaurants: [
+           /*  restaurants: [
                 {
                     url: 'pizza.png',
                     name: 'pizza'
@@ -100,7 +100,7 @@ export default {
                     url: 'messicano.png',
                     name: 'messicano'
                 },
-            ]
+            ] */
         }
     },
     methods: {

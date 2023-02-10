@@ -31,6 +31,8 @@ export const store = reactive({
 
 })
 
+//ciao
+
 
 
 /* Vue.use(Vuex);

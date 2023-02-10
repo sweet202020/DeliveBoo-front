@@ -9,55 +9,52 @@ export default {
             store,
             total: '',
             newCart: null
-        }
-    },
-    methods: {
-        saveCart() {
-            let parsed = JSON.stringify(store.cart);
-            localStorage.setItem('cart', parsed);
-        },
-        addQuantity(prodotto) {
-            prodotto.quantita++
-            store.prezzoTot = prodotto.prezzo * prodotto.quantita
-            this.saveCart();
-            console.log(store.prezzoTot);
-            console.log(prodotto.prezzoSingoloProdotto, 'aumento++++');
-        },
-        deleteQuantity(prodotto, i, cart) {
-            prodotto.quantita--
-            prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita
-            console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');
-            if (prodotto.quantita == 0) {
-                store.cart.splice(i, 1);
-            }
-            this.saveCart();
-        },
-        totalPrice(cart) {
-            let totalEl = []
-            for (let i = 0; i < store.cart.length; i++) {
-                let element = store.cart[i];
-                totalEl.push(element.prezzoSingoloProdotto)
-                console.log(element.prezzoSingoloProdotto, 'totalprice');
-            }
-            let totalPrice = totalEl.reduce((total, amount) => {
-                return total + amount;
-
-            })
-            return totalPrice
-        },
-    },
-
-    mounted() {
-
-        if (localStorage.getItem('cart')) {
-            try {
-                store.cart = JSON.parse(localStorage.getItem('cart'));
-            } catch (e) {
-                localStorage.removeItem('cart');
-            }
-        }
-
     }
+},
+methods: {
+    saveCart() {
+        let parsed = JSON.stringify(store.cart);
+        localStorage.setItem('cart', parsed);
+    },
+    addQuantity(prodotto, i) {
+        prodotto.quantita++
+        prodotto.prezzoXquantita = prodotto.prezzo * prodotto.quantita
+        this.saveCart();
+    },
+    deleteQuantity(prodotto, i, cart) {
+        prodotto.quantita--
+        prodotto.prezzoXquantita = prodotto.prezzo * prodotto.quantita
+        if (prodotto.quantita == 0) {
+            store.cart.splice(i, 1);
+        }
+        this.saveCart();
+    },
+    totalPrice(cart) {
+        let totalEl = []
+        for (let i = 0; i < store.cart.length; i++) {
+            let element = store.cart[i];
+            totalEl.push(element.prezzoXquantita)
+            console.log(element.prezzoXquantita, 'totalprice');
+        }
+        let totalPrice = totalEl.reduce((total, amount) => {
+            return total + amount;
+        })
+        console.log(totalPrice);
+        return totalPrice
+    },
+},
+
+mounted() {
+
+    if (localStorage.getItem('cart')) {
+        try {
+            store.cart = JSON.parse(localStorage.getItem('cart'));
+        } catch (e) {
+            localStorage.removeItem('cart');
+        }
+    }
+
+}
 }
 
 </script>
@@ -70,7 +67,7 @@ export default {
             <div class="col-7 article">
                 <!--prodotto-->
 
-                <div v-if="store.cart.length != 0">
+                <div v-if="store.cart.length !== 0">
                     <div v-for="prodotto, i in store.cart" class="card_article my-2">
                         <div class="d-flex">
                             <!--img prodotto-->
@@ -81,9 +78,8 @@ export default {
                             <div class="px-4 article_detail">
                                 <div class="my-2">{{ prodotto.nome }}</div>
                                 <div class="my-2">prezzo:
-                                    <!--TODO risolvere bug prezzo-->
-                                    <span v-if="store.prezzoTot == 0">{{ prodotto.prezzo }}</span>
-                                    <span v-else>{{ store.prezzoTot }}</span>
+                                    <span v-if="!prodotto.prezzoXquantita">{{ prodotto.prezzo }}</span>
+                                    <span v-else>{{ prodotto.prezzoXquantita }}</span>
                                     $
                                 </div>
                                 <div class=" my-2">quantità:
@@ -104,9 +100,9 @@ export default {
                     <div class="payment_container mt-5">
                         <!--<h5>SubTotale: <span>{{  }}</span>$</h5>
                         <h5>Spese di consegna: <span>7</span>$</h5>-->
-                        <h5>Totale: <span v-if="store.cart != 0"> {{
-                            totalPrice(store.cart), totalPrice
-                        }} </span>$</h5>
+                        <h5>Totale:
+                            <span v-if="store.cart != 0"> {{totalPrice(store.cart)}} </span>
+                            $</h5>
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">
                             <!--TODO metti bottone props / pagamento-->

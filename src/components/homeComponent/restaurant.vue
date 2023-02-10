@@ -12,15 +12,18 @@ export default {
     data() {
         return {
             store,
+            test: null
         }
+        
     },
 
     methods: {
         callApi(url) {
             axios.get(url)
                 .then(response => {
-                    console.log(response.data.results);
-                    this.test = response.data;
+                    this.test = response.data.results.data;
+                    console.log(this.test, 'test');
+                    console.log(response.data.results.data ,'io');
                 })
         }
     },
@@ -42,13 +45,13 @@ export default {
         <div class="container bg_img my-5 text-center">
             <h2>I nostri suggerimenti</h2>
             <h3 class="my-5">Ristoranti popolari</h3>
-            <div class="row row-cols-2 row-cols-md-3" v-for="text in test">
+            <div class="row row-cols-2 row-cols-md-3">
 
                                 
                 <!--card ristoranti--> <!--TODO fare cilco componente-->
-                <cardRestaurant img="https://picsum.photos/300/300" :name="text.restaurant_name" info="Ristorante molto bello"
+                <cardRestaurant  v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name" info="info"
                     description="bello bello" />
-          
+        
             </div>
         </div>
         <!--onde bot-->

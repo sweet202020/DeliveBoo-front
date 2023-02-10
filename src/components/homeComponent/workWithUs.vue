@@ -88,7 +88,7 @@ h5 {
     color: $deliveboo-secondary;
 }
 
-img{
+img {
     width: 100%;
     aspect-ratio: 1/1;
 
@@ -99,5 +99,4 @@ img{
     border: 1px solid $deliveboo-secondary;
     box-shadow: 2px 2px 7px $deliveboo-secondary;
 }
-
 </style>

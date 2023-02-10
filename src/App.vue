@@ -8,16 +8,16 @@ export default {
         jumbotron,
         navBar,
         footerApp
-    }
+    },
 }
 
 </script>
 
 <template>
-    
+
     <navBar />
     <!-- <jumbotron /> -->
-    
+
     <router-view></router-view>
 
     <footerApp />

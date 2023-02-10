@@ -17,47 +17,66 @@ export default {
       store,
       plates: [
         {
+          img: 'https://picsum.photos/100/100',
           nome: 'margherita',
           ingredients: 'pomodoro ◦ mozzarella',
           prezzo: 4,
+          prezzoXquantita: 4,
           quantita: 1,
         },
         {
+          img: 'https://picsum.photos/100/100',
           nome: 'prosciutto e funghi',
           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
           prezzo: 5,
+          prezzoXquantita: 5,
           quantita: 1,
         },
         {
+          img: 'https://picsum.photos/100/100',
           nome: 'primavera',
           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
           prezzo: 6,
+          prezzoXquantita: 6,
           quantita: 1,
         },
         {
+          img: 'https://picsum.photos/100/100',
           nome: 'trevigiana',
           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
           prezzo: 6,
+          prezzoXquantita: 6,
           quantita: 1,
         },
         {
+          img: 'https://picsum.photos/100/100',
           nome: 'diavola',
           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
           prezzo: 7,
+          prezzoXquantita: 7,
           quantita: 1,
         },
         {
+          img: 'https://picsum.photos/100/100',
           nome: 'quattro stagioni',
           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
           prezzo: 7,
+          prezzoXquantita: 7,
           quantita: 1,
         },
       ]
     }
   },
   methods: {
-    addPlate(plates, i) {
-      store.cart.push(plates);
+    addPlate(plate, i) {
+      //se il piatto è gia nel carello aumenta il caunter di 1 altrimenti lo pushi
+      if (!store.cart.includes(plate)) {
+        console.log('pusho il piatto');
+        store.cart.push(plate);
+      }else {
+        plate.quantita++
+        plate.prezzoXquantita = plate.prezzo * plate.quantita
+      }
       this.saveCart();
     }, saveCart() {
       let parsed = JSON.stringify(store.cart);
@@ -74,7 +93,7 @@ export default {
       }
     }
   },
-
+  
 }
 </script>
 

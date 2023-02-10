@@ -28,7 +28,7 @@ export default {
     mounted() {
         this.callApi(store.API_URL + 'api/restaurants')
     }
-}
+} 
 </script>
 
 <template>

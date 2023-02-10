@@ -14,9 +14,9 @@ export default {
 
 <template>
 
-    <div class="container pb-5">
+    <div class="container justify-content-center pb-5">
         <h2 class=" text-center pt-5 mt-5">VOI E NOI</h2>
-        <div class="row py-5">
+        <div class="row row-cols-1 row-cols-md-3 py-5 g-3">
 
             <!-- SECTION RIDER -->
             <div class="col">
@@ -95,7 +95,7 @@ img{
 }
 
 .altezza_card {
-    height: 700px;
+    height: 100%;
     border: 1px solid $deliveboo-secondary;
     box-shadow: 2px 2px 7px $deliveboo-secondary;
 }

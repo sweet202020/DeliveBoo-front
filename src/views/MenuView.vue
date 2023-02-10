@@ -65,7 +65,7 @@ export default {
           quantita: 1,
         },
       ]
-    }
+    } 
   },
   methods: {
     addPlate(plate, i) {

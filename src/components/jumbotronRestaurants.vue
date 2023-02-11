@@ -16,16 +16,16 @@ export default {
     <div class="jumbotron-bg pt-5 position-relative">
         <!--Effetto bg bolle-->
         <div class="wrapper">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
         </div>    
 
         <!--onde bg jumbo-->
@@ -76,7 +76,7 @@ export default {
 
 .wrapper span:nth-child(1) {
     left: 0;
-    animation-delay: 0.6s;
+    animation-delay: 0s;
 }
 
 .wrapper span:nth-child(2) {
@@ -86,42 +86,43 @@ export default {
 
 .wrapper span:nth-child(3) {
     left: 20%;
-    animation-delay: 2s;
+    animation-delay: 5s;
 }
 
 .wrapper span:nth-child(4) {
     left: 30%;
-    animation-delay: 5s;
+    animation-delay: 3s;
 }
 
 .wrapper span:nth-child(5) {
     left: 40%;
-    animation-delay: 1s;
+    bottom: -10px;
+    animation-delay: 0s;
 }
 
 .wrapper span:nth-child(6) {
     left: 50%;
-    animation-delay: 7s;
+    animation-delay: 2s;
 }
 
 .wrapper span:nth-child(7) {
     left: 60%;
-    animation-delay: 6s;
+    animation-delay: 8s;
 }
 
 .wrapper span:nth-child(8) {
     left: 70%;
-    animation-delay: 8s;
+    animation-delay: 6s;
 }
 
 .wrapper span:nth-child(9) {
     left: 80%;
-    animation-delay: 6s;
+    animation-delay: 0s;
 }
 
 .wrapper span:nth-child(10) {
     left: 90%;
-    animation-delay: 4s;
+    animation-delay: 2s;
 }
 
 .banner {

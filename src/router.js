@@ -25,6 +25,12 @@ const router = createRouter({
             name: 'menu',
             component: MenuView
         },
+        //PROMEMORIA: questa sarà la rotta del singolo ristorante
+       /*  {
+            path: '/restaurants/:slug',
+            name: 'menu',
+            component: MenuView
+        }, */
         {
             path: '/carrello',
             name: 'carrello',

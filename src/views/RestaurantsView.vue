@@ -1,6 +1,7 @@
 <script>
 import navBar from '../components/navBar.vue';
 import jumbotronRestaurants from '../components/jumbotronRestaurants.vue';
+import btnCustomRoundedSmall from '../components/btnCustomRoundedSmall.vue';
 
 //TEST CALL - import card + axios +store
 import cardRestaurant from '../components/homeComponent/cardRestaurant.vue';
@@ -13,8 +14,10 @@ export default {
     components: {
         navBar,
         jumbotronRestaurants,
+        btnCustomRoundedSmall,
         //TEST CALL - use component card
-        cardRestaurant
+        cardRestaurant,
+
     },
     data() {
         return {
@@ -153,21 +156,69 @@ export default {
 
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
-    <div class="container bg_img my-5 text-center">
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6">
-            <!--card ristoranti--> <!--TODO fare cilco componente-->
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
-                info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
-                info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
-                info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
-                info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
-                info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
-                info="info" description="bello bello" />
+    <div class="container bg_img my-5 text-start">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3">
+            <div class="col" v-for="restaurant in restaurants">
+                <div class="card restaurant">
+                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante
+                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">Guarda il Menu</router-link> 
+                        -->
+                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" class="mb-2" />
+                    </div>
+                </div>
+            </div>
+            <div class="col" v-for="restaurant in restaurants">
+                <div class="card restaurant">
+                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante
+                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">Guarda il Menu</router-link> 
+                        -->
+                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" class="mb-2" />
+                    </div>
+                </div>
+            </div>
+            <div class="col" v-for="restaurant in restaurants">
+                <div class="card restaurant">
+                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante
+                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">Guarda il Menu</router-link> 
+                        -->
+                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" class="mb-2" />
+                    </div>
+                </div>
+            </div>
+
+
+            <!--card ristoranti-->
+            <!--TODO fare cilco componente-->
+            <!-- <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" /> -->
         </div>
 
     </div>
@@ -200,6 +251,10 @@ h1 {
     word-spacing: 10px;
 }
 
+h5 {
+    color: $deliveboo-primary;
+}
+
 .card_category {
 
     transition: 0.5s;
@@ -212,12 +267,17 @@ h1 {
     img {
         height: 80px;
         transition: 0.5s;
-
-
     }
 
-    h6 {
-        color: $deliveboo-primary;
+}
+
+.restaurant {
+    background-color: $deliveboo-white;
+    box-shadow: 3px 3px 9px $deliveboo-dark;
+
+    .text {
+        color: $deliveboo-dark;
+        font-size: 13px;
     }
 
 }

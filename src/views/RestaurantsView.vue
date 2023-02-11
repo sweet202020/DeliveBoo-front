@@ -18,9 +18,9 @@ export default {
     },
     data() {
         return {
-            //TEST CALL - aggiunto store e test al return
+            //TEST CALL - aggiunto store e test-->restaurants al return
             store,
-            test: null,
+            restaurants: null,
             categories: [
                 {
                     url: 'pizza.png',
@@ -123,8 +123,8 @@ export default {
         callApi(url) {
             axios.get(url)
                 .then(response => {
-                    this.test = response.data.results.data;
-                    console.log(this.test, 'test');
+                    this.restaurants = response.data.results.data;
+                    console.log(this.restaurants, 'test');
                     console.log(response.data.results.data, 'io');
                 })
         }
@@ -156,17 +156,17 @@ export default {
     <div class="container bg_img my-5 text-center">
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6">
             <!--card ristoranti--> <!--TODO fare cilco componente-->
-            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
                 info="info" description="bello bello" />
-            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
                 info="info" description="bello bello" />
-            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
                 info="info" description="bello bello" />
-            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
                 info="info" description="bello bello" />
-            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
                 info="info" description="bello bello" />
-            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300" :name="restaurant.restaurant_name"
                 info="info" description="bello bello" />
         </div>
 
@@ -185,7 +185,6 @@ export default {
 .standard {
     width: 100%;
     height: 100px;
-    color: green;
     //-webkit-transform: scaleX(-1);
 }
 

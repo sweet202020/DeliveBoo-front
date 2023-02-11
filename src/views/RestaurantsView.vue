@@ -1,13 +1,13 @@
 <script>
 import navBar from '../components/navBar.vue';
-import jumbotronMenu from '../components/jumbotronMenu.vue';
+import jumbotronRestaurants from '../components/jumbotronRestaurants.vue';
 
 
 export default {
     name: 'ReastaurantsView',
     components: {
         navBar,
-        jumbotronMenu
+        jumbotronRestaurants
     },
     data() {
         return {
@@ -113,7 +113,7 @@ export default {
 
 <template>
     <navBar />
-    <jumbotronMenu />
+    <jumbotronRestaurants />
 
     <!-- ELENCO CATEGORIE -->
     <div class="container text-center py-5">

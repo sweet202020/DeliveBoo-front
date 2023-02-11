@@ -4,6 +4,8 @@ import navBar from '../components/navBar.vue';
 import jumbotronMenu from '../components/jumbotronMenu.vue';
 import btnCustom from '../components/btnCustom.vue';
 import { store } from '../store'
+//TEST CALL - import axios
+import axios from 'axios'
 
 export default {
   name: 'MenuView',
@@ -15,6 +17,7 @@ export default {
   data() {
     return {
       store,
+      platesNew: null,
       plates: [
         {
           nome: 'margherita',
@@ -56,16 +59,29 @@ export default {
     }
   },
   methods: {
+    //DON'T TOUCCH!
     addPlate(plates, i) {
       store.cart.push(plates);
       this.saveCart();
     }, saveCart() {
       let parsed = JSON.stringify(store.cart);
       localStorage.setItem('cart', parsed);
+    },
+    //TEST API CALL - importo l'url per piatti
+    callApi(url) {
+      axios.get(url)
+        .then(response => {
+          console.log(response.data.results.plates);
+          this.platesNew = response.data.results.plates;
+          console.log(this.platesNew);
+        })
     }
   },
   mounted() {
+    //TEST API CALL - importo l'url per piatti
+    this.callApi(store.API_URL + 'api/restaurants/pizza-delizia');
 
+    //DON'T TOUCH!!
     if (localStorage.getItem('cart')) {
       try {
         store.cart = JSON.parse(localStorage.getItem('cart'));
@@ -103,12 +119,23 @@ export default {
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>
 
+          <!-- DON'T TOUCH!! -->
           <div class="card_plate mt-2 p-3" v-for="plate, i in plates">
             <div class="d-flex justify-content-between">
               <h6 class="name">{{ plate.nome }}</h6>
               <h6 class="price">{{ plate.prezzo }} $</h6>
             </div>
             <p class="ingredients">{{ plate.ingredients }}</p>
+            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate, i)">+</div>
+          </div>
+
+          <!-- TEST API CALL -->
+          <div class="card_plate mt-2 p-3 bg-secondary" v-for="plate, i in platesNew">
+            <div class="d-flex justify-content-between">
+              <h6 class="name">{{ plate.name }}</h6>
+              <h6 class="price">{{ plate.price }} $</h6>
+            </div>
+            <p class="ingredients">{{ plate.description }}</p>
             <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate, i)">+</div>
           </div>
 

@@ -152,13 +152,49 @@ export default {
     </div>
 
     <!-- ELENCO RISTORANTI -->
+    <!--card ristoranti-->
+    <div class="container bg_img my-5 text-center">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6">
+            <!--card ristoranti--> <!--TODO fare cilco componente-->
+            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                info="info" description="bello bello" />
+            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                info="info" description="bello bello" />
+            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                info="info" description="bello bello" />
+            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                info="info" description="bello bello" />
+            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                info="info" description="bello bello" />
+            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                info="info" description="bello bello" />
+        </div>
 
-
+    </div>
+    <!--onde bot-->
+    <div class="pt-5">
+        <img class="standard" src="../assets/img/wave.png" alt="">
+    </div>
 </template>
 
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
+
+
+.standard {
+    width: 100%;
+    height: 100px;
+    color: green;
+    //-webkit-transform: scaleX(-1);
+}
+
+.bg_img {
+    // TODO trovare img come background
+    background-image: url(../assets/img/);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
 
 h1 {
     color: $deliveboo-primary;

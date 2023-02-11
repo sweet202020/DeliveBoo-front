@@ -2,15 +2,25 @@
 import navBar from '../components/navBar.vue';
 import jumbotronRestaurants from '../components/jumbotronRestaurants.vue';
 
+//TEST CALL - import card + axios +store
+import cardRestaurant from '../components/homeComponent/cardRestaurant.vue';
+import { store } from '../store';
+import axios from 'axios'
+
 
 export default {
     name: 'ReastaurantsView',
     components: {
         navBar,
-        jumbotronRestaurants
+        jumbotronRestaurants,
+        //TEST CALL - use component card
+        cardRestaurant
     },
     data() {
         return {
+            //TEST CALL - aggiunto store e test al return
+            store,
+            test: null,
             categories: [
                 {
                     url: 'pizza.png',
@@ -56,57 +66,72 @@ export default {
                     name: 'messicano'
                 },
             ],
-           /*  restaurants: [
-                {
-                    url: 'pizza.png',
-                    name: 'pizza'
-                },
-                {
-                    url: 'carne-3.png',
-                    name: 'pizzeria boa'
-                },
-                {
-                    url: 'pasta.png',
-                    name: 'ristorante italiano'
-                },
-                {
-                    url: 'sushi.png',
-                    name: 'sushi'
-                },
-                {
-                    url: 'insalate.png',
-                    name: 'insalate'
-                },
 
-                {
-                    url: 'panini-2.png',
-                    name: 'panini'
-                },
-                {
-                    url: 'hamburger.png',
-                    name: 'hamburger'
-                },
-                {
-                    url: 'piadine-2.png',
-                    name: 'piadine'
-                },
+            /*            restaurants: [
+                            {
+                                url: 'pizza.png',
+                                name: 'pizza'
+                            },
+                            {
+                                url: 'carne-3.png',
+                                name: 'pizzeria boa'
+                            },
+                            {
+                                url: 'pasta.png',
+                                name: 'ristorante italiano'
+                            },
+                            {
+                                url: 'sushi.png',
+                                name: 'sushi'
+                            },
+                            {
+                                url: 'insalate.png',
+                                name: 'insalate'
+                            },
+            
+                            {
+                                url: 'panini-2.png',
+                                name: 'panini'
+                            },
+                            {
+                                url: 'hamburger.png',
+                                name: 'hamburger'
+                            },
+                            {
+                                url: 'piadine-2.png',
+                                name: 'piadine'
+                            },
+            
+                            {
+                                url: 'fastfood.png',
+                                name: 'fastfood'
+                            },
+            
+                            {
+                                url: 'messicano.png',
+                                name: 'messicano'
+                            },
+                        ]  */
 
-                {
-                    url: 'fastfood.png',
-                    name: 'fastfood'
-                },
-
-                {
-                    url: 'messicano.png',
-                    name: 'messicano'
-                },
-            ] */
         }
     },
     methods: {
         getImageUrl(name) {
             return new URL(`../assets/img/categories/${name}`, import.meta.url).href
+        },
+        // TEST CALL API - aggiunto metodo per chiamata
+        callApi(url) {
+            axios.get(url)
+                .then(response => {
+                    this.test = response.data.results.data;
+                    console.log(this.test, 'test');
+                    console.log(response.data.results.data, 'io');
+                })
         }
+    },
+    // TEST CALL API - aggiunto mounted per passare url
+    mounted() {
+        this.callApi(store.API_URL + 'api/restaurants')
     }
 }
 </script>

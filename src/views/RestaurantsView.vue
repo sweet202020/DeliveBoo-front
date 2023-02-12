@@ -157,7 +157,7 @@ export default {
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3 align-items-stretch">
             <div class="col" v-for="restaurant in restaurants">
                 <div class="card restaurant">
                     <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
@@ -166,10 +166,11 @@ export default {
                         <div class="text">Indirizzo: {{ restaurant.address }}</div>
                         <div class="text">Orari: {{ restaurant.opening_time }}</div>
                         <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
-                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante
-                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">Guarda il Menu</router-link> 
-                        -->
-                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" class="mb-2" />
+                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante -->
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -181,10 +182,10 @@ export default {
                         <div class="text">Indirizzo: {{ restaurant.address }}</div>
                         <div class="text">Orari: {{ restaurant.opening_time }}</div>
                         <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
-                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante
-                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">Guarda il Menu</router-link> 
-                        -->
-                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" class="mb-2" />
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -196,10 +197,10 @@ export default {
                         <div class="text">Indirizzo: {{ restaurant.address }}</div>
                         <div class="text">Orari: {{ restaurant.opening_time }}</div>
                         <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
-                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante
-                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">Guarda il Menu</router-link> 
-                        -->
-                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" class="mb-2" />
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -274,10 +275,16 @@ h5 {
 .restaurant {
     background-color: $deliveboo-white;
     box-shadow: 3px 3px 9px $deliveboo-dark;
+    //border: 5px solid $deliveboo-primary;
+    //border-radius: 10px;
 
     .text {
         color: $deliveboo-dark;
         font-size: 13px;
+    }
+
+    a{
+        text-decoration: none;
     }
 
 }

@@ -124,17 +124,18 @@ export default {
         },
         // TEST CALL API - aggiunto metodo per chiamata
         callApi(url) {
+            this.restaurants = ''
             axios.get(url)
                 .then(response => {
-                    this.restaurants = response.data.results.data;
+                    this.restaurants = response.data.results;
                     console.log(this.restaurants, 'test');
-                    console.log(response.data.results.data, 'io');
+                    console.log(response.data.results, 'io');
                 })
         }
     },
     // TEST CALL API - aggiunto mounted per passare url
     mounted() {
-        this.callApi(store.API_URL + 'api/restaurants')
+        /*   this.callApi(store.API_URL + 'api/restaurants') */
     }
 }
 </script>
@@ -147,7 +148,8 @@ export default {
     <div class="container text-center py-5">
         <h1>SCEGLI LE TUE CATEGORIE</h1>
         <div class="row">
-            <div class="col card_category p-1 mt-3" v-for="category in categories">
+            <div class="col card_category p-1 mt-3" v-for="category in categories"
+                @click="this.callApi(store.API_URL + 'api/restaurants/filter/' + category.name)">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
@@ -174,36 +176,7 @@ export default {
                     </div>
                 </div>
             </div>
-            <div class="col" v-for="restaurant in restaurants">
-                <div class="card restaurant">
-                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
-                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
-                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
-                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                bg_hover="hover_blu_light" />
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-            <div class="col" v-for="restaurant in restaurants">
-                <div class="card restaurant">
-                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
-                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
-                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
-                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                bg_hover="hover_blu_light" />
-                        </router-link>
-                    </div>
-                </div>
-            </div>
+
 
 
             <!--card ristoranti-->
@@ -283,7 +256,7 @@ h5 {
         font-size: 13px;
     }
 
-    a{
+    a {
         text-decoration: none;
     }
 

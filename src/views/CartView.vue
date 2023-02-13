@@ -36,7 +36,8 @@ export default {
             localStorage.setItem('cart', parsed);
         },
         addQuantity(prodotto) {
-            console.log(prodotto.data, 'ciao');
+            console.log(prodotto.quantita, 'add');
+            prodotto.quantita = 1
             prodotto.quantita++
             store.prezzoTot = prodotto.price * prodotto.quantita
             this.saveCart();
@@ -45,7 +46,6 @@ export default {
         },
         deleteQuantity(prodotto, i, cart) {
             console.log(prodotto);
-
             prodotto.quantita--
             prodotto.prezzoSingoloProdotto = prodotto.price * prodotto.quantita
             console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');

@@ -3,12 +3,11 @@
 import navBar from '../components/navBar.vue';
 import jumbotronMenu from '../components/jumbotronMenu.vue';
 import btnCustom from '../components/btnCustom.vue';
-import { store } from '../store'
-//TEST CALL - import axios
+import { store } from '../store';
 import axios from 'axios'
 
 export default {
-  name: 'MenuView',
+  name: 'SingleRestaurantView',
   components: {
     navBar,
     jumbotronMenu,
@@ -18,74 +17,22 @@ export default {
     return {
       store,
       platesNew: null,
-      /*  plates: [
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'margherita',
-           ingredients: 'pomodoro ◦ mozzarella',
-           prezzo: 4,
-           prezzoXquantita: 4,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'prosciutto e funghi',
-           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
-           prezzo: 5,
-           prezzoXquantita: 5,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'primavera',
-           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
-           prezzo: 6,
-           prezzoXquantita: 6,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'trevigiana',
-           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
-           prezzo: 6,
-           prezzoXquantita: 6,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'diavola',
-           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
-           prezzo: 7,
-           prezzoXquantita: 7,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'quattro stagioni',
-           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
-           prezzo: 7,
-           prezzoXquantita: 7,
-           quantita: 1,
-         },
-       ] */
+      restaurant: null,
+      //TO DO!!! REFACTORING!!! sostituire poi l'url con quello che abbiamo già fatto pescandolo dallo store
+      //api_base_url: 'http://127.0.0.1:8000',
+
     }
   },
   methods: {
-    addPlate(plate, i) {
-      //se il piatto è gia nel carello aumenta il caunter di 1 altrimenti lo pushi
-      if (!store.cart.includes(plate)) {
-        console.log('pusho il piatto');
-        store.cart.push(plate);
-      } else {
-        plate.quantita++
-        plate.prezzoXquantita = plate.prezzo * plate.quantita
-      }
+    //AGGIUNTA ARTICOLO AL CARRELLO DI FEDE
+    addPlate(plates, i) {
+      store.cart.push(plates);
       this.saveCart();
     }, saveCart() {
       let parsed = JSON.stringify(store.cart);
       localStorage.setItem('cart', parsed);
     },
-    //TEST API CALL - importo l'url per piatti
+    //CHIAMATA PER PIATTI MENU
     callApi(url) {
       axios.get(url)
         .then(response => {
@@ -94,11 +41,27 @@ export default {
           console.log(this.platesNew);
         })
     }
+
+
   },
   mounted() {
-    //TEST API CALL - importo l'url per piatti
-    this.callApi(store.API_URL + 'api/restaurants/pizza-delizia');
-
+    //console.log(this.$route.params.slug);
+    //TO DO!!! REFACTORING!!! sostituire poi l'url con quello che abbiamo già fatto pescandolo dallo store
+    /*  const url = store.API_URL + 'api/restaurants/' + this.$route.params.slug
+     console.log(url);
+     axios.get(url)
+       .then(response => {
+         if (response.data.success) {
+           this.restaurant = response.data.results
+ 
+         } else {
+           console.log('page not found');
+         }
+         console.log(response);
+       }).catch(error => {
+         console.log(error);
+       }) */
+    this.callApi(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     //DON'T TOUCH!!
     if (localStorage.getItem('cart')) {
       try {
@@ -116,8 +79,12 @@ export default {
   <navBar />
   <jumbotronMenu />
 
+
+
+  <!--  <h5>test slug single restaurant = {{ $route.params.slug }}</h5> -->
+
   <div class="container py-5 position-realtive">
-    <div class="row row-cols-1 row-cols-md-3 justify-content-center g-4">
+    <div class="row row-cols-1 row-cols-md-3 justify-content-center g-4 flex-wrap">
       <div class="col sx">
         <!-- restaurant details -->
         <section class="restaurant_details p-3">
@@ -127,6 +94,7 @@ export default {
           <div>Via delle vie, Il mio paese (PAESE)</div>
           <div>Telefono: 349.4044257</div>
           <div>orari di apertura:</div>
+
           <ul>
             <li>mar-gio --> 12:00/14:00 + 19:00/22:00</li>
             <li>ven-sab --> 12:00/14:00 + 19:00/01:00</li>
@@ -134,11 +102,11 @@ export default {
           </ul>
         </section>
         <!-- menu piatti -->
-        <section class="plates">
-          <h3 class="mb-3">Le nostre pizze:</h3>
+        <section class="plates mb-5 pb-5">
+          <h3 class="mb-3">I nostri piatti:</h3>
 
           <!-- TEST API CALL -->
-          <div class="card_plate mt-2 p-3 bg-secondary" v-for="plate, i in platesNew">
+          <div class="card_plate mt-2 p-3" v-for="plate, i in platesNew">
             <div class="d-flex justify-content-between">
               <h6 class="name">{{ plate.name }}</h6>
               <h6 class="price">{{ plate.price }} $</h6>
@@ -156,7 +124,6 @@ export default {
           <h3>Il tuo ordine</h3>
           <div>pizza | bibite</div>
           <div>Via delle vie, Il mio paese (PAESE)</div>
-          <div>Telefono: 3474067309</div>
           <div>orari di apertura:</div>
           <ul>
             <li>Pizza Margherita</li>
@@ -177,8 +144,6 @@ export default {
       </section>
     </div>
   </div>
-
-  <!-- menu -->
 
 
 </template>
@@ -224,3 +189,4 @@ export default {
   }
 }
 </style>
+

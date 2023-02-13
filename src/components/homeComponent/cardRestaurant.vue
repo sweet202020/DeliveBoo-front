@@ -1,34 +1,36 @@
 <script>
 
-export default{
+
+export default {
     name: 'cardRestaurant',
     props: {
         img: String,
         name: String,
         info: String,
         description: String,
-    }
+    },
+
 }
 
 </script>
 
 <template>
 
-<div class="col my-3 d-flex justify-content-center">
-                        <article class="custom_card">
-                            <div class="">
-                                
-                                <img :src="img" alt="">
-                            </div>
-                            <div class="card_content">
-                                <span class="card_title">{{ name }}</span>
-                                <span class="card_subtitle">
-                                    <p>{{ info }} <!-- TODO cosa si mette? --></p>
-                                </span>
-                                <p class="card_description">{{ description }}</p>
-                            </div>
-                        </article>
-                    </div>
+    <div class="col my-3 d-flex justify-content-center">
+        <article class="custom_card">
+            <div class="">
+
+                <img :src="img" alt="">
+            </div>
+            <div class="card_content">
+                <span class="card_title">{{ name }}</span>
+                <span class="card_subtitle">
+                    <p>{{ info }} <!-- TODO cosa si mette? --></p>
+                </span>
+                <p class="card_description">{{ description }}</p>
+            </div>
+        </article>
+    </div>
 
 </template>
 
@@ -114,5 +116,4 @@ export default{
 }
 
 /*#endregion card*/
-
 </style>

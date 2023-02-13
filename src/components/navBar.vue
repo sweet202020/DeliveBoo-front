@@ -24,7 +24,7 @@ window.addEventListener('scroll', (e) => {
 <template>
     <div class="bg_nav fixed">
         <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
-            <div class="container">
+            <div class="container-fluid">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -82,7 +82,7 @@ window.addEventListener('scroll', (e) => {
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">log-in <i
+                                <a class="nav-link text-light" aria-current="page" href="#"><!-- log-in --> <i
                                         class="fa-solid fa-user-group"></i> </a>
                             </li>
                         </ul>

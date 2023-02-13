@@ -1,41 +1,64 @@
 <script>
 
 import cardRestaurant from './cardRestaurant.vue';
+import { store } from '../../store.js';
+import axios from 'axios'
 
-export default{
-    name:'restaurant',
+export default {
+    name: 'restaurant',
     components: {
         cardRestaurant,
+    },
+    data() {
+        return {
+            store,
+            test: null
+        }
+        
+    },
+
+    methods: {
+        callApi(url) {
+            axios.get(url)
+                .then(response => {
+                    this.test = response.data.results.data;
+                    console.log(this.test, 'test');
+                    console.log(response.data.results.data ,'io');
+                })
+        }
+    },
+
+    mounted() {
+        this.callApi(store.API_URL + 'api/restaurants')
     }
-}
+} 
 </script>
 
 <template>
 
-<div class="box ">
-            <!--onde top-->
-            <div>
-                <img class="rotate" src="../../assets/img/wave.png" alt="">
-            </div>
-            <!--card ristoranti-->
-            <div class="container bg_img my-5 text-center">
-                <h2>I nostri suggerimenti</h2>
-                <h3 class="my-5">Ristoranti popolari</h3>
-                <div class="row row-cols-2 row-cols-md-3">
-                    <!--card ristoranti--> <!--TODO fare cilco componente-->
-                    <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
-                    <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
-                    <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
-                    <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
-                    <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
-                    <cardRestaurant img="https://picsum.photos/300/300" name="Ristorante1" info="Ristorante molto bello" description="bello bello"/>
-                </div>
-            </div>
-            <!--onde bot-->
-            <div class="pt-5">
-                <img class="standard" src="../../assets/img/wave.png" alt="">
+    <div class="box ">
+        <!--onde top-->
+        <div>
+            <img class="rotate" src="../../assets/img/wave.png" alt="">
+        </div>
+        <!--card ristoranti-->
+        <div class="container bg_img my-5 text-center">
+            <h2>I nostri suggerimenti</h2>
+            <h3 class="my-5">Ristoranti popolari</h3>
+            <div class="row row-cols-2 row-cols-md-3">
+
+                                
+                <!--card ristoranti--> <!--TODO fare cilco componente-->
+                <cardRestaurant  v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name" info="info"
+                    description="bello bello" />
+        
             </div>
         </div>
+        <!--onde bot-->
+        <div class="pt-5">
+            <img class="standard" src="../../assets/img/wave.png" alt="">
+        </div>
+    </div>
 </template>
 
 
@@ -74,5 +97,4 @@ export default{
         color: $deliveboo-dark;
     }
 }
-
 </style>

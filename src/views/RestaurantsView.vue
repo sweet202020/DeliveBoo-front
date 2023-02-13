@@ -1,16 +1,29 @@
 <script>
 import navBar from '../components/navBar.vue';
-import jumbotronMenu from '../components/jumbotronMenu.vue';
+import jumbotronRestaurants from '../components/jumbotronRestaurants.vue';
+import btnCustomRoundedSmall from '../components/btnCustomRoundedSmall.vue';
+
+//TEST CALL - import card + axios +store
+import cardRestaurant from '../components/homeComponent/cardRestaurant.vue';
+import { store } from '../store';
+import axios from 'axios'
 
 
 export default {
     name: 'ReastaurantsView',
     components: {
         navBar,
-        jumbotronMenu
+        jumbotronRestaurants,
+        btnCustomRoundedSmall,
+        //TEST CALL - use component card
+        cardRestaurant,
+
     },
     data() {
         return {
+            //TEST CALL - aggiunto store e test-->restaurants al return
+            store,
+            restaurants: null,
             categories: [
                 {
                     url: 'pizza.png',
@@ -56,64 +69,79 @@ export default {
                     name: 'messicano'
                 },
             ],
-            restaurants: [
-                {
-                    url: 'pizza.png',
-                    name: 'pizza'
-                },
-                {
-                    url: 'carne-3.png',
-                    name: 'pizzeria boa'
-                },
-                {
-                    url: 'pasta.png',
-                    name: 'ristorante italiano'
-                },
-                {
-                    url: 'sushi.png',
-                    name: 'sushi'
-                },
-                {
-                    url: 'insalate.png',
-                    name: 'insalate'
-                },
 
-                {
-                    url: 'panini-2.png',
-                    name: 'panini'
-                },
-                {
-                    url: 'hamburger.png',
-                    name: 'hamburger'
-                },
-                {
-                    url: 'piadine-2.png',
-                    name: 'piadine'
-                },
+            /*            restaurants: [
+                            {
+                                url: 'pizza.png',
+                                name: 'pizza'
+                            },
+                            {
+                                url: 'carne-3.png',
+                                name: 'pizzeria boa'
+                            },
+                            {
+                                url: 'pasta.png',
+                                name: 'ristorante italiano'
+                            },
+                            {
+                                url: 'sushi.png',
+                                name: 'sushi'
+                            },
+                            {
+                                url: 'insalate.png',
+                                name: 'insalate'
+                            },
+            
+                            {
+                                url: 'panini-2.png',
+                                name: 'panini'
+                            },
+                            {
+                                url: 'hamburger.png',
+                                name: 'hamburger'
+                            },
+                            {
+                                url: 'piadine-2.png',
+                                name: 'piadine'
+                            },
+            
+                            {
+                                url: 'fastfood.png',
+                                name: 'fastfood'
+                            },
+            
+                            {
+                                url: 'messicano.png',
+                                name: 'messicano'
+                            },
+                        ]  */
 
-                {
-                    url: 'fastfood.png',
-                    name: 'fastfood'
-                },
-
-                {
-                    url: 'messicano.png',
-                    name: 'messicano'
-                },
-            ]
         }
     },
     methods: {
         getImageUrl(name) {
             return new URL(`../assets/img/categories/${name}`, import.meta.url).href
+        },
+        // TEST CALL API - aggiunto metodo per chiamata
+        callApi(url) {
+            axios.get(url)
+                .then(response => {
+                    this.restaurants = response.data.results.data;
+                    console.log(this.restaurants, 'test');
+                    console.log(response.data.results.data, 'io');
+                })
         }
+    },
+    // TEST CALL API - aggiunto mounted per passare url
+    mounted() {
+        this.callApi(store.API_URL + 'api/restaurants')
     }
 }
 </script>
 
 <template>
     <navBar />
-    <jumbotronMenu />
+    <jumbotronRestaurants />
 
     <!-- ELENCO CATEGORIE -->
     <div class="container text-center py-5">
@@ -127,17 +155,105 @@ export default {
     </div>
 
     <!-- ELENCO RISTORANTI -->
+    <!--card ristoranti-->
+    <div class="container bg_img my-5 text-start">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3 align-items-stretch">
+            <div class="col" v-for="restaurant in restaurants">
+                <div class="card restaurant">
+                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante -->
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <div class="col" v-for="restaurant in restaurants">
+                <div class="card restaurant">
+                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            <div class="col" v-for="restaurant in restaurants">
+                <div class="card restaurant">
+                    <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                        </router-link>
+                    </div>
+                </div>
+            </div>
 
 
+            <!--card ristoranti-->
+            <!--TODO fare cilco componente-->
+            <!-- <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" />
+            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
+                :name="restaurant.restaurant_name" info="info" description="bello bello" /> -->
+        </div>
+
+    </div>
+    <!--onde bot-->
+    <div class="pt-5">
+        <img class="standard" src="../assets/img/wave.png" alt="">
+    </div>
 </template>
 
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
+
+.standard {
+    width: 100%;
+    height: 100px;
+    //-webkit-transform: scaleX(-1);
+}
+
+.bg_img {
+    // TODO trovare img come background
+    background-image: url(../assets/img/);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 h1 {
     color: $deliveboo-primary;
     word-spacing: 10px;
+}
+
+h5 {
+    color: $deliveboo-primary;
 }
 
 .card_category {
@@ -152,12 +268,23 @@ h1 {
     img {
         height: 80px;
         transition: 0.5s;
-
-
     }
 
-    h6 {
-        color: $deliveboo-primary;
+}
+
+.restaurant {
+    background-color: $deliveboo-white;
+    box-shadow: 3px 3px 9px $deliveboo-dark;
+    //border: 5px solid $deliveboo-primary;
+    //border-radius: 10px;
+
+    .text {
+        color: $deliveboo-dark;
+        font-size: 13px;
+    }
+
+    a{
+        text-decoration: none;
     }
 
 }

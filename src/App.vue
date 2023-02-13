@@ -1,22 +1,26 @@
 <script>
 import jumbotron from './components/jumbotron.vue';
-import navBar from './components/navBar.vue'
+import navBar from './components/navBar.vue';
+import footerApp from './components/footerApp.vue';
 
 export default {
     components: {
         jumbotron,
-        navBar
-    }
+        navBar,
+        footerApp
+    },
 }
 
 </script>
 
 <template>
-    
+
     <navBar />
     <!-- <jumbotron /> -->
-    
+
     <router-view></router-view>
+
+    <footerApp />
 
 </template>
 

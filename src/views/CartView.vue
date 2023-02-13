@@ -29,6 +29,51 @@ methods: {
         }
         this.saveCart();
     },
+
+    methods: {
+        saveCart() {
+            let parsed = JSON.stringify(store.cart);
+            localStorage.setItem('cart', parsed);
+        },
+        addQuantity(prodotto) {
+            prodotto.quantita++
+            /* 
+            CODICE ORIGINALE DI FEDE
+            store.prezzoTot = prodotto.prezzo * prodotto.quantita 
+            */
+            store.prezzoTot = prodotto.price * prodotto.quantita
+            this.saveCart();
+            console.log(store.prezzoTot);
+            console.log(prodotto.prezzoSingoloProdotto, 'aumento++++');
+        },
+        deleteQuantity(prodotto, i, cart) {
+            prodotto.quantita--
+            /* 
+            CODICE ORIGINALE DI FEDE
+            prodotto.prezzoSingoloProdotto = prodotto.prezzo * prodotto.quantita 
+            */
+            prodotto.prezzoSingoloProdotto = prodotto.price * prodotto.quantita
+
+            console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');
+            if (prodotto.quantita == 0) {
+                store.cart.splice(i, 1);
+            }
+            this.saveCart();
+        },
+        totalPrice(cart) {
+            let totalEl = []
+            for (let i = 0; i < store.cart.length; i++) {
+                let element = store.cart[i];
+                totalEl.push(element.prezzoSingoloProdotto)
+                console.log(element.prezzoSingoloProdotto, 'totalprice');
+            }
+            let totalPrice = totalEl.reduce((total, amount) => {
+                return total + amount;
+
+            })
+            return totalPrice
+        },
+
     totalPrice(cart) {
         let totalEl = []
         for (let i = 0; i < store.cart.length; i++) {
@@ -41,6 +86,7 @@ methods: {
         })
         console.log(totalPrice);
         return totalPrice
+
     },
 },
 
@@ -76,10 +122,25 @@ mounted() {
                             </div>
                             <!--Caratteristiche prodotto-->
                             <div class="px-4 article_detail">
-                                <div class="my-2">{{ prodotto.nome }}</div>
+                                <!-- 
+                                    CODICE ORIGINALE DI FEDE
+                                    <div class="my-2">{{ prodotto.nome }}</div>
+                                -->
+                                <div class="my-2">{{ prodotto.name }}</div>
                                 <div class="my-2">prezzo:
+
+                                    <!--TODO risolvere bug prezzo-->
+                                    <!-- 
+                                        CODICE ORIGINALE DI FEDE
+                                        <span v-if="store.prezzoTot == 0">{{ prodotto.prezzo }}</span> 
+                                    -->
+                                    <span v-if="store.prezzoTot == 0">{{ prodotto.price }}</span>
+
+                                    <span v-else>{{ store.prezzoTot }}</span>
+
                                     <span v-if="!prodotto.prezzoXquantita">{{ prodotto.prezzo }}</span>
                                     <span v-else>{{ prodotto.prezzoXquantita }}</span>
+
                                     $
                                 </div>
                                 <div class=" my-2">quantità:

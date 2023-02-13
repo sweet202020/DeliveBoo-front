@@ -16,6 +16,7 @@ export default {
                     <h4>Servizio clienti</h4>
                     <ul>
                         <li>Domande frequenti</li>
+                        <li>Contattaci</li>
                         <li>Accedi</li>
                         <li>Registrati su Just Eat</li>
                         <li>Scarica l'app di Just Eat</li>
@@ -28,19 +29,17 @@ export default {
                     <div class="d-flex">
                         <ul>
                             <li>Pizza</li>
+                            <li>carne</li>
+                            <li>Pasta</li>
                             <li>Sushi</li>
-                            <li>Cibo cinese</li>
-                            <li>Kebab</li>
-                            <li>Gelato</li>
-                            <li>Dolci</li>
+                            <li>Insalate</li>
                         </ul>
                         <ul>
-                            <li>Pizza</li>
-                            <li>Sushi</li>
-                            <li>Cibo cinese</li>
-                            <li>Kebab</li>
-                            <li>Gelato</li>
-                            <li>Dolci</li>
+                            <li>Panini</li>
+                            <li>Hamburger</li>
+                            <li>Piadine</li>
+                            <li>FastFood</li>
+                            <li>Messicano</li>
                         </ul>
                     </div>
                 </div>

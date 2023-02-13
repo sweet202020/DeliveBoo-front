@@ -1,5 +1,8 @@
 /* import Vuex from "vuex";
-import Vue from "vue"; */
+import Vue from "vue"; 
+http://127.0.0.1:8000/api/restaurants/nomeristorante
+http://127.0.0.1:8000/api/restaurants
+*/
 
 import {
     reactive
@@ -22,10 +25,10 @@ export const store = reactive({
     /*  ShoppingBasket() {
  
  
-         window.localStorage.setItem('keys', JSON.stringify(store.cart));
-         store.basket = JSON.parse(window.localStorage.getItem('keys'));
+        window.localStorage.setItem('keys', JSON.stringify(store.cart));
+        store.basket = JSON.parse(window.localStorage.getItem('keys'));
  
-         console.log(this.basket);
+        console.log(this.basket);
  
      } */
 

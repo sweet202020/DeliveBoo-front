@@ -8,7 +8,7 @@ export default {
         return {
             store,
             total: '',
-            newCart: null
+            newCart: null,
         }
     },
     methods: {
@@ -17,33 +17,59 @@ export default {
             localStorage.setItem('cart', parsed);
         },
         addQuantity(prodotto) {
-            if (prodotto.quantita == null) {
+            if (!prodotto.quantita) {
                 prodotto.quantita = 2
                 console.log(prodotto.quantita, 'if');
             } else {
                 prodotto.quantita++
                 console.log(prodotto.quantita, 'else');
             }
+
+            console.log(prodotto.price);
+            console.log(prodotto.quantita);
             prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
+            console.log(prodotto.prezzoXquantita);
+
+
+
             this.saveCart();
         },
         deleteQuantity(prodotto, i, cart) {
             console.log(prodotto);
-            prodotto.quantita--
-            prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
-            console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');
-            if (prodotto.quantita == 0) {
+            if (prodotto.quantita == 1 || prodotto.quantita == null) {
                 store.cart.splice(i, 1);
             }
+            else {
+
+                prodotto.quantita--
+            }
+            /*  console.log(prodotto.quantita); */
+            prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
+            /* console.log(prodotto.prezzoSingoloProdotto, 'diminuisco'); */
             this.saveCart();
         },
-        totalPrice(cart) {
+        totalPrice() {
             let totalEl = []
             for (let i = 0; i < store.cart.length; i++) {
                 let element = store.cart[i];
+                if (!element.quantita) {
+                    element.prezzoXquantita = element.price
+                    console.log(element);
+                    console.log();
+
+
+                }
+                /* if (element.prezzoXquantita == null) {
+                    element.prezzoXquantita = element.price * element.quantita
+                } */
+                /* console.log(element.quantita, 'element.quantita'); */
+
                 totalEl.push(element.prezzoXquantita)
-                console.log(element.prezzoXquantita, 'totalprice');
+
+                /*  console.log(element.prezzoXquantita, 'totalprice');
+                console.log(element.price); */
             }
+            console.log(totalEl);
             let totalPrice = totalEl.reduce((total, amount) => {
                 return total + amount;
             })
@@ -52,6 +78,7 @@ export default {
     },
 
     mounted() {
+
         if (localStorage.getItem('cart')) {
             try {
                 store.cart = JSON.parse(localStorage.getItem('cart'));
@@ -95,8 +122,9 @@ export default {
                                 <div class=" my-2">quantità:
                                     <button @click="deleteQuantity(prodotto, i, store.cart)">-</button>
                                     <!--TODO IF ELSE PER QUANTITA-->
-                                    <span v-if="prodotto.quantita == null">1</span>
-                                    <span v-else>{{ prodotto.quantita }}</span>
+
+                                    <span v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
+                                    <span v-else>1</span>
                                     <button @click="addQuantity(prodotto, i)">+</button>
                                 </div>
                             </div>
@@ -110,9 +138,10 @@ export default {
                 <!--sezione pagamento-->
                 <div class=" payment">
                     <div class="payment_container mt-5">
-                        <h5>Totale:
-                            <span v-if="store.cart != 0"> {{ totalPrice(store.cart) }} </span>
-                            $
+                        <h5>
+                            <span v-if="store.cart.length != 0">Totale: {{ totalPrice() }} $</span>
+                            <span v-else>Aggiungi articoli</span>
+
                         </h5>
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">

@@ -16,39 +16,5 @@ export const store = reactive({
     cart: [
 
     ],
-    basket: {},
-    /* cart_2: window.localStorage.setItem('keys', JSON.stringify('ciao')),
-    cart_3: JSON.parse(window.localStorage.getItem('keys')), */
-
-
-    prezzoTot: 0,
-    /*  ShoppingBasket() {
- 
- 
-        window.localStorage.setItem('keys', JSON.stringify(store.cart));
-        store.basket = JSON.parse(window.localStorage.getItem('keys'));
- 
-        console.log(this.basket);
- 
-     } */
 
 })
-
-//ciao
-
-
-
-/* Vue.use(Vuex);
-
-export default new Vuex.Store({
-    state: {
-        cart: false
-    },
-    mutations: {
-        savedItems: (state) => {
-            localStorage.setItem('cart', true);
-            state.cart = true;
-        }
-
-    }
-}); */

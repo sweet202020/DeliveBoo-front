@@ -18,67 +18,65 @@ export default {
     return {
       store,
       platesNew: null,
-      plates: [
-        {
-          img: 'https://picsum.photos/100/100',
-          nome: 'margherita',
-          ingredients: 'pomodoro ◦ mozzarella',
-          prezzo: 4,
-          prezzoXquantita: 4,
-          quantita: 1,
-        },
-        {
-          img: 'https://picsum.photos/100/100',
-          nome: 'prosciutto e funghi',
-          ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
-          prezzo: 5,
-          prezzoXquantita: 5,
-          quantita: 1,
-        },
-        {
-          img: 'https://picsum.photos/100/100',
-          nome: 'primavera',
-          ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
-          prezzo: 6,
-          prezzoXquantita: 6,
-          quantita: 1,
-        },
-        {
-          img: 'https://picsum.photos/100/100',
-          nome: 'trevigiana',
-          ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
-          prezzo: 6,
-          prezzoXquantita: 6,
-          quantita: 1,
-        },
-        {
-          img: 'https://picsum.photos/100/100',
-          nome: 'diavola',
-          ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
-          prezzo: 7,
-          prezzoXquantita: 7,
-          quantita: 1,
-        },
-        {
-          img: 'https://picsum.photos/100/100',
-          nome: 'quattro stagioni',
-          ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
-          prezzo: 7,
-          prezzoXquantita: 7,
-          quantita: 1,
-        },
-      ]
-    } 
+      /*  plates: [
+         {
+           img: 'https://picsum.photos/100/100',
+           nome: 'margherita',
+           ingredients: 'pomodoro ◦ mozzarella',
+           prezzo: 4,
+           prezzoXquantita: 4,
+           quantita: 1,
+         },
+         {
+           img: 'https://picsum.photos/100/100',
+           nome: 'prosciutto e funghi',
+           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
+           prezzo: 5,
+           prezzoXquantita: 5,
+           quantita: 1,
+         },
+         {
+           img: 'https://picsum.photos/100/100',
+           nome: 'primavera',
+           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
+           prezzo: 6,
+           prezzoXquantita: 6,
+           quantita: 1,
+         },
+         {
+           img: 'https://picsum.photos/100/100',
+           nome: 'trevigiana',
+           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
+           prezzo: 6,
+           prezzoXquantita: 6,
+           quantita: 1,
+         },
+         {
+           img: 'https://picsum.photos/100/100',
+           nome: 'diavola',
+           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
+           prezzo: 7,
+           prezzoXquantita: 7,
+           quantita: 1,
+         },
+         {
+           img: 'https://picsum.photos/100/100',
+           nome: 'quattro stagioni',
+           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
+           prezzo: 7,
+           prezzoXquantita: 7,
+           quantita: 1,
+         },
+       ] */
+    }
   },
   methods: {
-
-
     addPlate(plate, i) {
       //se il piatto è gia nel carello aumenta il caunter di 1 altrimenti lo pushi
       if (!store.cart.includes(plate)) {
         console.log('pusho il piatto');
         store.cart.push(plate);
-      }else {
+      } else {
         plate.quantita++
         plate.prezzoXquantita = plate.prezzo * plate.quantita
       }
@@ -110,7 +108,7 @@ export default {
       }
     }
   },
-  
+
 }
 </script>
 
@@ -138,16 +136,6 @@ export default {
         <!-- menu piatti -->
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>
-
-          <!-- DON'T TOUCH!! -->
-          <div class="card_plate mt-2 p-3" v-for="plate, i in plates">
-            <div class="d-flex justify-content-between">
-              <h6 class="name">{{ plate.nome }}</h6>
-              <h6 class="price">{{ plate.prezzo }} $</h6>
-            </div>
-            <p class="ingredients">{{ plate.ingredients }}</p>
-            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate, i)">+</div>
-          </div>
 
           <!-- TEST API CALL -->
           <div class="card_plate mt-2 p-3 bg-secondary" v-for="plate, i in platesNew">

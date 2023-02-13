@@ -3,8 +3,7 @@
 import navBar from '../components/navBar.vue';
 import jumbotronMenu from '../components/jumbotronMenu.vue';
 import btnCustom from '../components/btnCustom.vue';
-import { store } from '../store'
-//TEST CALL - import axios
+import { store } from '../store';
 import axios from 'axios'
 
 export default {
@@ -19,13 +18,21 @@ export default {
       store,
       platesNew: null,
       restaurant: null,
-      loading: true,
       //TO DO!!! REFACTORING!!! sostituire poi l'url con quello che abbiamo già fatto pescandolo dallo store
       //api_base_url: 'http://127.0.0.1:8000',
 
     }
   },
   methods: {
+    //AGGIUNTA ARTICOLO AL CARRELLO DI FEDE
+    addPlate(plates, i) {
+      store.cart.push(plates);
+      this.saveCart();
+    }, saveCart() {
+      let parsed = JSON.stringify(store.cart);
+      localStorage.setItem('cart', parsed);
+    },
+    //CHIAMATA PER PIATTI MENU
     callApi(url) {
       axios.get(url)
         .then(response => {
@@ -55,8 +62,14 @@ export default {
          console.log(error);
        }) */
     this.callApi(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
-
-
+    //DON'T TOUCH!!
+    if (localStorage.getItem('cart')) {
+      try {
+        store.cart = JSON.parse(localStorage.getItem('cart'));
+      } catch (e) {
+        localStorage.removeItem('cart');
+      }
+    }
   },
 
 }
@@ -81,7 +94,7 @@ export default {
           <div>Via delle vie, Il mio paese (PAESE)</div>
           <div>Telefono: 349.4044257</div>
           <div>orari di apertura:</div>
-          
+
           <ul>
             <li>mar-gio --> 12:00/14:00 + 19:00/22:00</li>
             <li>ven-sab --> 12:00/14:00 + 19:00/01:00</li>

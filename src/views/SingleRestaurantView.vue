@@ -26,7 +26,13 @@ export default {
   methods: {
     //AGGIUNTA ARTICOLO AL CARRELLO DI FEDE
     addPlate(plates, i) {
+      //se il piatto è presente quantità++ altrimenti lo pusha
+      if(!store.cart.includes(plates)) {
+      }else {
+        //TODO ??
+      }
       store.cart.push(plates);
+      
       this.saveCart();
     }, saveCart() {
       let parsed = JSON.stringify(store.cart);
@@ -45,22 +51,6 @@ export default {
 
   },
   mounted() {
-    //console.log(this.$route.params.slug);
-    //TO DO!!! REFACTORING!!! sostituire poi l'url con quello che abbiamo già fatto pescandolo dallo store
-    /*  const url = store.API_URL + 'api/restaurants/' + this.$route.params.slug
-     console.log(url);
-     axios.get(url)
-       .then(response => {
-         if (response.data.success) {
-           this.restaurant = response.data.results
- 
-         } else {
-           console.log('page not found');
-         }
-         console.log(response);
-       }).catch(error => {
-         console.log(error);
-       }) */
     this.callApi(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     //DON'T TOUCH!!
     if (localStorage.getItem('cart')) {

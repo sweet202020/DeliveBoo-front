@@ -11,43 +11,26 @@ export default {
             newCart: null
         }
     },
-    /*methods: {
-         saveCart() {
-            let parsed = JSON.stringify(store.cart);
-            localStorage.setItem('cart', parsed);
-        },
-        addQuantity(prodotto, i) {
-            prodotto.quantita++
-            prodotto.prezzoXquantita = prodotto.prezzo * prodotto.quantita
-            this.saveCart();
-        },
-        deleteQuantity(prodotto, i, cart) {
-            prodotto.quantita--
-            prodotto.prezzoXquantita = prodotto.prezzo * prodotto.quantita
-            if (prodotto.quantita == 0) {
-                store.cart.splice(i, 1);
-            }
-            this.saveCart();
-        }, */
-
     methods: {
         saveCart() {
             let parsed = JSON.stringify(store.cart);
             localStorage.setItem('cart', parsed);
         },
         addQuantity(prodotto) {
-            console.log(prodotto.quantita, 'add');
-            prodotto.quantita = 1
-            prodotto.quantita++
-            store.prezzoTot = prodotto.price * prodotto.quantita
+            if (prodotto.quantita == null) {
+                prodotto.quantita = 2
+                console.log(prodotto.quantita, 'if');
+            } else {
+                prodotto.quantita++
+                console.log(prodotto.quantita, 'else');
+            }
+            prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
             this.saveCart();
-            console.log(store.prezzoTot);
-            console.log(prodotto.prezzoSingoloProdotto, 'aumento++++');
         },
         deleteQuantity(prodotto, i, cart) {
             console.log(prodotto);
             prodotto.quantita--
-            prodotto.prezzoSingoloProdotto = prodotto.price * prodotto.quantita
+            prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
             console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');
             if (prodotto.quantita == 0) {
                 store.cart.splice(i, 1);
@@ -58,19 +41,17 @@ export default {
             let totalEl = []
             for (let i = 0; i < store.cart.length; i++) {
                 let element = store.cart[i];
-                totalEl.push(element.prezzoSingoloProdotto)
-                console.log(element.prezzoSingoloProdotto, 'totalprice');
+                totalEl.push(element.prezzoXquantita)
+                console.log(element.prezzoXquantita, 'totalprice');
             }
             let totalPrice = totalEl.reduce((total, amount) => {
                 return total + amount;
-
             })
             return totalPrice
         },
     },
 
     mounted() {
-
         if (localStorage.getItem('cart')) {
             try {
                 store.cart = JSON.parse(localStorage.getItem('cart'));
@@ -78,7 +59,6 @@ export default {
                 localStorage.removeItem('cart');
             }
         }
-
     }
 }
 
@@ -114,7 +94,9 @@ export default {
                                 </div>
                                 <div class=" my-2">quantità:
                                     <button @click="deleteQuantity(prodotto, i, store.cart)">-</button>
-                                    <span>{{ prodotto.quantita }}</span>
+                                    <!--TODO IF ELSE PER QUANTITA-->
+                                    <span v-if="prodotto.quantita == null">1</span>
+                                    <span v-else>{{ prodotto.quantita }}</span>
                                     <button @click="addQuantity(prodotto, i)">+</button>
                                 </div>
                             </div>
@@ -128,8 +110,6 @@ export default {
                 <!--sezione pagamento-->
                 <div class=" payment">
                     <div class="payment_container mt-5">
-                        <!--<h5>SubTotale: <span>{{  }}</span>$</h5>
-                        <h5>Spese di consegna: <span>7</span>$</h5>-->
                         <h5>Totale:
                             <span v-if="store.cart != 0"> {{ totalPrice(store.cart) }} </span>
                             $

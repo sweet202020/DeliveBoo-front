@@ -82,8 +82,9 @@ window.addEventListener('scroll', (e) => {
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#"><!-- log-in --> <i
-                                        class="fa-solid fa-user-group"></i> </a>
+                                <a class="nav-link text-light" aria-current="page"
+                                    href="http://127.0.0.1:8000/"><!-- log-in --> <i class="fa-solid fa-user-group"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>

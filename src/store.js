@@ -8,6 +8,7 @@ export const store = reactive({
     cart: [],
     platesNew: null,
     restaurants: null,
+    singleRestaurant:null,
     callApiPlates(url) {
         axios.get(url)
             .then(response => {
@@ -15,11 +16,19 @@ export const store = reactive({
                 // console.log(this.platesNew);
             })
     },
-    callApiRestaurant(url) {
+    callApiRestaurants(url) {
         this.restaurants = ''
         axios.get(url)
             .then(response => {
                 this.restaurants = response.data.results;
+                // console.log(this.restaurants);
+            })
+    },
+    callApiSingleRestaurant(url) {
+        this.restaurants = ''
+        axios.get(url)
+            .then(response => {
+                this.singleRestaurant = response.data.results;
                 // console.log(this.restaurants);
             })
     }

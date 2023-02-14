@@ -1,5 +1,5 @@
 
-import {reactive} from 'vue';
+import { reactive } from 'vue';
 import axios from 'axios';
 
 
@@ -8,7 +8,8 @@ export const store = reactive({
     cart: [],
     platesNew: null,
     restaurants: null,
-    singleRestaurant:null,
+    filterTypes: [],
+    singleRestaurant: null,
     callApiPlates(url) {
         axios.get(url)
             .then(response => {
@@ -31,6 +32,14 @@ export const store = reactive({
                 this.singleRestaurant = response.data.results;
                 // console.log(this.restaurants);
             })
+    },
+    filterType() {
+
+        this.filterTypes.forEach(element => {
+            console.log(element);
+        });
+
+
     }
 
 })

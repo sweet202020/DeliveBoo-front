@@ -15,28 +15,22 @@ export default {
   data() {
     return {
       store,
-      //TO DO!!! REFACTORING!!! sostituire poi l'url con quello che abbiamo già fatto pescandolo dallo store
-      //api_base_url: 'http://127.0.0.1:8000',
-
     }
   },
   methods: {
     //AGGIUNTA ARTICOLO AL CARRELLO DI FEDE
-    addPlate(plates, i) {
-      //se il piatto è presente quantità++ altrimenti lo pusha
-      if (!store.cart.includes(plates)) {
-        store.cart.push(plates);
-      } else {
-
+    addPlate(plate) {
+      if (!store.cart.includes(plate)) {
+        store.cart.push(plate);
       }
-
       this.saveCart();
-    }, saveCart() {
+    },
+    saveCart() {
       let parsed = JSON.stringify(store.cart);
       localStorage.setItem('cart', parsed);
     },
-    //CHIAMATA PER PIATTI MENU
   },
+
   mounted() {
     store.callApiPlates(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     store.callApiRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
@@ -72,29 +66,23 @@ export default {
             <div><strong> partita iva: </strong> {{ store.restaurants.partita_iva }}</div>
             <div><strong>orari di apertura: </strong> {{ store.restaurants.opening_time }}</div>
             <div><img width="300" :src="store.API_URL + 'storage/' + store.restaurants.cover_image" alt=""></div>
-
           </div>
-
         </section>
         <!-- menu piatti -->
         <section class="plates mb-5 pb-5">
           <h3 class="mb-3">I nostri piatti:</h3>
-
-          <!-- TEST API CALL -->
-          <div class="card_plate mt-2 p-3" v-for="plate, i in store.platesNew">
+          <div class="card_plate mt-2 p-3" v-for="plate in store.platesNew">
             <div class="d-flex justify-content-between">
               <h6 class="name">{{ plate.name }}</h6>
               <h6 class="price">{{ plate.price }} $</h6>
             </div>
             <p class="ingredients">{{ plate.description }}</p>
-            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate, i)">+</div>
+            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate)">+</div>
           </div>
-
         </section>
       </div>
-
       <!-- order details -->
-      <section class="col dx">
+      <!-- <section class="col dx">
         <div class="order_details p-3">
           <h3>Il tuo ordine</h3>
           <div>pizza | bibite</div>
@@ -116,7 +104,7 @@ export default {
           </div>
         </div>
 
-      </section>
+      </section> -->
     </div>
   </div>
 

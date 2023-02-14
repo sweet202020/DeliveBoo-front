@@ -8,7 +8,7 @@ import {
     reactive
 } from 'vue';
 
-//import axios from 'axios';
+import axios from 'axios';
 
 
 export const store = reactive({
@@ -16,5 +16,27 @@ export const store = reactive({
     cart: [
 
     ],
+    platesNew: null,
+    restaurants: null,
+    callApiPlates(url) {
+        axios.get(url)
+            .then(response => {
+                this.platesNew = response.data.results.plates;
+                console.log(this.platesNew);
+
+            })
+    },
+    callApiRestaurant(url) {
+        this.restaurants = ''
+        axios.get(url)
+            .then(response => {
+                this.restaurants = response.data.results;
+                /* store.delivery_price = response.data.results[0].delivery_price */
+                /*  console.log(response.data.results[0].delivery_price);
+                 console.log(this.restaurants, 'test');
+                 console.log(response.data.results, 'io'); */
+                console.log(this.restaurants);
+            })
+    }
 
 })

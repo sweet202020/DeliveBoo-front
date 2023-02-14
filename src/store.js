@@ -8,11 +8,9 @@ export const store = reactive({
     cart: [],
     platesNew: null,
     restaurants: null,
-
     filterTypes: [],
-
-
     singleRestaurant: null,
+
     callApiPlates(url) {
         axios.get(url)
             .then(response => {
@@ -37,11 +35,16 @@ export const store = reactive({
             })
     },
     filterType() {
-
+        //NEEDS TO MAKE A SINGLE CALL API OTHERWISE IT WILL REWRITE THIS.RESTAURANTS
+        //WE NEED TO CHANGE THE ROUTE API AND HIS METHOD IN THE RESTAURANTCONTROLLER IN BACKOFFICE
+        //THE ROUTE API NEEDS TO ACCEPT MORE PARAMETERS, AS MUCH AS THE NUMBER OF ELEMENTS HERE
+        //EXAMPLE = https://localhost/api/restaurants/filter/name=pizza&name=pasta&name=carne  
         this.filterTypes.forEach(element => {
             console.log(element);
+            //console.log(this.restaurants)
+            this.callApiRestaurants(this.API_URL + 'api/restaurants/filter/' + element)
         });
-
+    },
 
     saveCart() {
         let parsed = JSON.stringify(store.cart);
@@ -50,12 +53,12 @@ export const store = reactive({
     addPlate(plate) {
         if (store.cart.length == 0) {
             store.cart.push(plate);
-        } else{
+        } else {
             store.cart.forEach(singlePlate => {
                 if (plate.restaurant_id == singlePlate.restaurant_id) {
                     store.cart.push(plate);
                 }
-            });  
+            });
         }
         store.saveCart();
     },
@@ -65,7 +68,7 @@ export const store = reactive({
         } else {
             prodotto.quantita++
         }
-    
+
         prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
         store.saveCart();
     },

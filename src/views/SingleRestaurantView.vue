@@ -33,7 +33,7 @@ export default {
 
   mounted() {
     store.callApiPlates(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
-    store.callApiRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
+    store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     //DON'T TOUCH!!
     if (localStorage.getItem('cart')) {
       try {
@@ -60,12 +60,12 @@ export default {
       <div class="col sx">
         <!-- restaurant details -->
         <section class="restaurant_details p-3">
-          <div v-if="store.restaurants">
-            <h3>{{ store.restaurants.restaurant_name }}</h3>
-            <div><strong>indirizzo: </strong>{{ store.restaurants.address }}</div>
-            <div><strong> partita iva: </strong> {{ store.restaurants.partita_iva }}</div>
-            <div><strong>orari di apertura: </strong> {{ store.restaurants.opening_time }}</div>
-            <div><img width="300" :src="store.API_URL + 'storage/' + store.restaurants.cover_image" alt=""></div>
+          <div v-if="store.singleRestaurant">
+            <h3>{{ store.singleRestaurant.restaurant_name }}</h3>
+            <div><strong>indirizzo: </strong>{{ store.singleRestaurant.address }}</div>
+            <div><strong> partita iva: </strong> {{ store.singleRestaurant.partita_iva }}</div>
+            <div><strong>orari di apertura: </strong> {{ store.singleRestaurant.opening_time }}</div>
+            <div><img width="300" :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt=""></div>
           </div>
         </section>
         <!-- menu piatti -->

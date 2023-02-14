@@ -2,10 +2,6 @@
 import navBar from '../components/navBar.vue';
 import jumbotronRestaurants from '../components/jumbotronRestaurants.vue';
 import btnCustomRoundedSmall from '../components/btnCustomRoundedSmall.vue';
-
-
-
-//TEST CALL - import card + axios +store
 import cardRestaurant from '../components/homeComponent/cardRestaurant.vue';
 import { store } from '../store';
 
@@ -18,15 +14,10 @@ export default {
         navBar,
         jumbotronRestaurants,
         btnCustomRoundedSmall,
-        //TEST CALL - use component card
         cardRestaurant,
-
-
-
     },
     data() {
         return {
-            //TEST CALL - aggiunto store e test-->restaurants al return
             store,
             categories: [
                 {
@@ -73,9 +64,6 @@ export default {
                     name: 'messicano'
                 },
             ],
-
-
-
         }
     },
     methods: {
@@ -96,7 +84,7 @@ export default {
         <h1>SCEGLI LE TUE CATEGORIE</h1>
         <div class="row">
             <div class="col card_category p-1 mt-3" v-for="category in categories"
-                @click="store.callApiRestaurant(store.API_URL + 'api/restaurants/filter/' + category.name)">
+                @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + category.name)">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
@@ -124,25 +112,7 @@ export default {
                     </div>
                 </div>
             </div>
-
-
-
-            <!--card ristoranti-->
-            <!--TODO fare cilco componente-->
-            <!-- <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
-                :name="restaurant.restaurant_name" info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
-                :name="restaurant.restaurant_name" info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
-                :name="restaurant.restaurant_name" info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
-                :name="restaurant.restaurant_name" info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
-                :name="restaurant.restaurant_name" info="info" description="bello bello" />
-            <cardRestaurant v-for="restaurant in restaurants" img="https://picsum.photos/300/300"
-                :name="restaurant.restaurant_name" info="info" description="bello bello" /> -->
         </div>
-
     </div>
     <!--onde bot-->
     <div class="pt-5">

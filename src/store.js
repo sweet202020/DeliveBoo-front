@@ -8,6 +8,10 @@ export const store = reactive({
     cart: [],
     platesNew: null,
     restaurants: null,
+
+    filterTypes: [],
+
+
     singleRestaurant: null,
     callApiPlates(url) {
         axios.get(url)
@@ -32,6 +36,13 @@ export const store = reactive({
                 // console.log(this.restaurants);
             })
     },
+    filterType() {
+
+        this.filterTypes.forEach(element => {
+            console.log(element);
+        });
+
+
     saveCart() {
         let parsed = JSON.stringify(store.cart);
         localStorage.setItem('cart', parsed);
@@ -81,6 +92,7 @@ export const store = reactive({
             return total + amount;
         })
         return totalPrice
+
     }
 
 })

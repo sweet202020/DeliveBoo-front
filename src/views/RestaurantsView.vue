@@ -22,46 +22,56 @@ export default {
             categories: [
                 {
                     url: 'pizza.png',
-                    name: 'pizza'
+                    name: 'pizza',
+                    id: 1
                 },
                 {
                     url: 'carne-3.png',
-                    name: 'carne'
+                    name: 'carne',
+                    id: 2
                 },
                 {
                     url: 'pasta.png',
-                    name: 'pasta'
+                    name: 'pasta',
+                    id: 3
                 },
                 {
                     url: 'sushi.png',
-                    name: 'sushi'
+                    name: 'sushi',
+                    id: 4
                 },
                 {
                     url: 'insalate.png',
-                    name: 'insalate'
+                    name: 'insalate',
+                    id: 5
                 },
 
                 {
                     url: 'panini-2.png',
-                    name: 'panini'
+                    name: 'panini',
+                    id: 6
                 },
                 {
                     url: 'hamburger.png',
-                    name: 'hamburger'
+                    name: 'hamburger',
+                    id: 7
                 },
                 {
                     url: 'piadine-2.png',
-                    name: 'piadine'
+                    name: 'piadine',
+                    id: 8
                 },
 
                 {
                     url: 'fastfood.png',
-                    name: 'fastfood'
+                    name: 'fastfood',
+                    id: 9
                 },
 
                 {
                     url: 'messicano.png',
-                    name: 'messicano'
+                    name: 'messicano',
+                    id: 10
                 },
             ],
         }
@@ -70,8 +80,10 @@ export default {
         getImageUrl(name) {
             return new URL(`../assets/img/categories/${name}`, import.meta.url).href
         },
-    },
-
+    },/*  mounted() {
+        store.filterType()
+    }
+ */
 }
 </script>
 
@@ -90,9 +102,19 @@ export default {
             </div>
         </div>
     </div>
+    <div class="d-flex">
+        <ul>
+            <!-- to-fix -->
+            <li @click="store.filterType()" v-for="category in categories">
+                <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                {{
+                    category.name
+                }}
+            </li>
 
-    <h2>Ciao esisto anche io</h2>
 
+        </ul>
+    </div>
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">
@@ -105,6 +127,10 @@ export default {
                         <div class="text">Indirizzo: {{ restaurant.address }}</div>
                         <div class="text">Orari: {{ restaurant.opening_time }}</div>
                         <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <span v-for="type in restaurant.types">
+                            <span>#{{ type.name }}</span>
+                        </span>
+
 
                         <!-- metodo per collegare il pulsante alla pagina del singolo ristorante -->
                         <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
@@ -180,5 +206,9 @@ h5 {
         text-decoration: none;
     }
 
+}
+
+ul {
+    list-style: none;
 }
 </style>

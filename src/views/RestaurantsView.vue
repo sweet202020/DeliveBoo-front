@@ -103,6 +103,8 @@ export default {
         </div>
     </div>
 
+    <h2>Ciao esisto anche io</h2>
+
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">

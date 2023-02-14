@@ -1,5 +1,5 @@
 
-import {reactive} from 'vue';
+import { reactive } from 'vue';
 import axios from 'axios';
 
 
@@ -8,7 +8,7 @@ export const store = reactive({
     cart: [],
     platesNew: null,
     restaurants: null,
-    singleRestaurant:null,
+    singleRestaurant: null,
     callApiPlates(url) {
         axios.get(url)
             .then(response => {
@@ -31,6 +31,56 @@ export const store = reactive({
                 this.singleRestaurant = response.data.results;
                 // console.log(this.restaurants);
             })
+    },
+    saveCart() {
+        let parsed = JSON.stringify(store.cart);
+        localStorage.setItem('cart', parsed);
+    },
+    addPlate(plate) {
+        if (store.cart.length == 0) {
+            store.cart.push(plate);
+        } else{
+            store.cart.forEach(singlePlate => {
+                if (plate.restaurant_id == singlePlate.restaurant_id) {
+                    store.cart.push(plate);
+                }
+            });  
+        }
+        store.saveCart();
+    },
+    addQuantity(prodotto) {
+        if (!prodotto.quantita) {
+            prodotto.quantita = 2
+        } else {
+            prodotto.quantita++
+        }
+    
+        prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
+        store.saveCart();
+    },
+    deleteQuantity(prodotto, i) {
+        if (prodotto.quantita == 1 || prodotto.quantita == null) {
+            store.cart.splice(i, 1);
+        }
+        else {
+            prodotto.quantita--
+        }
+        prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
+        store.saveCart();
+    },
+    totalPrice() {
+        let totalEl = []
+        for (let i = 0; i < store.cart.length; i++) {
+            let element = store.cart[i];
+            if (!element.quantita) {
+                element.prezzoXquantita = element.price
+            }
+            totalEl.push(element.prezzoXquantita)
+        }
+        let totalPrice = totalEl.reduce((total, amount) => {
+            return total + amount;
+        })
+        return totalPrice
     }
 
 })

@@ -17,57 +17,7 @@ export default {
   data() {
     return {
       store,
-      platesNew: null,
-      /*  plates: [
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'margherita',
-           ingredients: 'pomodoro ◦ mozzarella',
-           prezzo: 4,
-           prezzoXquantita: 4,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'prosciutto e funghi',
-           ingredients: 'pomodoro ◦ mozzarella ◦ prosciutto cotto ◦ funghi',
-           prezzo: 5,
-           prezzoXquantita: 5,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'primavera',
-           ingredients: 'pomodoro ◦ mozzarella ◦ tonno ◦ asparagi',
-           prezzo: 6,
-           prezzoXquantita: 6,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'trevigiana',
-           ingredients: 'pomodoro ◦ mozzarella ◦ speck ◦ procini ◦ grana',
-           prezzo: 6,
-           prezzoXquantita: 6,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'diavola',
-           ingredients: 'pomodoro ◦ mozzarella ◦ salame piccante ◦ olio piccante',
-           prezzo: 7,
-           prezzoXquantita: 7,
-           quantita: 1,
-         },
-         {
-           img: 'https://picsum.photos/100/100',
-           nome: 'quattro stagioni',
-           ingredients: 'pomodoro ◦ mozzarella ◦ cotto ◦ carciofi ◦ funghi di bosco ◦ olive',
-           prezzo: 7,
-           prezzoXquantita: 7,
-           quantita: 1,
-         },
-       ] */
+
     }
   },
   methods: {
@@ -85,19 +35,11 @@ export default {
       let parsed = JSON.stringify(store.cart);
       localStorage.setItem('cart', parsed);
     },
-    //TEST API CALL - importo l'url per piatti
-    callApi(url) {
-      axios.get(url)
-        .then(response => {
-          console.log(response.data.results.plates);
-          this.platesNew = response.data.results.plates;
-          console.log(this.platesNew);
-        })
-    }
+
   },
   mounted() {
     //TEST API CALL - importo l'url per piatti
-    this.callApi(store.API_URL + 'api/restaurants/pizza-delizia');
+    store.callApiPlates(store.API_URL + 'api/restaurants/');
 
     //DON'T TOUCH!!
     if (localStorage.getItem('cart')) {
@@ -120,19 +62,7 @@ export default {
     <div class="row row-cols-1 row-cols-md-3 justify-content-center g-4">
       <div class="col sx">
         <!-- restaurant details -->
-        <section class="restaurant_details p-3">
 
-          <h3>Boa pizza</h3>
-          <div>pizza | bibite</div>
-          <div>Via delle vie, Il mio paese (PAESE)</div>
-          <div>Telefono: 349.4044257</div>
-          <div>orari di apertura:</div>
-          <ul>
-            <li>mar-gio --> 12:00/14:00 + 19:00/22:00</li>
-            <li>ven-sab --> 12:00/14:00 + 19:00/01:00</li>
-            <li>dom --> 12:00/14:00 + 19:00/01:00</li>
-          </ul>
-        </section>
         <!-- menu piatti -->
         <section class="plates">
           <h3 class="mb-3">Le nostre pizze:</h3>

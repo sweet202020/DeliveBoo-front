@@ -2,68 +2,76 @@
 
 import { store } from '../store'
 
+
 export default {
     name: 'CartView',
     data() {
         return {
             store,
             total: '',
-            newCart: null
+            newCart: null,
         }
     },
-    /*methods: {
-         saveCart() {
-            let parsed = JSON.stringify(store.cart);
-            localStorage.setItem('cart', parsed);
-        },
-        addQuantity(prodotto, i) {
-            prodotto.quantita++
-            prodotto.prezzoXquantita = prodotto.prezzo * prodotto.quantita
-            this.saveCart();
-        },
-        deleteQuantity(prodotto, i, cart) {
-            prodotto.quantita--
-            prodotto.prezzoXquantita = prodotto.prezzo * prodotto.quantita
-            if (prodotto.quantita == 0) {
-                store.cart.splice(i, 1);
-            }
-            this.saveCart();
-        }, */
-
     methods: {
         saveCart() {
             let parsed = JSON.stringify(store.cart);
             localStorage.setItem('cart', parsed);
         },
         addQuantity(prodotto) {
-            console.log(prodotto.quantita, 'add');
-            prodotto.quantita = 1
-            prodotto.quantita++
-            store.prezzoTot = prodotto.price * prodotto.quantita
+            if (!prodotto.quantita) {
+                prodotto.quantita = 2
+                console.log(prodotto.quantita, 'if');
+            } else {
+                prodotto.quantita++
+                console.log(prodotto.quantita, 'else');
+            }
+            console.log(prodotto);
+            console.log(prodotto.price);
+            console.log(prodotto.quantita);
+            prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
+            console.log(prodotto.prezzoXquantita);
+
+
+
             this.saveCart();
-            console.log(store.prezzoTot);
-            console.log(prodotto.prezzoSingoloProdotto, 'aumento++++');
         },
         deleteQuantity(prodotto, i, cart) {
             console.log(prodotto);
-            prodotto.quantita--
-            prodotto.prezzoSingoloProdotto = prodotto.price * prodotto.quantita
-            console.log(prodotto.prezzoSingoloProdotto, 'diminuisco');
-            if (prodotto.quantita == 0) {
+            if (prodotto.quantita == 1 || prodotto.quantita == null) {
                 store.cart.splice(i, 1);
             }
+            else {
+
+                prodotto.quantita--
+            }
+            /*  console.log(prodotto.quantita); */
+            prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
+            /* console.log(prodotto.prezzoSingoloProdotto, 'diminuisco'); */
             this.saveCart();
         },
-        totalPrice(cart) {
+        totalPrice() {
             let totalEl = []
             for (let i = 0; i < store.cart.length; i++) {
                 let element = store.cart[i];
-                totalEl.push(element.prezzoSingoloProdotto)
-                console.log(element.prezzoSingoloProdotto, 'totalprice');
+                if (!element.quantita) {
+                    element.prezzoXquantita = element.price
+
+
+
+                }
+                /* if (element.prezzoXquantita == null) {
+                    element.prezzoXquantita = element.price * element.quantita
+                } */
+                /* console.log(element.quantita, 'element.quantita'); */
+
+                totalEl.push(element.prezzoXquantita)
+
+                /*  console.log(element.prezzoXquantita, 'totalprice');
+                console.log(element.price); */
             }
+            console.log(totalEl);
             let totalPrice = totalEl.reduce((total, amount) => {
                 return total + amount;
-
             })
             return totalPrice
         },
@@ -78,7 +86,6 @@ export default {
                 localStorage.removeItem('cart');
             }
         }
-
     }
 }
 
@@ -87,7 +94,7 @@ export default {
 <template>
     <div class="container spaces">
         <h2 class=" text-center my-5">Il tuo ordine</h2>
-        <div class="row d-flex justify-content-around">
+        <div class="row d-flex justify-content-around my-5">
 
             <div class="col-7 article">
                 <!--prodotto-->
@@ -110,13 +117,17 @@ export default {
                                     <span v-if="!prodotto.prezzoXquantita">{{ prodotto.price }}</span>
                                     <span v-else>{{ prodotto.prezzoXquantita }}</span>
 
-                                    $
+                                    €
                                 </div>
                                 <div class=" my-2">quantità:
                                     <button @click="deleteQuantity(prodotto, i, store.cart)">-</button>
-                                    <span>{{ prodotto.quantita }}</span>
+                                    <!--TODO IF ELSE PER QUANTITA-->
+
+                                    <span v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
+                                    <span v-else>1</span>
                                     <button @click="addQuantity(prodotto, i)">+</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -128,11 +139,13 @@ export default {
                 <!--sezione pagamento-->
                 <div class=" payment">
                     <div class="payment_container mt-5">
-                        <!--<h5>SubTotale: <span>{{  }}</span>$</h5>
-                        <h5>Spese di consegna: <span>7</span>$</h5>-->
-                        <h5>Totale:
-                            <span v-if="store.cart != 0"> {{ totalPrice(store.cart) }} </span>
-                            $
+                        <h5>
+                            <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
+                            <span v-if="store.cart.length != 0">Totale: {{ totalPrice() }} <!-- + {{
+                                store.delivery_price
+                            }} --> €</span>
+                            <span v-else>Aggiungi articoli</span>
+
                         </h5>
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">

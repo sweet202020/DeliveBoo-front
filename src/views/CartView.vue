@@ -7,7 +7,6 @@ export default {
             store,
         }
     },
-
     mounted() {
         if (localStorage.getItem('cart')) {
             try {
@@ -68,9 +67,11 @@ export default {
                     <div class="payment_container mt-5">
                         <h5>
                             <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
+
                             <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }} <!-- + {{
                                 store.delivery_price
                             }} --> €</span>
+
                             <span v-else>Aggiungi articoli</span>
 
                         </h5>

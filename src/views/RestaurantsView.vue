@@ -105,7 +105,7 @@ export default {
     <div class="d-flex">
         <ul>
             <!-- to-fix -->
-            <li @click="store.filterType()" v-for="category in categories">
+            <li v-for="category in categories">
                 <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
                 {{
                     category.name
@@ -114,12 +114,13 @@ export default {
 
 
         </ul>
+        <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
     </div>
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3 align-items-stretch">
-            <div class="col" v-for="restaurant in store.restaurants">
+            <div v-if="store.restaurants != null" class="col" v-for="restaurant in store.restaurants">
                 <div class="card restaurant">
                     <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
                     <div class="card-body">
@@ -139,6 +140,10 @@ export default {
                         </router-link>
                     </div>
                 </div>
+            </div>
+            <div v-else>
+                Ops No restaurants available for these types!
+                Change your Filter
             </div>
         </div>
     </div>

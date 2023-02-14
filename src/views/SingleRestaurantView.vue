@@ -17,19 +17,7 @@ export default {
       store,
     }
   },
-  methods: {
-    //AGGIUNTA ARTICOLO AL CARRELLO DI FEDE
-    addPlate(plate) {
-      if (!store.cart.includes(plate)) {
-        store.cart.push(plate);
-      }
-      this.saveCart();
-    },
-    saveCart() {
-      let parsed = JSON.stringify(store.cart);
-      localStorage.setItem('cart', parsed);
-    },
-  },
+
 
   mounted() {
     store.callApiPlates(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
@@ -77,7 +65,7 @@ export default {
               <h6 class="price">{{ plate.price }} $</h6>
             </div>
             <p class="ingredients">{{ plate.description }}</p>
-            <div class="btn btn_plate d-flex justify-content-end" @click="addPlate(plate)">+</div>
+            <div class="btn btn_plate d-flex justify-content-end" @click="store.addPlate(plate)">+</div>
           </div>
         </section>
       </div>

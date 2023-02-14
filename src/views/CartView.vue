@@ -2,6 +2,7 @@
 
 import { store } from '../store'
 
+
 export default {
     name: 'CartView',
     data() {
@@ -24,7 +25,7 @@ export default {
                 prodotto.quantita++
                 console.log(prodotto.quantita, 'else');
             }
-
+            console.log(prodotto);
             console.log(prodotto.price);
             console.log(prodotto.quantita);
             prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
@@ -54,8 +55,7 @@ export default {
                 let element = store.cart[i];
                 if (!element.quantita) {
                     element.prezzoXquantita = element.price
-                    console.log(element);
-                    console.log();
+
 
 
                 }
@@ -94,7 +94,7 @@ export default {
 <template>
     <div class="container spaces">
         <h2 class=" text-center my-5">Il tuo ordine</h2>
-        <div class="row d-flex justify-content-around">
+        <div class="row d-flex justify-content-around my-5">
 
             <div class="col-7 article">
                 <!--prodotto-->
@@ -117,7 +117,7 @@ export default {
                                     <span v-if="!prodotto.prezzoXquantita">{{ prodotto.price }}</span>
                                     <span v-else>{{ prodotto.prezzoXquantita }}</span>
 
-                                    $
+                                    €
                                 </div>
                                 <div class=" my-2">quantità:
                                     <button @click="deleteQuantity(prodotto, i, store.cart)">-</button>
@@ -127,6 +127,7 @@ export default {
                                     <span v-else>1</span>
                                     <button @click="addQuantity(prodotto, i)">+</button>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -139,7 +140,10 @@ export default {
                 <div class=" payment">
                     <div class="payment_container mt-5">
                         <h5>
-                            <span v-if="store.cart.length != 0">Totale: {{ totalPrice() }} $</span>
+                            <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
+                            <span v-if="store.cart.length != 0">Totale: {{ totalPrice() }} <!-- + {{
+                                store.delivery_price
+                            }} --> €</span>
                             <span v-else>Aggiungi articoli</span>
 
                         </h5>

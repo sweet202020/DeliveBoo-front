@@ -65,11 +65,6 @@ window.addEventListener('scroll', (e) => {
                                 <router-link class="nav-link text-light" aria-current="page"
                                     :to="{ name: 'restaurants' }">restaurant</router-link>
                             </li>
-
-                            <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page"
-                                    :to="{ name: 'menu' }">menu</router-link>
-                            </li>
                         </ul>
 
                     </div>

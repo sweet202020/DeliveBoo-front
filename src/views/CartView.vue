@@ -55,9 +55,6 @@ export default {
                 let element = store.cart[i];
                 if (!element.quantita) {
                     element.prezzoXquantita = element.price
-
-
-
                 }
                 /* if (element.prezzoXquantita == null) {
                     element.prezzoXquantita = element.price * element.quantita
@@ -141,9 +138,9 @@ export default {
                     <div class="payment_container mt-5">
                         <h5>
                             <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
-                            <span v-if="store.cart.length != 0">Totale: {{ totalPrice() }} <!-- + {{
-                                store.delivery_price
-                            }} --> €</span>
+                            <span v-if="store.cart.length != 0">Totale: {{ totalPrice() }} + {{
+                                store.restaurants.delivery_price
+                            }} €</span>
                             <span v-else>Aggiungi articoli</span>
 
                         </h5>

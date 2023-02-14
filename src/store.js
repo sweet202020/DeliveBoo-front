@@ -16,6 +16,7 @@ export const store = reactive({
     cart: [
 
     ],
+
     platesNew: null,
     restaurants: null,
     callApiPlates(url) {

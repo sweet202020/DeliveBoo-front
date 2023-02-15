@@ -63,7 +63,8 @@ export default {
                             ambizioso, come noi, e ci servono persone che ci aiutino a raggiungerlo.
                         </p>
                     </div>
-                    <btnCustomRounded text="Lavora con noi" iconFw="fa-solid fa-users-line" bg_btn="bg_blue"
+                    
+                        <btnCustomRounded text="Lavora con noi" iconFw="fa-solid fa-users-line" bg_btn="bg_blue"
                         bg_hover="hover_blu_light" class="mb-3 ms-3" />
                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                 </div>
@@ -89,9 +90,9 @@ h5 {
 }
 
 img {
-    width: 100%;
+    width: 70%;
+    margin: auto;
     aspect-ratio: 1/1;
-
 }
 
 .altezza_card {

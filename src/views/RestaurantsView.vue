@@ -74,6 +74,8 @@ export default {
                     id: 10
                 },
             ],
+            filter:[],
+
         }
     },
     methods: {
@@ -95,16 +97,16 @@ export default {
     <div class="container text-center py-5">
         <h1>SCEGLI LE TUE CATEGORIE</h1>
         <div class="row">
-            <div class="col card_category p-1 mt-3" v-for="category in categories"
-                @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + category.name)">
+            <div class="col card_category p-1 mt-3" v-for="category in categories" @click="this.filter.includes(category.name)? '': this.filter.push(category.name)">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
+            <button  @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" class="btn btn-primary">SUBMIT</button>
         </div>
     </div>
-    <div class="d-flex">
+    <!-- <div class="d-flex">
         <ul>
-            <!-- to-fix -->
+            
             <li v-for="category in categories">
                 <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
                 {{
@@ -115,7 +117,7 @@ export default {
 
         </ul>
         <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-    </div>
+    </div> -->
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">
@@ -141,10 +143,10 @@ export default {
                     </div>
                 </div>
             </div>
-            <div v-else>
+            <!-- <div v-else>
                 Ops No restaurants available for these types!
                 Change your Filter
-            </div>
+            </div> -->
         </div>
     </div>
     <!--onde bot-->

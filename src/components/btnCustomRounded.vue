@@ -52,7 +52,7 @@ button span {
 }
 
 button .text {
-    transform: translateX(10px);
+    transform: translateX(0px);
     color: $deliveboo-white;
     font-weight: bold;
 }

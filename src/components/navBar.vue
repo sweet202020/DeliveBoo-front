@@ -23,7 +23,7 @@ window.addEventListener('scroll', (e) => {
 
 <template>
     <div class="bg_nav fixed">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+        <nav class="container navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
             <div class="container-fluid">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -58,13 +58,13 @@ window.addEventListener('scroll', (e) => {
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
                                 <router-link class="nav-link text-light" aria-current="page"
-                                    :to="{ name: 'home' }">Home</router-link>
+                                    :to="{ name: 'home' }"><i class="fa-solid fa-house"></i> Home</router-link>
                             </li>
 
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <router-link class="nav-link text-light" aria-current="page"
                                     :to="{ name: 'restaurants' }">restaurant</router-link>
-                            </li>
+                            </li> -->
                         </ul>
 
                     </div>
@@ -73,12 +73,13 @@ window.addEventListener('scroll', (e) => {
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
                             <li class="nav-item">
                                 <router-link class="nav-link text-light" aria-current="page"
-                                    :to="{ name: 'carrello' }"><i class="fa-solid fa-cart-shopping"></i></router-link>
+                                    :to="{ name: 'carrello' }"><i class="fa-solid fa-cart-shopping"></i> Cart</router-link>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link text-light" aria-current="page"
                                     href="http://127.0.0.1:8000/"><!-- log-in --> <i class="fa-solid fa-user-group"></i>
+                                    log-in
                                 </a>
                             </li>
                         </ul>

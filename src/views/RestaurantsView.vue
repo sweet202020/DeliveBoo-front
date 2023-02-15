@@ -97,8 +97,8 @@ export default {
     <div class="container text-center py-5">
         <h1>SCEGLI LE TUE CATEGORIE</h1>
         <div class="row">
-            <div class="col card_category p-1 mt-3" v-for="category in categories"
-                @click="this.filter.includes(category.name) ? '' : this.filter.push(category.name)">
+            <div class="col card_category p-1 mt-3" v-for="category,i in categories"
+                @click="this.filter.includes(category.name) ? this.filter.splice(filter.indexOf(category.name),1) : this.filter.push(category.name)" :class="this.filter.includes(category.name) ? 'selected' : ''">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
@@ -161,7 +161,9 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
-
+.selected{
+    background-color: gray;
+}
 .standard {
     width: 100%;
     height: 100px;

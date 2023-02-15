@@ -39,25 +39,26 @@ export default {
   <navBar />
   <jumbotronMenu />
 
-
-
-  <!--  <h5>test slug single restaurant = {{ $route.params.slug }}</h5> -->
-
   <div class="container py-5 position-realtive">
     <div class="row row-cols-1 row-cols-lg-2 g-4">
+
       <!--RESTAURANT DETAILS -->
       <div class="col">
         <div class="restaurant_details p-4 d-flex justify-content-between" v-if="store.singleRestaurant">
-          <div>
-            <img width="300" :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
+
+          <div v-if="store.singleRestaurant.cover_image">
+            <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
           </div>
+          <div v-else>
+            <div class="placeholder me-3">placeholder</div>
+          </div>
+
           <div>
             <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
             <div class="font_size d-flex">
               <div class="me-3"><i class="fa-solid fa-location-dot color"></i></div>
               <div>{{ store.singleRestaurant.address }}</div>
             </div>
-            <!-- <div><strong> partita iva: </strong> {{ store.singleRestaurant.partita_iva }}</div> -->
             <div class="font_size d-flex">
               <div class="me-3"><i class="fa-regular fa-clock color"></i></div>
               <div>{{ store.singleRestaurant.opening_time }}</div>
@@ -150,20 +151,29 @@ export default {
 
 p {
   font-size: 1.4rem;
-  color: #4a4a4a;
+  color: $deliveboo-dark;
 }
 
 h3 {
   font-size: 2.1rem;
-  color: #4a4a4a;
+  color: $deliveboo-dark;
 }
 
 h5 {
   font-size: 1.4rem;
-  color: #4a4a4a;
+  color: $deliveboo-dark;
 }
 
-
+.placeholder {
+  background-color: #a5a5a5;
+  color: grey;
+  border-radius: 0.5rem;
+  width: 200px;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .restaurant_details,
 .order_details {
@@ -188,6 +198,7 @@ h5 {
 
   img {
     border-radius: 0.5rem;
+    max-width: 300px;
   }
 }
 

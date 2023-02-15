@@ -42,9 +42,10 @@ export default {
 
 
 .jumbotron-bg {
-    background-image: url(../assets/img/categories/sfondo.jpeg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    //background-image: url(../assets/img/sfondo_ristoranti.jpg);
+    background-image: url('../assets/img/sfondo_ristoranti_2.jpg');
+    background-size: contain;
+    background-repeat: repeat;
     background-position: center;
     margin-top: 50px;
     height: 500px;

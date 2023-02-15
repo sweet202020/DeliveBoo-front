@@ -23,7 +23,7 @@ export const store = reactive({
         axios.get(url)
             .then(response => {
                 this.restaurants = response.data.results;
-                // console.log(this.restaurants);
+                console.log(this.restaurants);
             })
     },
     callApiSingleRestaurant(url) {

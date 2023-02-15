@@ -74,7 +74,7 @@ export default {
                     id: 10
                 },
             ],
-            filter:[],
+            filter: [],
 
         }
     },
@@ -97,11 +97,13 @@ export default {
     <div class="container text-center py-5">
         <h1>SCEGLI LE TUE CATEGORIE</h1>
         <div class="row">
-            <div class="col card_category p-1 mt-3" v-for="category in categories" @click="this.filter.includes(category.name)? '': this.filter.push(category.name)">
+            <div class="col card_category p-1 mt-3" v-for="category in categories"
+                @click="this.filter.includes(category.name) ? '' : this.filter.push(category.name)">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
-            <button  @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" class="btn btn-primary">SUBMIT</button>
+            <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
+                class="btn btn-primary">SUBMIT</button>
         </div>
     </div>
     <!-- <div class="d-flex">

@@ -122,21 +122,21 @@ export default {
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3 align-items-stretch">
-            <div class="col" v-for="restaurant,i in store.restaurants">
+            <div class="col" v-for="restaurant in store.restaurants">
                 <div class="card restaurant">
                     <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
                     <div class="card-body">
-                        <h5 class="card-title">{{ restaurant[i].restaurant_name }}</h5>
-                        <div class="text">Indirizzo: {{ restaurant[i].address }}</div>
-                        <div class="text">Orari: {{ restaurant[i].opening_time }}</div>
-                        <div class="text mb-4">Consegna: {{ restaurant[i].delivery_price }} €</div>
-                        <span v-for="type in restaurant[i].types">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <span v-for="type in restaurant.types">
                             <span>#{{ type.name }}</span>
                         </span>
 
 
                         <!-- metodo per collegare il pulsante alla pagina del singolo ristorante -->
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant[i].slug } }">
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
                             <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                                 bg_hover="hover_blu_light" />
                         </router-link>

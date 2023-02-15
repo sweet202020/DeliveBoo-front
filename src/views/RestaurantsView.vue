@@ -74,7 +74,7 @@ export default {
                     id: 10
                 },
             ],
-            filter:[],
+            filter: [],
 
         }
     },
@@ -97,11 +97,13 @@ export default {
     <div class="container text-center py-5">
         <h1>SCEGLI LE TUE CATEGORIE</h1>
         <div class="row">
-            <div class="col card_category p-1 mt-3" v-for="category in categories" @click="this.filter.includes(category.name)? '': this.filter.push(category.name)">
+            <div class="col card_category p-1 mt-3" v-for="category in categories"
+                @click="this.filter.includes(category.name) ? '' : this.filter.push(category.name)">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
-            <button  @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" class="btn btn-primary">SUBMIT</button>
+            <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
+                class="btn btn-primary">SUBMIT</button>
         </div>
     </div>
     <!-- <div class="d-flex">
@@ -122,21 +124,21 @@ export default {
     <!--card ristoranti-->
     <div class="container bg_img my-5 text-start">
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3 align-items-stretch">
-            <div class="col" v-for="restaurant,i in store.restaurants">
-                <div class="card restaurant">
+            <div class="col" v-for="r in store.restaurants">
+                <div v-for="restaurant in r" class="card restaurant">
                     <img class="card-img-top" src="https://picsum.photos/300/300" alt="Title">
                     <div class="card-body">
-                        <h5 class="card-title">{{ restaurant[i].restaurant_name }}</h5>
-                        <div class="text">Indirizzo: {{ restaurant[i].address }}</div>
-                        <div class="text">Orari: {{ restaurant[i].opening_time }}</div>
-                        <div class="text mb-4">Consegna: {{ restaurant[i].delivery_price }} €</div>
-                        <span v-for="type in restaurant[i].types">
+                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
+                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
+                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
+                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
+                        <span v-for="type in restaurant.types">
                             <span>#{{ type.name }}</span>
                         </span>
 
 
                         <!-- metodo per collegare il pulsante alla pagina del singolo ristorante -->
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant[i].slug } }">
+                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
                             <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                                 bg_hover="hover_blu_light" />
                         </router-link>

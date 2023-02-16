@@ -21,7 +21,8 @@ export default {
             customer_name: '',
             delivery_address: '',
             phone_number: '',
-            totalPrice: localStorage.getItem('savetotalPrice')
+            totalPrice: localStorage.getItem('savetotalPrice'),
+            success: false,
 
         }
     },
@@ -68,16 +69,24 @@ export default {
             console.log(cvv);
         },
         sendForm() {
+            // let order_plate = []
+            // for (let i = 0; i < store.cart.length; i++) {
+            //     const element = store.cart[i];
+            //     order_plate.push([element.id, element.quantita])
+            // }
             const data = {
                 customer_name: this.customer_name,
                 delivery_address: this.delivery_address,
                 phone_number: this.phone_number,
-                price: this.totalPrice
+                price: this.totalPrice,
+                // order_plate: order_plate
             }
             //console.log(data.price);
+
+            //call for order table
             axios.post(`${store.API_URL}api/order`, data)
                 .then(response => {
-                    console.log(response.data);
+                    console.log(response);
                     this.success = response.data.success
                     if (this.success) {
                         this.customer_name = ''
@@ -92,8 +101,8 @@ export default {
                     console.log(error.message);
                 })
 
+        },
 
-        }
     },
 }
 </script>

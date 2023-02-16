@@ -40,14 +40,14 @@ export default {
   <jumbotronMenu />
 
   <div class="container py-5 position-realtive">
-    <div class="row row-cols-1 row-cols-lg-2 g-4">
+    <div class="row row-cols-1 row-cols-lg-2 g-5">
 
       <!--RESTAURANT DETAILS -->
       <div class="col restaurant_details p-4" v-if="store.singleRestaurant">
 
-        <div class="row row-cols-1 row-cols-lg-2 g-2 bg-danger">
+        <div class="row row-cols-1 row-cols-lg-2 g-4">
           <!-- COVER IMAGE -->
-          <div class="col bg-primary">
+          <div class="col">
             <div v-if="store.singleRestaurant.cover_image">
               <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
             </div>
@@ -56,7 +56,7 @@ export default {
             </div>
           </div>
           <!-- DESCRIPTION -->
-          <div class="col bg-secondary">
+          <div class="col">
             <div>
               <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
               <div class="font_size d-flex justify-cont">
@@ -96,10 +96,17 @@ export default {
     </div>
 
     <div class="row row-cols-1 row-cols-md-2">
-      <!-- PLATES LIST -->
-      <div class="col">
+      <!-- ALERTS -->
+      <div class="col position-relative">
+        <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+          <strong>Articolo aggiunto al carrello</strong>
+        </div>
+        <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
+          <strong>Non puoi ordinare da due ristoranti diversi</strong>
+        </div>
+        <!-- PLATES LIST -->
         <section class="plates mb-5 pb-5">
-          <h3 class="mb-3">I notri piatti:</h3>
+          <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> I notri piatti:</h3>
           <div v-for="plate in store.platesNew">
             <div v-if="plate.category_id === 2">
               <div class="card_plate my-4 p-3">
@@ -113,20 +120,17 @@ export default {
               </div>
             </div>
           </div>
-          <div class="alert alert-primary" role="alert" v-if="store.alert && !store.error">
-            <strong>Articolo aggiunto</strong>
-          </div>
-          <div class="alert alert-danger" role="alert" v-if="store.error">
-            <strong>Non puoi ordinare da due ristoranti diversi</strong>
-          </div>
+
         </section>
       </div>
 
       <!-- DRINKS LIST -->
       <div class="col">
+        <!-- ALERTS -->
+
         <section class="plates mb-5 pb-5">
-          <h3 class="mb-3">Le nostre bibite:</h3>
-          <div v-for="plate in store.platesNew">
+          <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
+            <div v-for="plate in store.platesNew">
             <div v-if="plate.category_id === 3">
               <div class="card_plate my-4 p-3">
                 <div class="d-flex justify-content-between mb-2">
@@ -135,7 +139,7 @@ export default {
                 </div>
                 <p class="ingredients">{{ plate.description }}</p>
                 <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                    class="fa-regular fa-square"></i></div>
+                    class="fa-solid fa-plus"></i></div>
               </div>
             </div>
           </div>
@@ -163,8 +167,8 @@ p {
 }
 
 h3 {
-  font-size: 2rem;
-  color: $deliveboo-dark;
+  font-size: 2.2rem;
+  color: $deliveboo-primary;
 }
 
 h5 {
@@ -218,20 +222,46 @@ h5 {
 
 .card_plate {
   border: 1px solid #d3d3d3;
+  border-radius: 10px;
 
   .btn_plate {
-    background-color: $deliveboo-white;
-    color: $deliveboo-secondary;
+    background-color: $deliveboo-secondary;
+    color: $deliveboo-white;
+   
     font-weight: bold;
     transition: 0.5s;
 
     &:hover {
-      background-color: $deliveboo-secondary;
+      background-color: $deliveboo-white;
+      color: $deliveboo-secondary;
       opacity: 100%;
-
-      color: $deliveboo-white;
     }
   }
+}
+
+.fixed_alert {
+  background-color: $deliveboo-secondary;
+  opacity: 97%;
+  color: $deliveboo-white;
+  position: absolute;
+  top: 50%;
+  left: -50%;
+}
+
+.fixed_alert_danger {
+  background-color: $deliveboo-primary-light;
+  opacity: 97%;
+  color: $deliveboo-white;
+  width: 100%;
+  aspect-ratio: 1/1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
 }
 </style>
 

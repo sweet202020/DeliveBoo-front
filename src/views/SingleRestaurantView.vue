@@ -50,7 +50,8 @@ export default {
             <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
           </div>
           <div v-else>
-            <div class="placeholder me-3">placeholder</div>
+            <img src="https://via.placeholder.com/200x200.png?text=no+image" alt="placeholder">
+                    
           </div>
 
           <div>

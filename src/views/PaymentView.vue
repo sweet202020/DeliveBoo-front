@@ -17,7 +17,9 @@ export default {
             cvv: '',
             name: '',
             address: '',
-            phone_number: ''
+            phone_number: '',
+            totalPrice: localStorage.getItem('savetotalPrice')
+
         }
     },
     methods: {
@@ -66,9 +68,11 @@ export default {
             const data = {
                 name: this.name,
                 address: this.address,
-                phone_number: this.phone_number
+                phone_number: this.phone_number,
             }
-            axios.post(`${this.store.API_URL}`)
+            /* axios.post(`${this.store.API_URL}`) */
+            console.log(this.totalPrice);
+
         }
     },
 }

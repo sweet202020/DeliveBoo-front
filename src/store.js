@@ -45,11 +45,12 @@ export const store = reactive({
             this.callApiRestaurants(this.API_URL + 'api/restaurants/filter/' + element)
         });
     },
-
     saveCart() {
         let parsed = JSON.stringify(store.cart);
         localStorage.setItem('cart', parsed);
     },
+
+
     addPlate(plate) {
         if (store.cart.length == 0) {
             store.cart.push(plate);

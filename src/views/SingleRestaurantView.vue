@@ -45,15 +45,14 @@ export default {
       <!--RESTAURANT DETAILS -->
       <div class="col">
         <div class="restaurant_details p-4 d-flex justify-content-between" v-if="store.singleRestaurant">
-
+          <!-- COVER IMAGE -->
           <div v-if="store.singleRestaurant.cover_image">
             <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
           </div>
           <div v-else>
             <img src="https://via.placeholder.com/200x200.png?text=no+image" alt="placeholder">
-                    
           </div>
-
+          <!-- DESCRIPTION -->
           <div>
             <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
             <div class="font_size d-flex">
@@ -79,10 +78,8 @@ export default {
           <h3>Riepilogo ordine</h3>
           <div class="font_size mt-3">Prodotti €</div>
           <div v-if="store.singleRestaurant">
-
             <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
           </div>
-
           <!-- BUTTON -->
           <div class="d-flex justify-content-end pt-3">
             <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
@@ -135,9 +132,7 @@ export default {
     </div>
 
 
-  </div>
-
-
+</div>
 </template>
 
 

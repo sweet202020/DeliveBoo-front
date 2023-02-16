@@ -40,20 +40,6 @@ window.addEventListener('scroll', (e) => {
                     </div>
                     <!--nav-dx-->
                     <div>
-                        <!-- NavBar originale di federico -->
-                        <!--  <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" aria-current="page" href="#">Home</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" aria-current="page" href="#">resturant</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" aria-current="page" href="#">menu</a>
-                                </li>
-                            </ul> -->
                         <!-- NavBar con view router -->
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
                             <li class="nav-item">
@@ -64,7 +50,7 @@ window.addEventListener('scroll', (e) => {
                             <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
                                 <router-link class="nav-link text-light color_icon" aria-current="page"
                                     :to="{ name: 'restaurants' }"><i
-                                        class="fa-solid fa-utensils me-3 color_icon"></i>restaurant</router-link>
+                                        class="fa-solid fa-utensils me-3 color_icon"></i>ristoranti</router-link>
                             </li>
                         </ul>
 
@@ -74,7 +60,7 @@ window.addEventListener('scroll', (e) => {
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
                             <li class="nav-item">
                                 <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }"><i
-                                        class="fa-solid fa-cart-shopping me-3 color_icon"></i>Cart</router-link>
+                                        class="fa-solid fa-cart-shopping me-3 color_icon"></i>carrello</router-link>
                             </li>
 
                             <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
@@ -129,9 +115,9 @@ a {
 
 }
 
-.color_icon {
+/* .color_icon {
     color: $deliveboo-primary;
-}
+} */
 
 /* a:hover {
     color: #f5612c !important;

@@ -1,6 +1,11 @@
 <script>
-import { store } from '../store'
+import btnCustomRounded from '../components/btnCustomRounded.vue';
+import { store } from '../store';
+
 export default {
+    components: {
+        btnCustomRounded,
+    },
     name: 'CartView',
     data() {
         return {
@@ -33,39 +38,46 @@ export default {
 </script>
 
 <template>
-    <div class="container spaces">
-        <h2 class=" text-center my-5">Il tuo ordine</h2>
-        <div class="row d-flex justify-content-around my-5">
-            <div class="col-7 article">
+    <div class="bg_cart">
+        <div class="container ordine py-5 mt-5">
+
+            <div class="article py-5 mt-5">
                 <!--prodotto-->
                 <div v-if="store.cart.length !== 0">
-                    <div v-for="prodotto, i in store.cart" class="card_article my-2">
-                        <div class="d-flex">
+                    <div class="card_article my-3" v-for="prodotto, i in store.cart">
+                        <div class="row">
                             <!--img prodotto-->
-                            <div class="p-2">
-                                <img :src="prodotto.img" alt="">
-                            </div>
+                            <!--  <div class="col image p-2 bg-danger">
+                                                                <img :src="prodotto.img" alt="">
+                                                            </div> -->
                             <!--Caratteristiche prodotto-->
-                            <div class="px-4 article_detail">
-
-                                <div class="my-2">{{ prodotto.name }}</div>
-                                <div class="my-2">prezzo:
-
-                                    <!--TODO risolvere bug prezzo-->
-                                    <span v-if="!prodotto.prezzoXquantita">{{ prodotto.price }}</span>
-                                    <span v-else>{{ prodotto.prezzoXquantita }}</span>
-
-                                    €
+                            <div class="col article_detail ms-3 p-3">
+                                <div>
+                                    <div class="my-3">
+                                        <h5>{{ prodotto.name }}</h5>
+                                    </div>
+                                    <div class="my-3">
+                                        <!--TODO risolvere bug prezzo-->
+                                        <h6 v-if="!prodotto.prezzoXquantita">prezzo: {{ prodotto.price }}</h6>
+                                        <h6 v-else>prezzo: {{ prodotto.prezzoXquantita }} €</h6>
+                                    </div>
                                 </div>
-                                <div class=" my-2">quantità:
-                                    <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                    <!--TODO IF ELSE PER QUANTITA-->
+                            </div>
+                            <!-- prezzo + add & remuve -->
+                            <div class="col my-4 me-4 text-end">
+                                <!--TODO IF ELSE PER QUANTITA-->
+                                <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
+                                <span class="me-3" v-else>1</span>
+                                <button class="icon-btn add-btn me-2 mt-3" @click="store.deleteQuantity(prodotto, i)">
+                                    <div class="btn-txt">Rimuovi</div>
+                                </button>
+                                <button class="icon-btn add-btn mt-3" @click="store.addQuantity(prodotto, i)">
+                                    <div class="add-icon"></div>
+                                    <div class="btn-txt">Aggiungi</div>
+                                </button>
 
-                                    <span v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
-                                    <span v-else>1</span>
-                                    <button @click="store.addQuantity(prodotto, i)">+</button>
-                                </div>
-
+                                <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button> -->
+                                <!-- <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -75,34 +87,50 @@ export default {
                 </div>
 
                 <!--sezione pagamento-->
-                <div class=" payment">
-                    <div class="payment_container mt-5">
-                        <h5>
-                            <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
-
-                            <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }} <!-- + {{
-                                store.delivery_price
-                            }} --> €</span>
-
-                            <span v-else>Aggiungi articoli</span>
-
-                        </h5>
-                        <!--bottoni pagamento-->
-                        <div class="text-center mt-3">
-                            <!--TODO metti bottone props / pagamento-->
-                            <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button>
-                        </div>
+                <div class="payment_container my-5">
+                    <h5>
+                        <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
+                        <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
+                            <!-- + {{store.delivery_price }} --> €</span>
+                        <span v-else>Aggiungi articoli</span>
+                    </h5>
+                    <!--bottoni pagamento-->
+                    <div class="text-center mt-3">
+                        <!--TODO metti bottone props / pagamento-->
+                        <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
+                        <btnCustomRounded text="Effetua Pagamento" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
+                            bg_hover="hover_blu_light" @click="saveTotPrice()" />
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
+                </div>
+
+            </div>
+
+        </div>
+</div>
 </template>
 
 
 <style lang="scss">
 @use '../styles/partials/variables.scss' as *;
+
+.bg_cart {
+    background-image: url('../assets/img/sfondo_ristoranti_2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 93%;
+    min-height: 700px;
+}
+
+.ordine {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+h5, h6 {
+    color: $deliveboo-dark;
+}
 
 .spaces {
     padding-top: 100px;
@@ -110,37 +138,122 @@ export default {
 
 .article {
     border-radius: 10px;
-    border: 1px solid black;
-    background-color: $dark-orange;
-    padding: 1rem 0;
+    border: none;
+    background-color: $deliveboo-primary-light;
+    width: 70%;
+
 
     .card_article {
         border-radius: 10px;
         background-color: $deliveboo-white;
         width: 90%;
         margin: auto;
-
-        .article_detail button {
-            border-radius: 50%;
-            height: 30px;
-            width: 30px;
-        }
-
-        .article_detail span {
-            margin: 0 0.5rem;
-        }
     }
 }
 
-.payment {
+
+.payment_container {
+    border: none;
+    border-radius: 10px;
+    padding: 1rem 1rem;
+    background-color: $deliveboo-white;
+    width: 90%;
+    margin: auto;
+}
 
 
-    .payment_container {
-        border: 1px solid black;
-        padding: 1rem 1rem;
-        background-color: $deliveboo-white;
-        width: 90%;
-        margin: auto;
-    }
+/* section buttons */
+.icon-btn {
+    width: 50px;
+    height: 50px;
+    border: 1px solid $deliveboo-primary;
+    background: $deliveboo-white;
+    border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+    transition: width 0.2s ease-in-out;
+}
+
+.add-btn:hover {
+    width: 120px;
+}
+
+.add-btn::before,
+.add-btn::after {
+    transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 4px;
+    width: 10px;
+    top: calc(50% - 2px);
+    background: $deliveboo-primary;
+}
+
+.add-btn::after {
+    right: 14px;
+    overflow: hidden;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.add-btn::before {
+    left: 14px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.icon-btn:focus {
+    outline: none;
+}
+
+.btn-txt {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.add-btn:hover::before,
+.add-btn:hover::after {
+    width: 4px;
+    border-radius: 2px;
+}
+
+.add-btn:hover .btn-txt {
+    opacity: 1;
+}
+
+.add-icon::after,
+.add-icon::before {
+    transition: all 0.2s ease-in-out;
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 2px;
+    top: calc(50% - 10px);
+    background: $deliveboo-primary;
+    overflow: hidden;
+}
+
+.add-icon::before {
+    left: 22px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+}
+
+.add-icon::after {
+    right: 22px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+
+.add-btn:hover .add-icon::before {
+    left: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
+}
+
+.add-btn:hover .add-icon::after {
+    right: 15px;
+    height: 4px;
+    top: calc(50% - 2px);
 }
 </style>

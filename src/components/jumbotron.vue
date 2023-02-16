@@ -56,23 +56,20 @@ export default {
                     </div>
                 </div>
 
-                <div class="bg-jumbo col d-flex justify-content-center align-items-center">
+                <div class="bg-jumbo col d-flex justify-content-center">
                     <div>
                         <h1 class="fw-bolder">Il cibo che vuoi tu, <br> dove vuoi tu</h1>
-                        <div class="my-3 d-flex">
+                        <router-link :to="{ name: 'restaurants' }">
+                                    <btnCustomRounded text="Trova ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                        bg_hover="hover_blu_light" />
+                                </router-link>
+                       
                             <!--elimina w-100 se vuoi l'imput piu piccolo-->
                             <!--  <div class="w-100">
                                 <inputText text="Cerca..."/>
                             </div> -->
-                            <div>
+                          
                                 <!-- <btnCustom text="Search" iconFw="fa-solid fa-magnifying-glass" bg_btn="bg_blue" bg_hover="hover_blu_light"/> -->
-                                <router-link :to="{ name: 'restaurants' }">
-                                    <btnCustomRounded text="Trova ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                        bg_hover="hover_blu_light" />
-                                </router-link>
-
-                            </div>
-                        </div>
 
                     </div>
                 </div>

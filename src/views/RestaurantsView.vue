@@ -148,7 +148,7 @@ export default {
                         }}</div>
                         <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{
                             restaurant.delivery_price }} €</div>
-                        <h6 class="mb-1">Cosa propone:</h6>
+                        <h6 class="mb-1">Cosa trovi da loro:</h6>
                         <div class="row" v-for="type in restaurant.types">
                             <div class="col"> {{ type.name }} </div>
                         </div>

@@ -241,7 +241,7 @@ h5 {
   color: $deliveboo-white;
   position: absolute;
   top: 50%;
-  left: -50%;
+  left: -40%;
 }
 
 .fixed_alert_danger {

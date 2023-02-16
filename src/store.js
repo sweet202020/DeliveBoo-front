@@ -96,6 +96,5 @@ export const store = reactive({
         })
         return totalPrice
 
-    }
-
+    },
 })

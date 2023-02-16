@@ -43,38 +43,44 @@ export default {
     <div class="row row-cols-1 row-cols-lg-2 g-4">
 
       <!--RESTAURANT DETAILS -->
-      <div class="col">
-        <div class="restaurant_details p-4 d-flex justify-content-between" v-if="store.singleRestaurant">
+      <div class="col restaurant_details p-4" v-if="store.singleRestaurant">
+
+        <div class="row row-cols-1 row-cols-lg-2 g-2 bg-danger">
           <!-- COVER IMAGE -->
-          <div v-if="store.singleRestaurant.cover_image">
-            <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
-          </div>
-          <div v-else>
-            <img src="https://via.placeholder.com/200x200.png?text=no+image" alt="placeholder">
+          <div class="col bg-primary">
+            <div v-if="store.singleRestaurant.cover_image">
+              <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
+            </div>
+            <div v-else>
+              <img src="https://via.placeholder.com/200x200.png?text=no+image" alt="placeholder">
+            </div>
           </div>
           <!-- DESCRIPTION -->
-          <div>
-            <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
-            <div class="font_size d-flex">
-              <div class="me-3"><i class="fa-solid fa-location-dot color"></i></div>
-              <div>{{ store.singleRestaurant.address }}</div>
-            </div>
-            <div class="font_size d-flex">
-              <div class="me-3"><i class="fa-regular fa-clock color"></i></div>
-              <div>{{ store.singleRestaurant.opening_time }}</div>
-            </div>
-            <div class="font_size d-flex">
-              <div class="me-3"><i class="fa-solid fa-bicycle color"></i></div>
-              <div> Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+          <div class="col bg-secondary">
+            <div>
+              <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
+              <div class="font_size d-flex justify-cont">
+                <div class="mx-3"><i class="fa-solid fa-location-dot color"></i></div>
+                <div>{{ store.singleRestaurant.address }}</div>
+              </div>
+              <div class="font_size d-flex">
+                <div class="mx-3"><i class="fa-regular fa-clock color"></i></div>
+                <div>{{ store.singleRestaurant.opening_time }}</div>
+              </div>
+              <div class="font_size d-flex">
+                <div class="mx-3"><i class="fa-solid fa-bicycle color"></i></div>
+                <div> Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- ORDER DETAILS -->
       <div class="col">
+        <!-- CARD -->
         <div class="order_details p-4">
-          <!-- CARD -->
           <h3>Riepilogo ordine</h3>
           <div class="font_size mt-3">Prodotti €</div>
           <div v-if="store.singleRestaurant">
@@ -89,7 +95,7 @@ export default {
       </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-lg-2">
+    <div class="row row-cols-1 row-cols-md-2">
       <!-- PLATES LIST -->
       <div class="col">
         <section class="plates mb-5 pb-5">
@@ -106,6 +112,12 @@ export default {
                     class="fa-solid fa-plus"></i></div>
               </div>
             </div>
+          </div>
+          <div class="alert alert-primary" role="alert" v-if="store.alert && !store.error">
+            <strong>Articolo aggiunto</strong>
+          </div>
+          <div class="alert alert-danger" role="alert" v-if="store.error">
+            <strong>Non puoi ordinare da due ristoranti diversi</strong>
           </div>
         </section>
       </div>
@@ -151,7 +163,7 @@ p {
 }
 
 h3 {
-  font-size: 2.1rem;
+  font-size: 2rem;
   color: $deliveboo-dark;
 }
 
@@ -183,7 +195,7 @@ h5 {
 
   h3 {
     color: $deliveboo-primary;
-    font-size: 2.8rem;
+    font-size: 2.6rem;
   }
 
   div,
@@ -194,7 +206,9 @@ h5 {
 
   img {
     border-radius: 0.5rem;
-    max-width: 300px;
+    max-width: 250px;
+    aspect-ratio: 1/1;
+    margin: auto;
   }
 }
 

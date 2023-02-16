@@ -10,6 +10,8 @@ export const store = reactive({
     restaurants: null,
     filterTypes: [],
     singleRestaurant: null,
+    alert: false,
+    error: false,
 
     callApiPlates(url) {
         axios.get(url)
@@ -58,9 +60,18 @@ export const store = reactive({
             store.cart.forEach(singlePlate => {
                 if (plate.restaurant_id == singlePlate.restaurant_id) {
                     store.cart.push(plate);
+                } else {
+                    this.error=true
+                    setTimeout(() => {
+                        this.error=false
+                    }, 3000);
                 }
             });
         }
+        this.alert=true
+        setTimeout(() => {
+            this.alert=false
+        }, 2000);
         store.saveCart();
     },
     addQuantity(prodotto) {

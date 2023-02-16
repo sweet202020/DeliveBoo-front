@@ -80,9 +80,12 @@ export default {
                     console.log(response.data);
                     this.success = response.data.success
                     if (this.success) {
-                        this.name = ''
-                        this.address = ''
+                        this.customer_name = ''
+                        this.delivery_address = ''
                         this.phone_number = ''
+                        this.date = ''
+                        this.card = ''
+                        this.cvv = ''
                     }
                 })
                 .catch(error => {

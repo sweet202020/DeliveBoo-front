@@ -5,7 +5,19 @@ export default {
     data() {
         return {
             store,
+            saveTotalPrice: 0,
         }
+    }, methods: {
+        savePrice() {
+            localStorage.setItem('savetotalPrice', this.saveTotalPrice);
+        },
+        saveTotPrice() {
+            const save = store.totalPrice()
+            this.saveTotalPrice = (save)
+            console.log(this.saveTotalPrice);
+            this.savePrice()
+
+        },
     },
     mounted() {
         if (localStorage.getItem('cart')) {
@@ -78,7 +90,7 @@ export default {
                         <!--bottoni pagamento-->
                         <div class="text-center mt-3">
                             <!--TODO metti bottone props / pagamento-->
-                            <button class="btn btn-primary mx-3">Vai al pagamento</button>
+                            <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button>
                         </div>
                     </div>
                 </div>

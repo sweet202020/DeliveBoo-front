@@ -17,8 +17,7 @@ export default {
       store,
     }
   },
-
-
+  
   mounted() {
     store.callApiPlates(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);

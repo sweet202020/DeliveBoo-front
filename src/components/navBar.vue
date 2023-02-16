@@ -27,8 +27,8 @@ window.addEventListener('scroll', (e) => {
             <div class="container-fluid">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -42,43 +42,45 @@ window.addEventListener('scroll', (e) => {
                     <div>
                         <!-- NavBar originale di federico -->
                         <!--  <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
-                            <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">Home</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" aria-current="page" href="#">Home</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">resturant</a>
-                            </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" aria-current="page" href="#">resturant</a>
+                                </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link text-light" aria-current="page" href="#">menu</a>
-                            </li>
-                        </ul> -->
+                                <li class="nav-item">
+                                    <a class="nav-link text-light" aria-current="page" href="#">menu</a>
+                                </li>
+                            </ul> -->
                         <!-- NavBar con view router -->
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page"
-                                    :to="{ name: 'home' }"><i class="fa-solid fa-house"></i> Home</router-link>
+                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'home' }"><i
+                                        class="fa-solid fa-house me-3 color_icon"></i>Home</router-link>
                             </li>
 
-                            <!-- <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page"
-                                    :to="{ name: 'restaurants' }">restaurant</router-link>
-                            </li> -->
+                            <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
+                                <router-link class="nav-link text-light color_icon" aria-current="page"
+                                    :to="{ name: 'restaurants' }"><i
+                                        class="fa-solid fa-utensils me-3 color_icon"></i>restaurant</router-link>
+                            </li>
                         </ul>
 
                     </div>
                     <!--nav-sx-->
                     <div>
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-3">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
                             <li class="nav-item">
-                                <router-link class="nav-link text-light" aria-current="page"
-                                    :to="{ name: 'carrello' }"><i class="fa-solid fa-cart-shopping"></i> Cart</router-link>
+                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }"><i
+                                        class="fa-solid fa-cart-shopping me-3 color_icon"></i>Cart</router-link>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
                                 <a class="nav-link text-light" aria-current="page"
-                                    href="http://127.0.0.1:8000/"><!-- log-in --> <i class="fa-solid fa-user-group"></i>
+                                    href="http://127.0.0.1:8000/"><!-- log-in --> <i
+                                        class="fa-solid fa-user-group me-3 color_icon"></i>
                                     log-in
                                 </a>
                             </li>
@@ -88,8 +90,7 @@ window.addEventListener('scroll', (e) => {
                 </div>
             </div>
         </nav>
-    </div>
-
+</div>
 </template>
 
 <style lang="scss">
@@ -126,6 +127,10 @@ a {
     }
 
 
+}
+
+.color_icon {
+    color: $deliveboo-primary;
 }
 
 /* a:hover {

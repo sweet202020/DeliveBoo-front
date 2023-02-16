@@ -78,21 +78,21 @@ export default {
       </div>
 
       <!-- ORDER DETAILS -->
-      <div class="col">
+      <!-- <div class="col"> -->
         <!-- CARD -->
-        <div class="order_details p-4">
+        <!-- <div class="order_details p-4">
           <h3>Riepilogo ordine</h3>
           <div class="font_size mt-3">Prodotti €</div>
           <div v-if="store.singleRestaurant">
             <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
-          </div>
+          </div> -->
           <!-- BUTTON -->
-          <div class="d-flex justify-content-end pt-3">
+       <!--    <div class="d-flex justify-content-end pt-3">
             <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
               bg_hover="hover_blu_light" />
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="row row-cols-1 row-cols-md-2">
@@ -127,7 +127,6 @@ export default {
       <!-- DRINKS LIST -->
       <div class="col">
         <!-- ALERTS -->
-
         <section class="plates mb-5 pb-5">
           <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
             <div v-for="plate in store.platesNew">
@@ -146,8 +145,6 @@ export default {
         </section>
       </div>
     </div>
-
-
 </div>
 </template>
 

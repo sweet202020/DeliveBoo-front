@@ -206,7 +206,7 @@ h5 {
 
   img {
     border-radius: 0.5rem;
-    max-width: 250px;
+    width: 100%;
     aspect-ratio: 1/1;
     margin: auto;
   }

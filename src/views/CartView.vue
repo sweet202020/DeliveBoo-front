@@ -116,8 +116,8 @@ export default {
 
 .bg_cart {
     background-image: url('../assets/img/sfondo_ristoranti_2.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-size: contain;
+    background-repeat: repeat;
     opacity: 93%;
     min-height: 700px;
 }
@@ -126,6 +126,7 @@ export default {
     display: flex;
     justify-content: center;
     align-content: center;
+    /* min-height: 700px; */
 }
 
 h5, h6, span {

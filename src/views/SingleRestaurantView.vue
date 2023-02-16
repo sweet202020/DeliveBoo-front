@@ -240,8 +240,14 @@ h5 {
   opacity: 97%;
   color: $deliveboo-white;
   position: absolute;
-  top: 50%;
-  left: -40%;
+  top: 0;
+  left: 50%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+
 }
 
 .fixed_alert_danger {

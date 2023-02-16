@@ -41,7 +41,7 @@ export default {
     <div class="bg_cart">
         <div class="container ordine py-5 mt-5">
 
-            <div class="article py-5 mt-5">
+            <div class="article pt-5 mt-5">
                 <!--prodotto-->
                 <div v-if="store.cart.length !== 0">
                     <div class="card_article my-3" v-for="prodotto, i in store.cart">
@@ -83,19 +83,19 @@ export default {
                     </div>
                 </div>
                 <div v-else>
-                    <h4 class="text-center">Non ci sono articoli {{ store.test }}</h4>
+                    <h4 class="text-start ms-5 text-light">Non ci sono articoli {{ store.test }}</h4>
                 </div>
 
                 <!--sezione pagamento-->
                 <div class="payment_container my-5">
-                    <h5>
+                    <h3>
                         <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
                         <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                             <!-- + {{store.delivery_price }} --> €</span>
                         <span v-else>Aggiungi articoli</span>
-                    </h5>
+                    </h3>
                     <!--bottoni pagamento-->
-                    <div class="text-center mt-3">
+                    <div>
                         <!--TODO metti bottone props / pagamento-->
                         <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
                         <btnCustomRounded text="Effetua Pagamento" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
@@ -128,7 +128,11 @@ export default {
     align-content: center;
 }
 
-h5, h6 {
+h5, h6, span {
+    color: $deliveboo-dark;
+}
+
+p{
     color: $deliveboo-dark;
 }
 
@@ -140,7 +144,7 @@ h5, h6 {
     border-radius: 10px;
     border: none;
     background-color: $deliveboo-primary-light;
-    width: 70%;
+    width: 60%;
 
 
     .card_article {
@@ -159,6 +163,9 @@ h5, h6 {
     background-color: $deliveboo-white;
     width: 90%;
     margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 

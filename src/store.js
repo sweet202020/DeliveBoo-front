@@ -15,7 +15,7 @@ export const store = reactive({
         axios.get(url)
             .then(response => {
                 this.platesNew = response.data.results.plates;
-                // console.log(this.platesNew);
+                console.log(this.platesNew);
             })
     },
     callApiRestaurants(url) {

@@ -20,17 +20,17 @@ export default {
 </script>
 
 <template>
-
-    <header>
+<!-- 
+    <header> -->
         <navBar />
         <jumbotron />
-    </header>
+<!--     </header> -->
 
-    <main>
+    <!-- <main> -->
         <works />
         <restaurant />
         <workWithUs />
-    </main>
+    <!-- </main> -->
 
 </template>
 

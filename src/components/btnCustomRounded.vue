@@ -28,7 +28,7 @@ export default{
 
 
 button {
-    width: 200px;
+    width: 220px;
     height: 40px;
     cursor: pointer;
     display: flex;
@@ -52,7 +52,7 @@ button span {
 }
 
 button .text {
-    transform: translateX(0px);
+    transform: translateX(10px);
     color: $deliveboo-white;
     font-weight: bold;
 }
@@ -60,7 +60,7 @@ button .text {
 button .icon {
     position: absolute;
     border-left: 1px solid $deliveboo-white;
-    transform: translateX(155px);
+    transform: translateX(165px);
     height: 40px;
     width: 40px;
     display: flex;

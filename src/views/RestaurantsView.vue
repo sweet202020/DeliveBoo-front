@@ -2,6 +2,7 @@
 import navBar from '../components/navBar.vue';
 import jumbotronRestaurants from '../components/jumbotronRestaurants.vue';
 import btnCustomRoundedSmall from '../components/btnCustomRoundedSmall.vue';
+import btnCustomRounded from '../components/btnCustomRounded.vue';
 import cardRestaurant from '../components/homeComponent/cardRestaurant.vue';
 import { store } from '../store';
 
@@ -14,6 +15,7 @@ export default {
         navBar,
         jumbotronRestaurants,
         btnCustomRoundedSmall,
+        btnCustomRounded,
         cardRestaurant,
     },
     data() {
@@ -93,38 +95,42 @@ export default {
     <navBar />
     <jumbotronRestaurants />
 
+    <div class="container title_category">
+        <h2>SCEGLIE LE TUE CATEGORIE PREFERITE</h2>
+    </div>
+
     <!-- ELENCO CATEGORIE -->
-    <div class="container text-center py-5">
-        <h1>SCEGLI LE TUE CATEGORIE</h1>
-        <div class="row">
-            <div class="col card_category p-1 mt-3" v-for="category, i in categories"
+    <div class="container text-center">
+        <!-- SECTION CATEGORY -->
+        <div class="row ">
+            <div class="col card_category p-2 me-2 ms-2" v-for="category, i in categories"
                 @click="this.filter.includes(category.name) ? this.filter.splice(filter.indexOf(category.name), 1) : this.filter.push(category.name)"
                 :class="this.filter.includes(category.name) ? 'selected' : ''">
                 <img :src="getImageUrl(category.url)" alt="">
                 <h6 class="py-2">{{ category.name }}</h6>
             </div>
-            <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                class="btn btn-primary">SUBMIT</button>
         </div>
+        <btnCustomRounded text="Applica filtri" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light"
+            @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" />
+        <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
+                                            class="btn btn-primary">SUBMIT</button> -->
     </div>
-    <!-- <div class="d-flex">
-        <ul>
-            
-            <li v-for="category in categories">
-                <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                {{
-                    category.name
-                }}
-            </li>
+    <!--  <div class="d-flex">
+            <ul>
 
-
-        </ul>
-        <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-    </div> -->
+                <li v-for="category in categories">
+                    <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                    {{
+                        category.name
+                    }}
+                </li>
+            </ul>
+            <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+        </div> -->
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
-    <div class="container bg_img my-5 text-start">
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-3 align-items-stretch">
+    <div class="container bg_img my-5 pt-3 text-start align-items-stretch">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 align-items-stretch">
             <div class="col" v-for="restaurant in store.restaurants">
                 <div class="card restaurant">
                     <!-- COVER IMAGE -->
@@ -135,16 +141,18 @@ export default {
                         <img class="card-img" src="https://picsum.photos/300/300" alt="placeholder">
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ restaurant.restaurant_name }}</h5>
-                        <div class="text">Indirizzo: {{ restaurant.address }}</div>
-                        <div class="text">Orari: {{ restaurant.opening_time }}</div>
-                        <div class="text mb-4">Consegna: {{ restaurant.delivery_price }} €</div>
-                        <span v-for="type in restaurant.types">
-                            <span>#{{ type.name }}</span>
-                        </span>
-
-
-                        <!-- metodo per collegare il pulsante alla pagina del singolo ristorante -->
+                        <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
+                        <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> {{ restaurant.address
+                        }}</div>
+                        <div class="text"><i class="fa-regular fa-clock aspect_ratio me-2"></i> {{ restaurant.opening_time
+                        }}</div>
+                        <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{
+                            restaurant.delivery_price }} €</div>
+                        <h6 class="mb-1">Cosa trovi da loro:</h6>
+                        <div class="row" v-for="type in restaurant.types">
+                            <div class="col"> {{ type.name }} </div>
+                        </div>
+                                 
                         <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
                             <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                                 bg_hover="hover_blu_light" />
@@ -153,23 +161,43 @@ export default {
                 </div>
             </div>
             <!-- <div v-else>
-                Ops No restaurants available for these types!
-                Change your Filter
-            </div> -->
+                                                    Ops No restaurants available for these types!
+                                                    Change your Filter
+                                                </div> -->
         </div>
     </div>
     <!--onde bot-->
     <div class="pt-5">
         <img class="standard" src="../assets/img/wave.png" alt="">
-    </div>
+</div>
 </template>
 
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
+.title_category {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    border: 3px solid $deliveboo-primary-light;
+    background-color: #fcfcfc;
+    box-shadow: 3px 3px 9px $deliveboo-primary;
+    border-radius: 10px;
+    position: relative;
+    top: -100px;
+    //box-shadow: 3px 3px 9px $deliveboo-dark;
+    z-index: 100;
+    width: 70%;
+
+}
+
 .selected {
-    background-color: gray;
+    background-color: $deliveboo-primary-light;
+    color: $deliveboo-white;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
 }
 
 .standard {
@@ -185,13 +213,15 @@ export default {
     background-repeat: no-repeat;
 }
 
-h1 {
+h1,
+h2 {
     color: $deliveboo-primary;
     word-spacing: 10px;
 }
 
-h5 {
+h4 {
     color: $deliveboo-primary;
+    font-size: 1.7rem;
 }
 
 .card_category {
@@ -218,7 +248,7 @@ h5 {
 
     .text {
         color: $deliveboo-dark;
-        font-size: 13px;
+        font-size: 1.1rem;
     }
 
     a {
@@ -227,7 +257,13 @@ h5 {
 
 }
 
-ul {
-    list-style: none;
+.aspect_ratio {
+    aspect-ratio: 1/1;
+}
+
+.card-img {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
 }
 </style>

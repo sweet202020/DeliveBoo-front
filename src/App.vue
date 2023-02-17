@@ -27,7 +27,8 @@ export default {
 <style lang="scss">
 @use './styles/general.scss';
 
-.space {
+/* .space {
     height: 1000px;
-}
+} */
+
 </style>

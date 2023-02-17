@@ -48,7 +48,7 @@ export default {
     background-repeat: repeat;
     background-position: center;
     margin-top: 50px;
-    height: 500px;
+    height: 400px;
 }
 
 .wave img {

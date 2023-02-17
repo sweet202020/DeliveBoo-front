@@ -131,7 +131,7 @@ export default {
     <!-- ELENCO RISTORANTI -->
     <div class="container bg_img my-5 pt-3 text-start">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-between">
-            <div class="col my-2" v-for="restaurant in store.restaurants">
+            <div class="col my-2 d-flex align-items-stretch" v-for="restaurant in store.restaurants">
                 <div class="card restaurant">
 
                     <!-- COVER IMAGE -->

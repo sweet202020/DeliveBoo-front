@@ -58,12 +58,14 @@ export const store = reactive({
 
 
         if (store.cart.length == 0) {
-            store.cart.push(plate);
+          
 
+            store.cart.push(plate);
         } else {
             for (let i = 0; i < store.cart.length; i++) {
                 const singlePlate = store.cart[i];
                 if (plate.restaurant_id == singlePlate.restaurant_id) {
+
                     store.cart.push(plate);
                     break
                 }
@@ -74,11 +76,11 @@ export const store = reactive({
                     }, 3000);
                 }
             }
-        }
 
 
         for (let i = 0; i < store.cart.length; i++) {
             store.cart[i].quantita = 1
+
         }
         this.alert = true
         setTimeout(() => {

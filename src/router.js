@@ -3,8 +3,8 @@ import HomeView from './views/HomeView.vue';
 import RestaurantsView from './views/RestaurantsView.vue';
 import SingleRestaurantView from './views/SingleRestaurantView.vue';
 import CartView from './views/CartView.vue';
-
 import PaymentView from './views/PaymentView.vue';
+import SuccessPaymentView from './views/SuccessPaymentView.vue';
 
 
 
@@ -37,6 +37,11 @@ const router = createRouter({
             path: '/pagamento',
             name: 'pagamento',
             component: PaymentView
+        },
+        {
+            path: '/success',
+            name: 'success',
+            component: SuccessPaymentView
         }
     ]
 })

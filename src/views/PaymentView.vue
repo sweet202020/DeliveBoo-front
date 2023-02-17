@@ -1,9 +1,12 @@
 <script>
 import cardValidator from 'card-validator';
+import axios from 'axios';
+import { store } from '../store.js';
 export default {
     name: 'PaymentView',
     data() {
         return {
+            store,
             cardValidator,
             card: '',
             message: 'inserisci un numero di carta valido',
@@ -15,10 +18,11 @@ export default {
             card_cvv_valid: false,
             date: '',
             cvv: '',
-            name: '',
-            address: '',
+            customer_name: '',
+            delivery_address: '',
             phone_number: '',
-            totalPrice: localStorage.getItem('savetotalPrice')
+            totalPrice: localStorage.getItem('savetotalPrice'),
+            success: false,
 
         }
     },
@@ -65,36 +69,63 @@ export default {
             console.log(cvv);
         },
         sendForm() {
+            // let order_plate = []
+            // for (let i = 0; i < store.cart.length; i++) {
+            //     const element = store.cart[i];
+            //     order_plate.push([element.id, element.quantita])
+            // }
             const data = {
-                name: this.name,
-                address: this.address,
+                customer_name: this.customer_name,
+                delivery_address: this.delivery_address,
                 phone_number: this.phone_number,
+                price: this.totalPrice,
+                // order_plate: order_plate
             }
-            /* axios.post(`${this.store.API_URL}`) */
-            console.log(this.totalPrice);
+            //console.log(data.price);
 
-        }
+            //call for order table
+            axios.post(`${store.API_URL}api/order`, data)
+                .then(response => {
+                    console.log(response);
+                    this.success = response.data.success
+                    if (this.success) {
+                        this.customer_name = ''
+                        this.delivery_address = ''
+                        this.phone_number = ''
+                        this.date = ''
+                        this.card = ''
+                        this.cvv = ''
+                    }
+                })
+                .catch(error => {
+                    console.log(error.message);
+                })
+
+        },
+
     },
 }
 </script>
 
 
 <template>
-
     <h1>pagamento</h1>
     <div class="container">
         <form @submit.prevent="sendForm()">
             <div class="mb-3">
-                <label for="" class="form-label">Nome e Cognome</label>
-                <input v-model="name" type="text" name="" id="" class="form-control" required>
+                <label for="customer_name" class="form-label">Nome e Cognome</label>
+                <input v-model="customer_name" type="text" name="customer_name" id="customer_name" class="form-control"
+                    required>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">indirizzo</label>
-                <input v-model="address" type="text" name="" id="" class="form-control" required>
+                <label for="delivery_address" class="form-label">indirizzo</label>
+                <input v-model="delivery_address" type="text" name="delivery_address" id="delivery_address"
+                    class="form-control" required>
             </div>
             <div class="mb-3">
-                <label for="" class="form-label">Numero di telefono</label>
-                <input v-model="phone_number" type="text" name="" id="" class="form-control" required>
+                <label for="phone_number" class="form-label">Numero di telefono</label>
+                <input v-model="phone_number" type="text" name="phone_number" id="phone_number" class="form-control"
+                    required>
             </div>
 
             <div class="mb-3">
@@ -107,8 +138,8 @@ export default {
             </div>
             <div class="mb-3">
                 <label for="" class="form-label">data di scadenza</label>
-                <input type="month" @change="this.credit_card_date()" class="form-control" v-model="this.date" name=""
-                    id="" aria-describedby="helpId" placeholder="" required>
+                <input type="month" @change="this.credit_card_date()" class="form-control" v-model="this.date" name="" id=""
+                    aria-describedby="helpId" placeholder="" required>
                 <span v-for="data in this.array_date_card">
                     <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
                 </span>
@@ -124,7 +155,7 @@ export default {
             <button type="submit"
                 :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid">paga</button>
         </form>
-    </div>
+</div>
 </template>
 
 

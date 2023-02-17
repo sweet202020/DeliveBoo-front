@@ -54,21 +54,33 @@ export const store = reactive({
 
 
     addPlate(plate) {
+
+
+
         if (store.cart.length == 0) {
-            store.cart.push(plate)
+          
+
+            store.cart.push(plate);
         } else {
             for (let i = 0; i < store.cart.length; i++) {
                 const singlePlate = store.cart[i];
                 if (plate.restaurant_id == singlePlate.restaurant_id) {
-                    store.cart.push(plate)
+
+                    store.cart.push(plate);
                     break
-                } else {
+                }
+                else {
                     this.error = true
                     setTimeout(() => {
                         this.error = false
                     }, 3000);
                 }
             }
+
+
+        for (let i = 0; i < store.cart.length; i++) {
+            store.cart[i].quantita = 1
+
         }
         this.alert = true
         setTimeout(() => {

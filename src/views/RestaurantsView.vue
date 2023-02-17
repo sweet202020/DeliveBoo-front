@@ -102,8 +102,8 @@ export default {
     <!-- ELENCO CATEGORIE -->
     <div class="container text-center">
         <!-- SECTION CATEGORY -->
-        <div class="row ">
-            <div class="col card_category p-2 me-2 ms-2" v-for="category, i in categories"
+        <div class="row row-cols-3 row-cols-md-5 row-cols-lg-auto">
+            <div class="col bg-danger card_category " v-for="category, i in categories"
                 @click="this.filter.includes(category.name) ? this.filter.splice(filter.indexOf(category.name), 1) : this.filter.push(category.name)"
                 :class="this.filter.includes(category.name) ? 'selected' : ''">
                 <img :src="getImageUrl(category.url)" alt="">

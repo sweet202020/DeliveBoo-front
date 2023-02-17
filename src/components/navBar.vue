@@ -38,7 +38,7 @@ window.addEventListener('scroll', (e) => {
                     <div class="d-none d-lg-block logo">
                         <img src="../assets/img/logobool.png" alt="">
                     </div>
-                    <!--nav-dx-->
+                    <!--nav-sx-->
                     <div>
                         <!-- NavBar con view router -->
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
@@ -55,10 +55,15 @@ window.addEventListener('scroll', (e) => {
                         </ul>
 
                     </div>
-                    <!--nav-sx-->
+                    <!--nav-dx-->
                     <div>
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4">
-                            <li class="nav-item">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4  d-flex">
+                            <!-- 
+                                    v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"
+                                v-bind:class="[isActive ? activeClass : '', errorClass]"
+                            -->
+                            <li class="nav-item d-flex position-relative">
+                                <i class="fa-solid fa-circle cart"></i>
                                 <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }"><i
                                         class="fa-solid fa-cart-shopping me-3 color_icon"></i>carrello</router-link>
                             </li>
@@ -76,7 +81,7 @@ window.addEventListener('scroll', (e) => {
                 </div>
             </div>
         </nav>
-</div>
+    </div>
 </template>
 
 <style lang="scss">
@@ -113,6 +118,15 @@ a {
     }
 
 
+}
+
+.cart{
+    color: $deliveboo-primary;
+    width: 15px;
+    aspect-ratio: 1/1;
+    position: absolute;
+    left: 1px;
+    bottom: 25px;
 }
 
 /* .color_icon {

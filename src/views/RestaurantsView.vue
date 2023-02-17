@@ -111,28 +111,29 @@ export default {
             </div>
         </div>
         <btnCustomRounded text="Applica filtri" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light"
-            @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" />
+            @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" class="mt-5" />
         <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                                class="btn btn-primary">SUBMIT</button> -->
+                                                                        class="btn btn-primary">SUBMIT</button> -->
     </div>
     <!--  <div class="d-flex">
-                <ul>
+                                        <ul>
 
-                    <li v-for="category in categories">
-                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                        {{
-                            category.name
-                        }}
-                    </li>
-                </ul>
-                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-            </div> -->
+                                            <li v-for="category in categories">
+                                                <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                                                {{
+                                                    category.name
+                                                }}
+                                            </li>
+                                        </ul>
+                                        <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+                                    </div> -->
+
     <!-- ELENCO RISTORANTI -->
-    <!--card ristoranti-->
-    <div class="container bg_img my-5 pt-3 text-start align-items-stretch">
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 align-items-stretch">
-            <div class="col" v-for="restaurant in store.restaurants">
+    <div class="container bg_img my-5 pt-3 text-start">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-between">
+            <div class="col my-2" v-for="restaurant in store.restaurants">
                 <div class="card restaurant">
+
                     <!-- COVER IMAGE -->
                     <div v-if="restaurant.cover_image">
                         <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
@@ -140,6 +141,7 @@ export default {
                     <div v-else>
                         <img class="card-img" src="https://picsum.photos/300/300" alt="placeholder">
                     </div>
+                    <!-- DETAILS RESTAURANT -->
                     <div class="card-body">
                         <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
                         <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> {{ restaurant.address
@@ -148,9 +150,11 @@ export default {
                         }}</div>
                         <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{
                             restaurant.delivery_price }} €</div>
+
+                        <!-- PLATE CATEGORY RESTAURANT -->
                         <h6 class="mb-1">Cosa trovi da loro:</h6>
                         <div class="row" v-for="type in restaurant.types">
-                            <div class="col"> {{ type.name }} </div>
+                            <div class="col text-start"> {{ type.name }} </div>
                         </div>
 
                         <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
@@ -161,9 +165,9 @@ export default {
                 </div>
             </div>
             <!-- <div v-else>
-                                                        Ops No restaurants available for these types!
-                                                        Change your Filter
-                                                    </div> -->
+                                                                                Ops No restaurants available for these types!
+                                                                                Change your Filter
+                                                                            </div> -->
         </div>
     </div>
     <!--onde bot-->

@@ -1,10 +1,10 @@
 <script>
-import btnCustomRounded from '../components/btnCustomRounded.vue';
+import btnCustomRoundedLarge from '../components/btnCustomRoundedLarge.vue';
 import { store } from '../store';
 
 export default {
     components: {
-        btnCustomRounded,
+        btnCustomRoundedLarge,
     },
     name: 'CartView',
     data() {
@@ -99,7 +99,7 @@ export default {
                         <!--TODO metti bottone props / pagamento-->
                         <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
                         <router-link :to="{ name: 'pagamento' }">
-                            <btnCustomRounded :disabled="store.cart.length == 0" text="Effetua Pagamento"
+                            <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
                                 iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
                                 @click="saveTotPrice()" />
                         </router-link>
@@ -172,6 +172,10 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+a{
+    text-decoration: none;
 }
 
 

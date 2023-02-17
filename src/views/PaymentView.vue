@@ -1,9 +1,14 @@
 <script>
 import cardValidator from 'card-validator';
 import axios from 'axios';
+import btnCustomRounded from '../components/btnCustomRounded.vue';
 import { store } from '../store.js';
+
 export default {
     name: 'PaymentView',
+    components: {
+    btnCustomRounded
+  },
     data() {
         return {
             store,
@@ -112,73 +117,115 @@ export default {
 
 
 <template>
-    <h1>pagamento</h1>
-    <div class="container">
-        <form @submit.prevent="sendForm()">
-            <div class="mb-3">
-                <label for="customer_name" class="form-label">Nome e Cognome</label>
-                <input v-model="customer_name" type="text" name="customer_name" id="customer_name" class="form-control"
-                    required>
-            </div>
-            <div class="mb-3">
-                <label for="delivery_address" class="form-label">indirizzo</label>
-                <input v-model="delivery_address" type="text" name="delivery_address" id="delivery_address"
-                    class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="phone_number" class="form-label">Numero di telefono</label>
-                <input v-model="phone_number" type="text" name="phone_number" id="phone_number" class="form-control"
-                    required>
-            </div>
+    <div class="container-fluid">
 
-            <div class="mb-3">
-                <label for="" class="form-label">numero carta di credito</label>
-                <input @keyup="credit_card_number()" type="text" v-model="this.card" class="form-control" name="" id=""
-                    aria-describedby="helpId" placeholder="" required>
-                <span v-for="data in this.array_number_card">
-                    <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
-                </span>
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">data di scadenza</label>
-                <input type="month" @change="this.credit_card_date()" class="form-control" v-model="this.date" name="" id=""
-                    aria-describedby="helpId" placeholder="" required>
-                <span v-for="data in this.array_date_card">
-                    <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
-                </span>
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">cvv</label>
-                <input @keyup="credit_card_cvv()" type="text" v-model="this.cvv" class="form-control" name="" id=""
-                    aria-describedby="helpId" placeholder="" required>
-                <span v-for="data in this.array_cvv_card">
-                    <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
-                </span>
-            </div>
-            <button type="submit"
-                :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid">paga</button>
-        </form>
+        <div class="container p-4">
+            <h1 class="text-uppercase">pagamento</h1>
+            <p class="mt-4 mb-4">Campi obbligatori (*)</p>
+            <strong class="mt-2 mb-2"></strong>
+            <form @submit.prevent="sendForm()">
+                <!-- NOME VISITATORE -->
+                <div class="mb-3">
+                    <label for="customer_name" class="form-label">Nome e Cognome (*)</label>
+                    <input v-model="customer_name" type="text" name="customer_name" id="customer_name"
+                        class="form-control" required>
+                </div>
+                <!-- INDIRIZZO VISITATORE -->
+                <div class="mb-3">
+                    <label for="delivery_address" class="form-label">Indirizzo (*)</label>
+                    <input v-model="delivery_address" type="text" name="delivery_address" id="delivery_address"
+                        class="form-control " required>
+                </div>
+                <!-- TELEFONO VISITATORE -->
+                <div class="mb-3">
+                    <label for="phone_number" class="form-label">Numero di telefono (*)</label>
+                    <input v-model="phone_number" type="text" name="phone_number" id="phone_number" class="form-control"
+                        required>
+                </div>
+                <!-- N° CARTA DI CREDITO VISITATORE -->
+                <div class="mb-3">
+                    <label for="" class="form-label">Numero carta di credito (*)</label>
+                    <input @keyup="credit_card_number()" type="text" v-model="this.card" class="form-control" name="" id=""
+                        aria-describedby="helpId" placeholder="" required>
+                    <span v-for="data in this.array_number_card">
+                        <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
+                    </span>
+                </div>
+                <!-- SCADENZA CARTA DI CREDITO VISITATORE -->
+                <div class="mb-3">
+                    <label for="" class="form-label">Data di scadenza (*)</label>
+                    <input type="month" @change="this.credit_card_date()" class="form-control" v-model="this.date" name=""
+                        id="" aria-describedby="helpId" placeholder="" required>
+                    <span v-for="data in this.array_date_card">
+                        <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
+                    </span>
+                </div>
+                <!-- CVV CARTA DI CREDITO VISITATORE -->
+                <div class="mb-3">
+                    <label for="" class="form-label">cvv (*)</label>
+                    <input @keyup="credit_card_cvv()" type="text" v-model="this.cvv" class="form-control" name="" id=""
+                        aria-describedby="helpId" placeholder="" required>
+                    <span v-for="data in this.array_cvv_card">
+                        <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
+                    </span>
+                </div>
+                <!-- BTN PAGA -->
+                <button type="submit" :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid" class="btn btn-primary text-uppercase mt-3 p-2">
+                    <span class="mx-3 payment">paga</span><i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                    
+            </form>
+        </div>
     </div>
 </template>
 
 
 
-<style>
+<style lang="scss" scoped>
+@use '../styles/partials/variables.scss' as *;
+
+h1{
+    color: $deliveboo-white;
+}
+
+p{
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.container-fluid {
+    background-image: url('../assets/img/backgrounds/sfondo.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 8rem;
+    padding-bottom: 5rem;
+}
+
+.container{
+    background-color: $deliveboo-primary-light;
+    border-radius: 1.5rem;
+    width: 800px;
+}
+.form-control {
+    width: 100%;
+
+}
+
 label {
     display: block;
-}
-
-h1 {
-    margin: 10rem;
-}
-
-.form-control {
-    width: 300px;
-    display: inline;
+    color: $deliveboo-dark;
+    font-size: 1.2rem;
 }
 
 .fa-exclamation {
-
     color: red;
 }
+
+.payment{
+    color: $deliveboo-white;
+    font-weight: bold;
+    letter-spacing: 0.25rem;
+    font-family: 'Unbounded', cursive;
+}
+
 </style>

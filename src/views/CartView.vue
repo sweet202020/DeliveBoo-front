@@ -76,8 +76,8 @@ export default {
                                     <div class="btn-txt">Aggiungi</div>
                                 </button>
 
-                                <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button> -->
-                                <!-- <button @click="store.addQuantity(prodotto, i)">+</button> -->
+                                <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
+                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -98,8 +98,11 @@ export default {
                     <div>
                         <!--TODO metti bottone props / pagamento-->
                         <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
-                        <btnCustomRounded text="Effetua Pagamento" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
-                            bg_hover="hover_blu_light" @click="saveTotPrice()" />
+                        <router-link :to="{ name: 'pagamento' }">
+                            <btnCustomRounded :disabled="store.cart.length == 0" text="Effetua Pagamento"
+                                iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                                @click="saveTotPrice()" />
+                        </router-link>
                     </div>
 
                 </div>
@@ -107,7 +110,7 @@ export default {
             </div>
 
         </div>
-</div>
+    </div>
 </template>
 
 
@@ -129,11 +132,13 @@ export default {
     /* min-height: 700px; */
 }
 
-h5, h6, span {
+h5,
+h6,
+span {
     color: $deliveboo-dark;
 }
 
-p{
+p {
     color: $deliveboo-dark;
 }
 

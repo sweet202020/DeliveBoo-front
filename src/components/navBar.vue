@@ -27,8 +27,8 @@ window.addEventListener('scroll', (e) => {
             <div class="container-fluid">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -64,8 +64,10 @@ window.addEventListener('scroll', (e) => {
                                     v-bind:class="[isActive ? activeClass : '', errorClass]"
                                 -->
                             <li class="nav-item d-flex position-relative">
-                                <i class="fa-solid fa-circle cart" v-if="store.cart.length !== 0"></i>
-                                <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }"><i
+                                <div v-if="store.cart.length !== 0"><i class="fa-solid fa-circle cart"></i></div>
+
+                                <router-link class="nav-link text-light" aria-current="page"
+                                    :to="{ name: 'carrello' }"><i
                                         class="fa-solid fa-cart-shopping me-3 color_icon"></i>carrello</router-link>
                             </li>
 

@@ -10,20 +10,38 @@ export default {
 
 <template>
     <jumbotronRestaurants />
-    <div class="container-fluid">
-
+    <div class="container-fluid success">
+        <div class="container title_category">
+            <h3>PAGAMENTO AVVENUTO CON SUCCESSO</h3>
+        </div>
+        <div class="pt-5">
+            <img class="standard" src="../../assets/img/wave.png" alt="">
+        </div>
     </div>
-
-    <h1>pagamento avvenuto con successo</h1>
-
 </template>
 
 <style lang="scss">
 @use '../styles/partials/variables.scss' as *;
 
-container-fluid{
-    background-image: url('../assets/img/backgrounds/sfondo.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
+.success{
+    min-height: 100px;  
 }
+
+.title_category {
+    border: 3px solid $deliveboo-primary-light;
+    background-color: $deliveboo-white;
+    color: $deliveboo-primary;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 9px $deliveboo-primary;
+    border-radius: 10px;
+    position: relative;
+    top: -150px;
+    //box-shadow: 3px 3px 9px $deliveboo-dark;
+    z-index: 100;
+    width: 70%;
+}
+
 </style>

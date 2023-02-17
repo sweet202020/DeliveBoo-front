@@ -170,9 +170,13 @@ export default {
                     </span>
                 </div>
                 <!-- BTN PAGA -->
-                <button type="submit" :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid" class="btn btn-primary text-uppercase mt-3 p-2">
+              
+
+                <router-link :to="{ name: 'success'}">
+                    <button type="submit" :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid" class="btn btn-primary text-uppercase mt-3 p-2">
                     <span class="mx-3 payment">paga</span><i class="fa-solid fa-cart-shopping"></i>
                 </button>
+                        </router-link>
                     
             </form>
         </div>
@@ -191,6 +195,13 @@ h1{
 p{
     font-weight: bold;
     font-size: 1.3rem;
+}
+
+a{
+    background-color: transparent;
+    &:hover{
+        background-color: transparent;
+    }
 }
 
 .container-fluid {

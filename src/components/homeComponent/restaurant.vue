@@ -79,7 +79,7 @@ export default {
     .standard {
         width: 100%;
         height: 100px;
-        -webkit-transform: scaleX(-1);
+  /*       -webkit-transform: scaleX(-1); */
     }
 
     .bg_img {

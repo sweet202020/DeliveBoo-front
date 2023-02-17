@@ -113,20 +113,20 @@ export default {
         <btnCustomRounded text="Applica filtri" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light"
             @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" class="mt-5" />
         <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                                                        class="btn btn-primary">SUBMIT</button> -->
+                                                                                class="btn btn-primary">SUBMIT</button> -->
     </div>
     <!--  <div class="d-flex">
-                                        <ul>
+                                                <ul>
 
-                                            <li v-for="category in categories">
-                                                <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                                                {{
-                                                    category.name
-                                                }}
-                                            </li>
-                                        </ul>
-                                        <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-                                    </div> -->
+                                                    <li v-for="category in categories">
+                                                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                                                        {{
+                                                            category.name
+                                                        }}
+                                                    </li>
+                                                </ul>
+                                                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+                                            </div> -->
 
     <!-- ELENCO RISTORANTI -->
     <div class="container bg_img my-5 pt-3 text-start">
@@ -142,7 +142,7 @@ export default {
                         <img class="card-img" src="https://picsum.photos/300/300" alt="placeholder">
                     </div>
                     <!-- DETAILS RESTAURANT -->
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column bg-success">
                         <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
                         <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> {{ restaurant.address
                         }}</div>
@@ -151,23 +151,29 @@ export default {
                         <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{
                             restaurant.delivery_price }} €</div>
 
+                    </div>
                         <!-- PLATE CATEGORY RESTAURANT -->
-                        <h6 class="mb-1">Cosa trovi da loro:</h6>
-                        <div class="row" v-for="type in restaurant.types">
-                            <div class="col text-start"> {{ type.name }} </div>
+                        <div class="categories bg-primary p-3">
+                            <h6 class="mb-1">Cosa trovi da loro:</h6>
+                            <div class="row" v-for="type in restaurant.types">
+                                <div class="col text-start"> {{ type.name }} </div>
+                            </div>
+
+                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                                <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                    bg_hover="hover_blu_light" />
+                            </router-link>
                         </div>
 
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                bg_hover="hover_blu_light" />
-                        </router-link>
-                    </div>
+
                 </div>
             </div>
+
+
             <!-- <div v-else>
-                                                                                Ops No restaurants available for these types!
-                                                                                Change your Filter
-                                                                            </div> -->
+                                                                                        Ops No restaurants available for these types!
+                                                                                        Change your Filter
+                                                                                    </div> -->
         </div>
     </div>
     <!--onde bot-->

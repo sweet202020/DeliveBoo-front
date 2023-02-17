@@ -100,10 +100,10 @@ export default {
     </div>
 
     <!-- ELENCO CATEGORIE -->
-    <div class="container text-center">
+    <div class="container category text-center">
         <!-- SECTION CATEGORY -->
-        <div class="row row-cols-3 row-cols-md-5 row-cols-lg-auto">
-            <div class="col bg-danger card_category " v-for="category, i in categories"
+        <div class="row row-cols-4 row-cols-md-6 row-cols-lg-auto justify-content-around">
+            <div class="col card_category m-1" v-for="category, i in categories"
                 @click="this.filter.includes(category.name) ? this.filter.splice(filter.indexOf(category.name), 1) : this.filter.push(category.name)"
                 :class="this.filter.includes(category.name) ? 'selected' : ''">
                 <img :src="getImageUrl(category.url)" alt="">
@@ -113,20 +113,20 @@ export default {
         <btnCustomRounded text="Applica filtri" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light"
             @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" />
         <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                            class="btn btn-primary">SUBMIT</button> -->
+                                                class="btn btn-primary">SUBMIT</button> -->
     </div>
     <!--  <div class="d-flex">
-            <ul>
+                <ul>
 
-                <li v-for="category in categories">
-                    <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                    {{
-                        category.name
-                    }}
-                </li>
-            </ul>
-            <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-        </div> -->
+                    <li v-for="category in categories">
+                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                        {{
+                            category.name
+                        }}
+                    </li>
+                </ul>
+                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+            </div> -->
     <!-- ELENCO RISTORANTI -->
     <!--card ristoranti-->
     <div class="container bg_img my-5 pt-3 text-start align-items-stretch">
@@ -152,7 +152,7 @@ export default {
                         <div class="row" v-for="type in restaurant.types">
                             <div class="col"> {{ type.name }} </div>
                         </div>
-                                 
+
                         <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
                             <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                                 bg_hover="hover_blu_light" />
@@ -161,15 +161,15 @@ export default {
                 </div>
             </div>
             <!-- <div v-else>
-                                                    Ops No restaurants available for these types!
-                                                    Change your Filter
-                                                </div> -->
+                                                        Ops No restaurants available for these types!
+                                                        Change your Filter
+                                                    </div> -->
         </div>
     </div>
     <!--onde bot-->
     <div class="pt-5">
         <img class="standard" src="../assets/img/wave.png" alt="">
-</div>
+    </div>
 </template>
 
 
@@ -237,7 +237,6 @@ h4 {
         height: 80px;
         transition: 0.5s;
     }
-
 }
 
 .restaurant {
@@ -254,7 +253,6 @@ h4 {
     a {
         text-decoration: none;
     }
-
 }
 
 .aspect_ratio {
@@ -264,6 +262,5 @@ h4 {
 .card-img {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-
 }
 </style>

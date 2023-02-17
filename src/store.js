@@ -54,21 +54,29 @@ export const store = reactive({
 
 
     addPlate(plate) {
+
+
+
         if (store.cart.length == 0) {
             store.cart.push(plate);
 
         } else {
-            store.cart.forEach(singlePlate => {
+            for (let i = 0; i < store.cart.length; i++) {
+                const singlePlate = store.cart[i];
                 if (plate.restaurant_id == singlePlate.restaurant_id) {
                     store.cart.push(plate);
-                } else {
+                    break
+                }
+                else {
                     this.error = true
                     setTimeout(() => {
                         this.error = false
                     }, 3000);
                 }
-            });
+            }
         }
+
+
         for (let i = 0; i < store.cart.length; i++) {
             store.cart[i].quantita = 1
         }
@@ -102,7 +110,7 @@ export const store = reactive({
         let totalEl = []
         for (let i = 0; i < store.cart.length; i++) {
             let element = store.cart[i];
-            if (!element.quantita) {
+            if (element.quantita == 1) {
                 element.prezzoXquantita = element.price
             }
             totalEl.push(element.prezzoXquantita)

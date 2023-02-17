@@ -69,17 +69,20 @@ export default {
             console.log(cvv);
         },
         sendForm() {
-            // let order_plate = []
-            // for (let i = 0; i < store.cart.length; i++) {
-            //     const element = store.cart[i];
+
+            let shopping_basket = JSON.parse(localStorage.getItem('cart'))
+            console.log(shopping_basket);
+            // for (let i = 0; i < shopping_basket.length; i++) {
+            //     const element = shopping_basket[i]
             //     order_plate.push([element.id, element.quantita])
+            //     console.log(element.id);
             // }
             const data = {
                 customer_name: this.customer_name,
                 delivery_address: this.delivery_address,
                 phone_number: this.phone_number,
                 price: this.totalPrice,
-                // order_plate: order_plate
+                order_plate: shopping_basket
             }
             //console.log(data.price);
 
@@ -155,7 +158,7 @@ export default {
             <button type="submit"
                 :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid">paga</button>
         </form>
-</div>
+    </div>
 </template>
 
 

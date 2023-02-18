@@ -102,9 +102,9 @@ export default {
         </div>
 
         <!-- SECTION CATEGORY -->
-        <div class="container text-center bg-dark">
+        <div class="container text-center">
             <!-- ICON CATEGORIES -->
-            <div class="row row-cols-4 row-cols-md-6 row-cols-lg-auto justify-content-evenly bg-danger">
+            <div class="row row-cols-4 row-cols-md-6 row-cols-lg-auto justify-content-around">
                 <div class="col card_category" v-for="category, i in categories"
                     @click="this.filter.includes(category.name) ? this.filter.splice(filter.indexOf(category.name), 1) : this.filter.push(category.name)"
                     :class="this.filter.includes(category.name) ? 'selected' : ''">
@@ -117,7 +117,7 @@ export default {
             <btnCustomRounded text="Applica filtri" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                 bg_hover="hover_blu_light"
                 @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                class="btn_filter" />
+                class="btn_filter ms-1" />
             <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
                                                                                                         class="btn btn-primary">SUBMIT</button> -->
         </div>
@@ -135,9 +135,9 @@ export default {
                                                                     </div> -->
 
         <!-- ELENCO RISTORANTI -->
-        <div class="container bg_img my-5 pt-3 text-start">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-between">
-                <div class="col my-2 d-flex align-items-stretch" v-for="restaurant in store.restaurants">
+        <div class="container bg_img my-5 text-start">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                <div class="col my-3 d-flex align-items-stretch" v-for="restaurant in store.restaurants">
                     <div class="card restaurant">
 
                         <!-- COVER IMAGE -->
@@ -145,21 +145,23 @@ export default {
                             <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
                         </div>
                         <div v-else>
-                            <img class="card-img p-2" src="../assets/img/placeholder/placehorder_tondo.png"
+                            <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png"
                                 alt="placeholder">
                         </div>
+
                         <!-- DETAILS RESTAURANT -->
-                        <div class="card-body d-flex flex-column bg-success">
+                        <div class="card-body d-flex flex-column">
                             <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
                             <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i>{{ restaurant.address }}</div>
                             <div class="text"><i class="fa-regular fa-clock aspect_ratio me-2"></i> {{ restaurant.opening_time }}</div>
                             <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{ restaurant.delivery_price }} €</div>
                         </div>
+
                         <!-- PLATE CATEGORY RESTAURANT -->
-                        <div class="categories bg-primary p-3">
-                            <h6 class="mb-1">Cosa trovi da loro:</h6>
+                        <div class="categories px-3">
+                            <h5 class="mb-1">Cosa trovi da loro:</h5>
                             <div class="row" v-for="type in restaurant.types">
-                                <div class="col text-start"> {{ type.name }} </div>
+                                <div class="col text-start text_categories"> {{ type.name }} </div>
                             </div>
 
                             <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
@@ -177,11 +179,6 @@ export default {
                   </div> -->
             </div>
         </div>
-        <!--onde bot-->
-        <div class="pt-5">
-            <img class="standard" src="../assets/img/wave.png" alt="">
-        </div>
-
     </div>
 </template>
 
@@ -240,7 +237,15 @@ h2 {
 
 h4 {
     color: $deliveboo-primary;
-    font-size: 1.7rem;
+    font-size: 2rem;
+}
+
+h5, .text_categories{
+    color: $deliveboo-dark;
+}
+
+.text_categories{
+    font-size: 1.35rem;
 }
 
 .card_category {
@@ -271,7 +276,7 @@ h4 {
 
     .text {
         color: $deliveboo-dark;
-        font-size: 1.1rem;
+        font-size: 1.3rem;
     }
 
     a {
@@ -288,6 +293,7 @@ h4 {
     border-bottom-right-radius: 0;
 }
 
+
 a {
     background-color: transparent;
 }
@@ -298,24 +304,42 @@ a {
 }
 
 
-
+/* responsive tablet */
 @media screen and (max-width: 768px) {
-    .prova {
+/*     .prova {
         background-color: lightgreen;
-    }
+    } */
 
     h6{
         font-size: 0.9rem;
     }
+
+    .text_categories{
+        
+        font-size: 1.3rem;
+    }
+
+
 }
 
+/* responsive mobile */
 @media screen and (max-width: 390px) {
-    .prova {
+/*     .prova {
         background-color: violet;
-    }
+    } */
 
     h6{
         font-size: 0.7rem;
+    }
+
+    .text{
+        font-size: 2rem;
+        color: red;
+    }
+
+    .text_categories{
+        
+        font-size: 1.2rem;
     }
 }
 

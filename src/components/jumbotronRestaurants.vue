@@ -63,7 +63,6 @@ export default {
 
 
 
-
 /*#region jumbo-effect */
 .wrapper span {
     position: absolute;

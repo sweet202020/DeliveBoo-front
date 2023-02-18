@@ -35,26 +35,27 @@ export default {
 </script>
 
 <template>
-    <div class="box ">
+    <div class="box">
         <!--onde top-->
-        <div>
-            <img class="rotate" src="../../assets/img/wave.png" alt="">
+        <div class="mt-5 ">
+            <img class="rotate standard" src="../../assets/img/wave.png" alt="">
         </div>
-        <!--card ristoranti-->
-        <div class="container bg_img my-5 text-center">
-            <h2>I nostri suggerimenti</h2>
-            <h3 class="my-5">Ristoranti popolari</h3>
-            <div class="row row-cols-2 row-cols-md-3">
 
-
-                <!--card ristoranti--> <!--TODO fare cilco componente-->
-                <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
-                    info="info" description="bello bello" />
-
-            </div>
+        <div class="bubble">
         </div>
+
+        <!--  card ristoranti
+                    <div class="container bg_img my-5 p-5 text-center">
+                        <h2>I nostri suggerimenti</h2>
+                            <h3 class="my-5">Ristoranti popolari</h3>
+                        <div class="row row-cols-2 row-cols-md-3">
+                            card ristoranti TODO fare cilco componente
+                             <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                                    info="info" description="bello bello" />
+                        </div>
+                    </div> -->
         <!--onde bot-->
-        <div class="pt-5">
+        <div class="pt-5 mb-5">
             <img class="standard" src="../../assets/img/wave.png" alt="">
         </div>
     </div>
@@ -94,6 +95,36 @@ export default {
 
     h3 {
         color: $deliveboo-dark;
+    }
+
+    .bubble {
+        height: 240px;
+    }
+
+}
+
+
+
+/* responsive tablet */
+@media screen and (max-width: 768px) {
+    .box {
+
+        .bubble {
+            height: 160px;
+        }
+
+    }
+}
+
+
+/* responsive mobile */
+@media screen and (max-width: 390px) {
+    .box {
+
+        .bubble {
+            height: 80px;
+        }
+
     }
 }
 </style>

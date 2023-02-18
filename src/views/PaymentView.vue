@@ -103,12 +103,14 @@ export default {
                         this.date = ''
                         this.card = ''
                         this.cvv = ''
+                        store.emptyCart()
+                        this.$router.push({ name: 'success' })
                     }
                 })
                 .catch(error => {
                     console.log(error.message);
                 })
-            store.cart = []
+
         },
 
     },
@@ -172,12 +174,10 @@ export default {
                 <!-- BTN PAGA -->
 
 
-                <!-- <router-link :to="{ name: 'success'}"> -->
                 <button type="submit" :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid"
                     class="btn btn-primary text-uppercase mt-3 p-2">
                     <span class="mx-3 payment">paga</span><i class="fa-solid fa-cart-shopping"></i>
                 </button>
-                <!-- </router-link> -->
 
             </form>
         </div>

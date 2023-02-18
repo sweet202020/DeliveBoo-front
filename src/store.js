@@ -120,4 +120,8 @@ export const store = reactive({
         return totalPrice
 
     },
+    emptyCart() {
+        this.cart = []
+        localStorage.clear()
+    }
 })

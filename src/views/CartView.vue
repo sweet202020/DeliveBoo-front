@@ -48,8 +48,8 @@ export default {
                         <div class="row">
                             <!--img prodotto-->
                             <!--  <div class="col image p-2 bg-danger">
-                                                                <img :src="prodotto.img" alt="">
-                                                            </div> -->
+                                                                                <img :src="prodotto.img" alt="">
+                                                                            </div> -->
                             <!--Caratteristiche prodotto-->
                             <div class="col article_detail ms-3 p-3">
                                 <div>
@@ -77,7 +77,7 @@ export default {
                                 </button>
 
                                 <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
+                                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -103,6 +103,8 @@ export default {
                                 iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
                                 @click="saveTotPrice()" />
                         </router-link>
+                        <btnCustomRoundedLarge @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                            text="Svuota carrello" />
                     </div>
 
                 </div>
@@ -174,7 +176,7 @@ p {
     justify-content: space-between;
 }
 
-a{
+a {
     text-decoration: none;
 }
 

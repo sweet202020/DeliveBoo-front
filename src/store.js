@@ -11,13 +11,12 @@ export const store = reactive({
     singleRestaurant: null,
     alert: false,
     error: false,
-    deliveryPrice: localStorage.getItem('saveDeliveryPrice'),
+    deliveryPrice: '',
 
     callApiPlates(url) {
         axios.get(url)
             .then(response => {
                 this.platesNew = response.data.results.plates;
-                console.log(this.platesNew);
             })
     },
     callApiRestaurants(url) {
@@ -25,7 +24,6 @@ export const store = reactive({
         axios.get(url)
             .then(response => {
                 this.restaurants = response.data.results;
-                console.log(this.restaurants);
             })
     },
     callApiSingleRestaurant(url) {
@@ -33,21 +31,9 @@ export const store = reactive({
         axios.get(url)
             .then(response => {
                 this.singleRestaurant = response.data.results;
-                // console.log(this.restaurants);
             })
-        console.log(this.singleRestaurant);
     },
-    filterType() {
-        //NEEDS TO MAKE A SINGLE CALL API OTHERWISE IT WILL REWRITE THIS.RESTAURANTS
-        //WE NEED TO CHANGE THE ROUTE API AND HIS METHOD IN THE RESTAURANTCONTROLLER IN BACKOFFICE
-        //THE ROUTE API NEEDS TO ACCEPT MORE PARAMETERS, AS MUCH AS THE NUMBER OF ELEMENTS HERE
-        //EXAMPLE = https://localhost/api/restaurants/filter/name=pizza&name=pasta&name=carne  
-        this.filterTypes.forEach(element => {
-            console.log(element);
-            //console.log(this.restaurants)
-            this.callApiRestaurants(this.API_URL + 'api/restaurants/filter/' + element)
-        });
-    },
+
     saveCart() {
         let parsed = JSON.stringify(store.cart);
         localStorage.setItem('cart', parsed);
@@ -86,6 +72,7 @@ export const store = reactive({
         setTimeout(() => {
             this.alert = false
         }, 2000);
+        this.deliveryPrice = localStorage.getItem('saveDeliveryPrice')
         store.saveCart();
     },
     addQuantity(prodotto) {
@@ -125,6 +112,7 @@ export const store = reactive({
     },
     emptyCart() {
         this.cart = []
+        this.deliveryPrice = ''
         localStorage.clear()
     },
 })

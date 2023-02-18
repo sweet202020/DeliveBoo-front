@@ -92,14 +92,10 @@ export default {
         saveTotDelivery() {
             const save = store.singleRestaurant.delivery_price
             this.saveDeliveryPrice = (save)
-            console.log(this.saveDeliveryPrice);
             this.saveDelivery()
 
         },
-    },/*  mounted() {
-        store.filterType()
     }
- */
 }
 </script>
 
@@ -130,22 +126,7 @@ export default {
                 bg_hover="hover_blu_light"
                 @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
                 class="btn_filter ms-1" />
-            <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                                                                                                                class="btn btn-primary">SUBMIT</button> -->
         </div>
-        <!--  <div class="d-flex">
-                                                                                                <ul>
-
-                                                                                                    <li v-for="category in categories">
-                                                                                                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                                                                                                        {{
-                                                                                                            category.name
-                                                                                                        }}
-                                                                                                    </li>
-                                                                                                </ul>
-                                                                                                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-                                                                                            </div> -->
-
         <!-- ELENCO RISTORANTI -->
         <div class="container bg_img my-5 text-start">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
@@ -195,9 +176,9 @@ export default {
 
 
                 <!-- <div v-else>
-                                          Ops No restaurants available for these types!
-                                         Change your Filter
-                                          </div> -->
+                                                      Ops No restaurants available for these types!
+                                                     Change your Filter
+                                                      </div> -->
             </div>
         </div>
     </div>

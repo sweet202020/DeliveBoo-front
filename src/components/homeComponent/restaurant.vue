@@ -14,7 +14,7 @@ export default {
             store,
             test: null
         }
-        
+
     },
 
     methods: {
@@ -23,19 +23,18 @@ export default {
                 .then(response => {
                     this.test = response.data.results.data;
                     console.log(this.test, 'test');
-                    console.log(response.data.results.data ,'io');
+                    console.log(response.data.results.data, 'io');
                 })
         }
     },
 
     mounted() {
-        this.callApi(store.API_URL + 'api/restaurants')
+
     }
 } 
 </script>
 
 <template>
-
     <div class="box ">
         <!--onde top-->
         <div>
@@ -47,11 +46,11 @@ export default {
             <h3 class="my-5">Ristoranti popolari</h3>
             <div class="row row-cols-2 row-cols-md-3">
 
-                                
+
                 <!--card ristoranti--> <!--TODO fare cilco componente-->
-                <cardRestaurant  v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name" info="info"
-                    description="bello bello" />
-        
+                <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                    info="info" description="bello bello" />
+
             </div>
         </div>
         <!--onde bot-->
@@ -79,7 +78,7 @@ export default {
     .standard {
         width: 100%;
         height: 100px;
-  /*       -webkit-transform: scaleX(-1); */
+        /*       -webkit-transform: scaleX(-1); */
     }
 
     .bg_img {

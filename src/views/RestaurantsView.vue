@@ -168,10 +168,15 @@ export default {
                                 <div class="col text-start text_categories"> {{ type.name }} </div>
                             </div>
 
-                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+
+                           
+
+                            <div class="bg-dark">
+                                <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
                                 <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                                     bg_hover="hover_blu_light" />
                             </router-link>
+                            </div>
                         </div>
                     </div>
                 </div>

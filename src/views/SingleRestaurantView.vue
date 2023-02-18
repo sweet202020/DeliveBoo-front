@@ -38,112 +38,153 @@ export default {
   <navBar />
   <jumbotronMenu />
 
-  <div class="container py-5 position-realtive">
-    <div class="row row-cols-1 row-cols-lg-2 g-5">
+  <div class="container py-1 position-realtive">
 
-      <!--RESTAURANT DETAILS -->
-      <div class="col restaurant_details p-4" v-if="store.singleRestaurant">
-
-        <div class="row row-cols-1 row-cols-lg-2 g-4">
-          <!-- COVER IMAGE -->
-          <div class="col">
-            <div v-if="store.singleRestaurant.cover_image">
-              <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
+    <!--CONTAINER - RESTAURANT DETAILS -->
+    <div class="container">
+      <div class="row row-cols-1 row-cols-lg-2 g-5">
+        <!--RESTAURANT DETAILS -->
+        <div class="col restaurant_details p-4" v-if="store.singleRestaurant">
+          <div class="row row-cols-1 row-cols-lg-2 g-4">
+            <!-- COVER IMAGE -->
+            <div class="col">
+              <div v-if="store.singleRestaurant.cover_image">
+                <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
+              </div>
+              <div v-else>
+                <img class="placeholder" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
+              </div>
             </div>
-            <div v-else>
-              <img class="placeholder" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
+            <!-- DESCRIPTION -->
+            <div class="col">
+              <div>
+                <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
+                <div class="font_size d-flex justify-cont">
+                  <div class="mx-3"><i class="fa-solid fa-location-dot color"></i></div>
+                  <div>{{ store.singleRestaurant.address }}</div>
+                </div>
+                <div class="font_size d-flex">
+                  <div class="mx-3"><i class="fa-regular fa-clock color"></i></div>
+                  <div>{{ store.singleRestaurant.opening_time }}</div>
+                </div>
+                <div class="font_size d-flex">
+                  <div class="mx-3"><i class="fa-solid fa-bicycle color"></i></div>
+                  <div> Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+                </div>
+              </div>
             </div>
           </div>
-          <!-- DESCRIPTION -->
-          <div class="col">
-            <div>
-              <h3 class="pb-2">{{ store.singleRestaurant.restaurant_name }}</h3>
-              <div class="font_size d-flex justify-cont">
-                <div class="mx-3"><i class="fa-solid fa-location-dot color"></i></div>
-                <div>{{ store.singleRestaurant.address }}</div>
-              </div>
-              <div class="font_size d-flex">
-                <div class="mx-3"><i class="fa-regular fa-clock color"></i></div>
-                <div>{{ store.singleRestaurant.opening_time }}</div>
-              </div>
-              <div class="font_size d-flex">
-                <div class="mx-3"><i class="fa-solid fa-bicycle color"></i></div>
-                <div> Consegna {{ store.singleRestaurant.delivery_price }} €</div>
-              </div>
-            </div>
-          </div>
+
         </div>
 
+        <!-- ORDER DETAILS -->
+        <!-- <div class="col"> -->
+        <!-- CARD -->
+        <!-- <div class="order_details p-4">
+                            <h3>Riepilogo ordine</h3>
+                            <div class="font_size mt-3">Prodotti €</div>
+                            <div v-if="store.singleRestaurant">
+                              <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+                            </div> -->
+        <!-- BUTTON -->
+        <!--    <div class="d-flex justify-content-end pt-3">
+                              <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
+                                bg_hover="hover_blu_light" />
+                            </div>
+                          </div>
+                        </div> -->
       </div>
-
-      <!-- ORDER DETAILS -->
-      <!-- <div class="col"> -->
-      <!-- CARD -->
-      <!-- <div class="order_details p-4">
-                    <h3>Riepilogo ordine</h3>
-                    <div class="font_size mt-3">Prodotti €</div>
-                    <div v-if="store.singleRestaurant">
-                      <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
-                    </div> -->
-      <!-- BUTTON -->
-      <!--    <div class="d-flex justify-content-end pt-3">
-                      <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
-                        bg_hover="hover_blu_light" />
-                    </div>
-                  </div>
-                </div> -->
     </div>
 
-    <div class="row row-cols-1 row-cols-md-2">
-      <!-- ALERTS -->
-      <div class="col position-relative">
-        <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-          <strong>Articolo aggiunto al carrello</strong>
-        </div>
-        <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-          <strong>Non puoi ordinare da due ristoranti diversi</strong>
-          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-            text="Vuoi svuotare il carrello? Clicca qui" />
-        </div>
-        <!-- PLATES LIST -->
-        <section class="plates mb-5 pb-5">
-          <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> I notri piatti:</h3>
-          <div v-for="plate in store.platesNew">
-            <div v-if="plate.category_id === 1">
-              <div class="card_plate my-4 p-3">
-                <div class="d-flex justify-content-between mb-2">
-                  <h5 class="name">{{ plate.name }}</h5>
-                  <h5 class="price">{{ plate.price }} €</h5>
-                </div>
-                <p class="ingredients">{{ plate.description }}</p>
-                <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                    class="fa-solid fa-plus"></i></div>
-              </div>
-            </div>
-          </div>
 
-        </section>
-      </div>
+    <!--CONTAINER - PLATES & DRINKS LIST -->
 
-      <!-- DRINKS LIST -->
-      <div class="col">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-2">
         <!-- ALERTS -->
-        <section class="plates mb-5 pb-5">
-          <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
-          <div v-for="plate in store.platesNew">
-            <div v-if="plate.category_id === 2">
-              <div class="card_plate my-4 p-3">
-                <div class="d-flex justify-content-between mb-2">
-                  <h5 class="name">{{ plate.name }}</h5>
-                  <h5 class="price">{{ plate.price }} €</h5>
-                </div>
-                <p class="ingredients">{{ plate.description }}</p>
-                <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                    class="fa-solid fa-plus"></i></div>
+        <div class="col position-relative">
+          <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+              <strong>Articolo aggiunto al carrello</strong>
+            </div>
+            <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
+              <strong>Non puoi ordinare da due ristoranti diversi</strong>
+              <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                text="Vuoi svuotare il carrello? Clicca qui" />
+            </div> -->
+          <!-- PLATES LIST -->
+          <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> I nostri piatti:</h3>
+
+          <div class="row card_plate my-4" v-for="plate in store.platesNew">
+            
+            <div class="col-4 p-3" v-if="plate.category_id === 1">
+              <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
+            </div>
+            <div class="col-8 p-3" v-if="plate.category_id === 1">
+              <div class="d-flex justify-content-between mb-2">
+                <h5 class="name">{{ plate.name }}</h5>
+                <h5 class="price">{{ plate.price }} €</h5>
+              </div>
+              <p class="ingredients">{{ plate.description }}</p>
+              <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
+                  class="fa-solid fa-plus"></i>
               </div>
             </div>
           </div>
-        </section>
+
+
+    <!--       <div class=" mb-5 pb-5 bg-dark">
+              <div v-for="plate in store.platesNew">
+                <div v-if="plate.category_id === 1">
+                  <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
+                  <div class="card_plate my-4 p-3">
+                    <div class="d-flex justify-content-between mb-2 bg-danger">
+                      <h5 class="name">{{ plate.name }}</h5>
+                      <h5 class="price">{{ plate.price }} €</h5>
+                    </div>
+                    <p class="ingredients">{{ plate.description }}</p>
+                    <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
+                        class="fa-solid fa-plus"></i></div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+        </div>
+
+        <!-- DRINKS LIST -->
+        <div class="col">
+          <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
+          <div class="row card_plate my-4 mx-2" v-for="plate in store.platesNew">
+            <div class="col-4 p-3" v-if="plate.category_id === 2">
+              <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
+            </div>
+            <div class="col-8 p-3" v-if="plate.category_id === 2">
+              <div class="d-flex justify-content-between mb-2">
+                <h5 class="name">{{ plate.name }}</h5>
+                <h5 class="price">{{ plate.price }} €</h5>
+              </div>
+              <p class="ingredients">{{ plate.description }}</p>
+              <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
+                  class="fa-solid fa-plus"></i>
+              </div>
+            </div>
+          </div>
+          <!--  <section class=" mb-5 pb-5">
+              <div v-for="plate in store.platesNew">
+                <div v-if="plate.category_id === 2">
+                  <div class="card_plate my-4 p-3">
+                    <div class="d-flex justify-content-between mb-2">
+                      <h5 class="name">{{ plate.name }}</h5>
+                      <h5 class="price">{{ plate.price }} €</h5>
+                    </div>
+                    <p class="ingredients">{{ plate.description }}</p>
+                    <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
+                        class="fa-solid fa-plus"></i></div>
+                  </div>
+                </div>
+              </div>
+            </section> -->
+        </div>
       </div>
     </div>
   </div>
@@ -152,6 +193,10 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
+
+.debug {
+  border: 3px solid violet;
+}
 
 .color {
   color: $deliveboo-primary;
@@ -172,6 +217,12 @@ h3 {
 h5 {
   font-size: 1.4rem;
   color: $deliveboo-dark;
+}
+
+img {
+  width: 100%;
+  max-width: 100px;
+  margin: auto;
 }
 
 .placeholder {

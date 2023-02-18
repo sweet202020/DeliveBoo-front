@@ -51,7 +51,7 @@ export default {
               <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
             </div>
             <div v-else>
-              <img src="https://via.placeholder.com/200x200.png?text=no+image" alt="placeholder">
+              <img class="placeholder" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
             </div>
           </div>
           <!-- DESCRIPTION -->
@@ -264,6 +264,10 @@ h5 {
   align-items: center;
   justify-content: center;
   font-size: x-large;
+}
+
+.placeholder{
+  border: 2px solid $deliveboo-dark;
 }
 </style>
 

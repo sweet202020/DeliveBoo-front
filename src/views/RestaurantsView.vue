@@ -273,4 +273,8 @@ h4 {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
+
+a{
+    background-color: transparent;
+}
 </style>

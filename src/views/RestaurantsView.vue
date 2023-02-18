@@ -100,10 +100,10 @@ export default {
     </div>
 
     <!-- ELENCO CATEGORIE -->
-    <div class="container text-center">
+    <div class="container category text-center">
         <!-- SECTION CATEGORY -->
-        <div class="row ">
-            <div class="col card_category p-2 me-2 ms-2" v-for="category, i in categories"
+        <div class="row row-cols-4 row-cols-md-6 row-cols-lg-auto justify-content-around">
+            <div class="col card_category m-1" v-for="category, i in categories"
                 @click="this.filter.includes(category.name) ? this.filter.splice(filter.indexOf(category.name), 1) : this.filter.push(category.name)"
                 :class="this.filter.includes(category.name) ? 'selected' : ''">
                 <img :src="getImageUrl(category.url)" alt="">
@@ -111,36 +111,38 @@ export default {
             </div>
         </div>
         <btnCustomRounded text="Applica filtri" iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light"
-            @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" />
+            @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)" class="mt-5" />
         <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                            class="btn btn-primary">SUBMIT</button> -->
+                                                                                class="btn btn-primary">SUBMIT</button> -->
     </div>
     <!--  <div class="d-flex">
-            <ul>
+                                                <ul>
 
-                <li v-for="category in categories">
-                    <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                    {{
-                        category.name
-                    }}
-                </li>
-            </ul>
-            <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-        </div> -->
+                                                    <li v-for="category in categories">
+                                                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                                                        {{
+                                                            category.name
+                                                        }}
+                                                    </li>
+                                                </ul>
+                                                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+                                            </div> -->
+
     <!-- ELENCO RISTORANTI -->
-    <!--card ristoranti-->
-    <div class="container bg_img my-5 pt-3 text-start align-items-stretch">
-        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-3 align-items-stretch">
-            <div class="col" v-for="restaurant in store.restaurants">
+    <div class="container bg_img my-5 pt-3 text-start">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 justify-content-between">
+            <div class="col my-2 d-flex align-items-stretch" v-for="restaurant in store.restaurants">
                 <div class="card restaurant">
+
                     <!-- COVER IMAGE -->
                     <div v-if="restaurant.cover_image">
                         <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
                     </div>
                     <div v-else>
-                        <img class="card-img" src="https://picsum.photos/300/300" alt="placeholder">
+                        <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
                     </div>
-                    <div class="card-body">
+                    <!-- DETAILS RESTAURANT -->
+                    <div class="card-body d-flex flex-column bg-success">
                         <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
                         <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> {{ restaurant.address
                         }}</div>
@@ -148,28 +150,36 @@ export default {
                         }}</div>
                         <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{
                             restaurant.delivery_price }} €</div>
-                        <h6 class="mb-1">Cosa trovi da loro:</h6>
-                        <div class="row" v-for="type in restaurant.types">
-                            <div class="col"> {{ type.name }} </div>
-                        </div>
-                                 
-                        <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                            <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                bg_hover="hover_blu_light" />
-                        </router-link>
+
                     </div>
+                        <!-- PLATE CATEGORY RESTAURANT -->
+                        <div class="categories bg-primary p-3">
+                            <h6 class="mb-1">Cosa trovi da loro:</h6>
+                            <div class="row" v-for="type in restaurant.types">
+                                <div class="col text-start"> {{ type.name }} </div>
+                            </div>
+
+                            <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                                <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                    bg_hover="hover_blu_light" />
+                            </router-link>
+                        </div>
+
+
                 </div>
             </div>
+
+
             <!-- <div v-else>
-                                                    Ops No restaurants available for these types!
-                                                    Change your Filter
-                                                </div> -->
+                                                                                        Ops No restaurants available for these types!
+                                                                                        Change your Filter
+                                                                                    </div> -->
         </div>
     </div>
     <!--onde bot-->
     <div class="pt-5">
         <img class="standard" src="../assets/img/wave.png" alt="">
-</div>
+    </div>
 </template>
 
 
@@ -237,7 +247,6 @@ h4 {
         height: 80px;
         transition: 0.5s;
     }
-
 }
 
 .restaurant {
@@ -254,7 +263,6 @@ h4 {
     a {
         text-decoration: none;
     }
-
 }
 
 .aspect_ratio {
@@ -264,6 +272,9 @@ h4 {
 .card-img {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+}
 
+a{
+    background-color: transparent;
 }
 </style>

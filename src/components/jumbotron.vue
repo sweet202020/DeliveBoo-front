@@ -56,11 +56,11 @@ export default {
                     </div>
                 </div>
 
-                <div class="bg-jumbo col d-flex justify-content-center">
+                <div class="bg-jumbo col d-flex justify-content-center align-items-center">
                     <div>
                         <h1 class="fw-bolder">Il cibo che vuoi tu, <br> dove vuoi tu</h1>
                         <router-link :to="{ name: 'restaurants' }">
-                                    <btnCustomRounded text="Trova ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                    <btnCustomRounded text="Ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                                         bg_hover="hover_blu_light" />
                                 </router-link>
                        

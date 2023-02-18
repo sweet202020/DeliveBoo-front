@@ -7,6 +7,7 @@ export default{
         iconFw: String,
         bg_btn: String,
         bg_hover:String,
+
     }
 }
 

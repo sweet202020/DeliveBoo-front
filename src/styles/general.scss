@@ -14,6 +14,10 @@
     background: $deliveboo-secondary;
 }
 
+.bg_orange{
+    background-color: $deliveboo-primary;
+}
+
 //classi btn hover color
 .hover_blu_light {
     &:hover {
@@ -21,15 +25,22 @@
     }
 }
 
+.hover_blu_light {
+    &:hover {
+        background: $deliveboo-primary;
+    }
+}
+
+
+
+//layout
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-
-
-//layout
 p {
     font-family: 'Inter', sans-serif;
     font-weight: 300;

@@ -47,8 +47,8 @@ export default {
                         <div class="row">
                             <!--img prodotto-->
                             <!--  <div class="col image p-2 bg-danger">
-                                                                                                                                                                                        <img :src="prodotto.img" alt="">
-                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                            <img :src="prodotto.img" alt="">
+                                                                                                                                                                                        </div> -->
                             <!--Caratteristiche prodotto-->
                             <div class="col article_detail ms-3 p-3">
                                 <div>
@@ -76,7 +76,7 @@ export default {
                                 </button>
 
                                 <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                                                                                                                                        <button @click="store.addQuantity(prodotto, i)">+</button> -->
+                                                                                                                                                            <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -102,8 +102,9 @@ export default {
                                 iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
                                 @click="saveTotPrice()" />
                         </router-link>
-                        <btnCustomRoundedLarge @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                            text="Svuota carrello" />
+                        <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
+                            iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
+                            class="empty_cart" />
                     </div>
 
                 </div>
@@ -179,6 +180,11 @@ a {
     text-decoration: none;
 }
 
+.empty_cart {
+    font-family: 'Unbounded', cursive;
+   /*  background-color: $deliveboo-primary; */
+
+}
 
 /* section buttons */
 .icon-btn {
@@ -273,5 +279,4 @@ a {
     right: 15px;
     height: 4px;
     top: calc(50% - 2px);
-}
-</style>
+}</style>

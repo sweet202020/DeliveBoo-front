@@ -92,7 +92,7 @@ export default {
             console.log(data.order_plate);
 
             //call for order table
-            axios.get(`${store.API_URL}api/order`, data)
+            axios.post(`${store.API_URL}api/order`, data)
                 .then(response => {
                     console.log(response);
                     this.success = response.data.success

@@ -7,8 +7,8 @@ import { store } from '../store.js';
 export default {
     name: 'PaymentView',
     components: {
-    btnCustomRounded
-  },
+        btnCustomRounded
+    },
     data() {
         return {
             store,
@@ -89,10 +89,10 @@ export default {
                 price: this.totalPrice,
                 order_plate: shopping_basket
             }
-            //console.log(data.price);
+            console.log(data.order_plate);
 
             //call for order table
-            axios.post(`${store.API_URL}api/order`, data)
+            axios.get(`${store.API_URL}api/order`, data)
                 .then(response => {
                     console.log(response);
                     this.success = response.data.success
@@ -127,8 +127,8 @@ export default {
                 <!-- NOME VISITATORE -->
                 <div class="mb-3">
                     <label for="customer_name" class="form-label">Nome e Cognome (*)</label>
-                    <input v-model="customer_name" type="text" name="customer_name" id="customer_name"
-                        class="form-control" required>
+                    <input v-model="customer_name" type="text" name="customer_name" id="customer_name" class="form-control"
+                        required>
                 </div>
                 <!-- INDIRIZZO VISITATORE -->
                 <div class="mb-3">
@@ -170,14 +170,15 @@ export default {
                     </span>
                 </div>
                 <!-- BTN PAGA -->
-              
 
-                <router-link :to="{ name: 'success'}">
-                    <button type="submit" :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid" class="btn btn-primary text-uppercase mt-3 p-2">
+
+                <!-- <router-link :to="{ name: 'success'}"> -->
+                <button type="submit" :disabled="!this.card_number_valid || !this.card_cvv_valid || !this.card_date_valid"
+                    class="btn btn-primary text-uppercase mt-3 p-2">
                     <span class="mx-3 payment">paga</span><i class="fa-solid fa-cart-shopping"></i>
                 </button>
-                        </router-link>
-                    
+                <!-- </router-link> -->
+
             </form>
         </div>
     </div>
@@ -188,18 +189,19 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
-h1{
+h1 {
     color: $deliveboo-white;
 }
 
-p{
+p {
     font-weight: bold;
     font-size: 1.3rem;
 }
 
-a{
+a {
     background-color: transparent;
-    &:hover{
+
+    &:hover {
         background-color: transparent;
     }
 }
@@ -212,11 +214,12 @@ a{
     padding-bottom: 5rem;
 }
 
-.container{
+.container {
     background-color: $deliveboo-primary-light;
     border-radius: 1.5rem;
     width: 800px;
 }
+
 .form-control {
     width: 100%;
 
@@ -232,11 +235,10 @@ label {
     color: red;
 }
 
-.payment{
+.payment {
     color: $deliveboo-white;
     font-weight: bold;
     letter-spacing: 0.25rem;
     font-family: 'Unbounded', cursive;
 }
-
 </style>

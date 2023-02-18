@@ -17,7 +17,7 @@ export default {
       store,
     }
   },
-  
+
   mounted() {
     store.callApiPlates(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
@@ -78,20 +78,20 @@ export default {
 
       <!-- ORDER DETAILS -->
       <!-- <div class="col"> -->
-        <!-- CARD -->
-        <!-- <div class="order_details p-4">
-          <h3>Riepilogo ordine</h3>
-          <div class="font_size mt-3">Prodotti €</div>
-          <div v-if="store.singleRestaurant">
-            <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+      <!-- CARD -->
+      <!-- <div class="order_details p-4">
+              <h3>Riepilogo ordine</h3>
+              <div class="font_size mt-3">Prodotti €</div>
+              <div v-if="store.singleRestaurant">
+                <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+              </div> -->
+      <!-- BUTTON -->
+      <!--    <div class="d-flex justify-content-end pt-3">
+                <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
+                  bg_hover="hover_blu_light" />
+              </div>
+            </div>
           </div> -->
-          <!-- BUTTON -->
-       <!--    <div class="d-flex justify-content-end pt-3">
-            <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
-              bg_hover="hover_blu_light" />
-          </div>
-        </div>
-      </div> -->
     </div>
 
     <div class="row row-cols-1 row-cols-md-2">
@@ -107,7 +107,7 @@ export default {
         <section class="plates mb-5 pb-5">
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> I notri piatti:</h3>
           <div v-for="plate in store.platesNew">
-            <div v-if="plate.category_id === 2">
+            <div v-if="plate.category_id === 1">
               <div class="card_plate my-4 p-3">
                 <div class="d-flex justify-content-between mb-2">
                   <h5 class="name">{{ plate.name }}</h5>
@@ -128,8 +128,8 @@ export default {
         <!-- ALERTS -->
         <section class="plates mb-5 pb-5">
           <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
-            <div v-for="plate in store.platesNew">
-            <div v-if="plate.category_id === 3">
+          <div v-for="plate in store.platesNew">
+            <div v-if="plate.category_id === 2">
               <div class="card_plate my-4 p-3">
                 <div class="d-flex justify-content-between mb-2">
                   <h5 class="name">{{ plate.name }}</h5>
@@ -144,7 +144,7 @@ export default {
         </section>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 
@@ -223,7 +223,7 @@ h5 {
   .btn_plate {
     background-color: $deliveboo-secondary;
     color: $deliveboo-white;
-   
+
     font-weight: bold;
     transition: 0.5s;
 
@@ -266,7 +266,7 @@ h5 {
   font-size: x-large;
 }
 
-.placeholder{
+.placeholder {
   border: 2px solid $deliveboo-dark;
 }
 </style>

@@ -119,20 +119,20 @@ export default {
                 @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
                 class="btn_filter ms-1" />
             <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                                                                                        class="btn btn-primary">SUBMIT</button> -->
+                                                                                                                class="btn btn-primary">SUBMIT</button> -->
         </div>
         <!--  <div class="d-flex">
-                                                                        <ul>
+                                                                                <ul>
 
-                                                                            <li v-for="category in categories">
-                                                                                <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                                                                                {{
-                                                                                    category.name
-                                                                                }}
-                                                                            </li>
-                                                                        </ul>
-                                                                        <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-                                                                    </div> -->
+                                                                                    <li v-for="category in categories">
+                                                                                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                                                                                        {{
+                                                                                            category.name
+                                                                                        }}
+                                                                                    </li>
+                                                                                </ul>
+                                                                                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+                                                                            </div> -->
 
         <!-- ELENCO RISTORANTI -->
         <div class="container bg_img my-5 text-start">
@@ -145,16 +145,20 @@ export default {
                             <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
                         </div>
                         <div v-else>
-                            <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png"
-                                alt="placeholder">
+                            <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
                         </div>
 
                         <!-- DETAILS RESTAURANT -->
                         <div class="card-body d-flex flex-column">
                             <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
-                            <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i>{{ restaurant.address }}</div>
-                            <div class="text"><i class="fa-regular fa-clock aspect_ratio me-2"></i> {{ restaurant.opening_time }}</div>
-                            <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{ restaurant.delivery_price }} €</div>
+                            <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> <span
+                                    class="text_description">{{ restaurant.address }}</span></div>
+                            <div class="text"><i class="fa-regular fa-clock aspect_ratio me-2"></i> <span
+                                    class="text_description"> {{
+                                        restaurant.opening_time }}</span></div>
+                            <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> <span
+                                    class="text_description">{{
+                                        restaurant.delivery_price }} €</span></div>
                         </div>
 
                         <!-- PLATE CATEGORY RESTAURANT -->
@@ -174,9 +178,9 @@ export default {
 
 
                 <!-- <div v-else>
-                  Ops No restaurants available for these types!
-                 Change your Filter
-                  </div> -->
+                          Ops No restaurants available for these types!
+                         Change your Filter
+                          </div> -->
             </div>
         </div>
     </div>
@@ -185,6 +189,7 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
+
 
 .title_category {
     display: flex;
@@ -237,15 +242,20 @@ h2 {
 
 h4 {
     color: $deliveboo-primary;
-    font-size: 2rem;
+    font-size: 1.9rem;
 }
 
-h5, .text_categories{
+h5,
+.text_categories {
     color: $deliveboo-dark;
 }
 
-.text_categories{
+.text_categories {
     font-size: 1.35rem;
+}
+
+.text_description {
+    font-size: 1.6rem;
 }
 
 .card_category {
@@ -306,43 +316,47 @@ a {
 
 /* responsive tablet */
 @media screen and (max-width: 768px) {
-/*     .prova {
+    /*     .prova {
         background-color: lightgreen;
     } */
 
-    h6{
+    h6 {
         font-size: 0.9rem;
     }
 
-    .text_categories{
-        
-        font-size: 1.3rem;
+    .text_categories {
+
+        font-size: 1.4rem;
     }
 
+    .text_description {
+        font-size: 1.6rem;
+    }
 
 }
 
 /* responsive mobile */
 @media screen and (max-width: 390px) {
-/*     .prova {
+    /*     .prova {
         background-color: violet;
     } */
 
-    h6{
+    h6 {
         font-size: 0.7rem;
     }
 
-    .text{
+    .text {
         font-size: 2rem;
         color: red;
     }
 
-    .text_categories{
-        
-        font-size: 1.2rem;
+    .text_categories {
+
+        font-size: 1.3rem;
+    }
+
+    .text_description {
+        font-size: 1.5rem;
     }
 }
-
-
-
 </style>

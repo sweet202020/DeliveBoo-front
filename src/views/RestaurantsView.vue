@@ -77,12 +77,24 @@ export default {
                 },
             ],
             filter: [],
+            saveDeliveryPrice: 0,
+
 
         }
     },
     methods: {
         getImageUrl(name) {
             return new URL(`../assets/img/categories/${name}`, import.meta.url).href
+        },
+        saveDelivery() {
+            localStorage.setItem('saveDeliveryPrice', this.saveDeliveryPrice);
+        },
+        saveTotDelivery() {
+            const save = store.singleRestaurant.delivery_price
+            this.saveDeliveryPrice = (save)
+            console.log(this.saveDeliveryPrice);
+            this.saveDelivery()
+
         },
     },/*  mounted() {
         store.filterType()
@@ -119,20 +131,20 @@ export default {
                 @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
                 class="btn_filter ms-1" />
             <!-- <button @click="store.callApiRestaurants(store.API_URL + 'api/restaurants/filter/' + this.filter)"
-                                                                                                                class="btn btn-primary">SUBMIT</button> -->
+                                                                                                                                class="btn btn-primary">SUBMIT</button> -->
         </div>
         <!--  <div class="d-flex">
-                                                                                <ul>
+                                                                                                <ul>
 
-                                                                                    <li v-for="category in categories">
-                                                                                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
-                                                                                        {{
-                                                                                            category.name
-                                                                                        }}
-                                                                                    </li>
-                                                                                </ul>
-                                                                                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
-                                                                            </div> -->
+                                                                                                    <li v-for="category in categories">
+                                                                                                        <input type="checkbox" :value="category.name" v-model="store.filterTypes" class="me-3">
+                                                                                                        {{
+                                                                                                            category.name
+                                                                                                        }}
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                                <button @click="store.filterType()" class="btn btn-secondary" type="submit">Search</button>
+                                                                                            </div> -->
 
         <!-- ELENCO RISTORANTI -->
         <div class="container bg_img my-5 text-start">
@@ -169,13 +181,13 @@ export default {
                             </div>
 
 
-                           
+
 
                             <div class="bg-dark">
                                 <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                                <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                    bg_hover="hover_blu_light" />
-                            </router-link>
+                                    <btnCustomRoundedSmall @click="saveTotDelivery()" text="Menu"
+                                        iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" />
+                                </router-link>
                             </div>
                         </div>
                     </div>
@@ -183,9 +195,9 @@ export default {
 
 
                 <!-- <div v-else>
-                          Ops No restaurants available for these types!
-                         Change your Filter
-                          </div> -->
+                                          Ops No restaurants available for these types!
+                                         Change your Filter
+                                          </div> -->
             </div>
         </div>
     </div>

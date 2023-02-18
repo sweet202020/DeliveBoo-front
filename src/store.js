@@ -11,6 +11,7 @@ export const store = reactive({
     singleRestaurant: null,
     alert: false,
     error: false,
+    deliveryPrice: localStorage.getItem('saveDeliveryPrice'),
 
     callApiPlates(url) {
         axios.get(url)
@@ -34,6 +35,7 @@ export const store = reactive({
                 this.singleRestaurant = response.data.results;
                 // console.log(this.restaurants);
             })
+        console.log(this.singleRestaurant);
     },
     filterType() {
         //NEEDS TO MAKE A SINGLE CALL API OTHERWISE IT WILL REWRITE THIS.RESTAURANTS
@@ -78,6 +80,7 @@ export const store = reactive({
 
         for (let i = 0; i < store.cart.length; i++) {
             store.cart[i].quantita = 1
+
         }
         this.alert = true
         setTimeout(() => {
@@ -117,11 +120,11 @@ export const store = reactive({
         let totalPrice = totalEl.reduce((total, amount) => {
             return total + amount;
         })
-        return totalPrice
+        return Number(totalPrice) + Number(this.deliveryPrice)
 
     },
     emptyCart() {
         this.cart = []
         localStorage.clear()
-    }
+    },
 })

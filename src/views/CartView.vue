@@ -32,6 +32,8 @@ export default {
                 localStorage.removeItem('cart');
             }
         }
+        store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + 'pizza-delizia')
+        /* store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + 'pizza-delizia') */
     }
 }
 
@@ -48,8 +50,8 @@ export default {
                         <div class="row">
                             <!--img prodotto-->
                             <!--  <div class="col image p-2 bg-danger">
-                                                                                <img :src="prodotto.img" alt="">
-                                                                            </div> -->
+                                                                                                                                                                                <img :src="prodotto.img" alt="">
+                                                                                                                                                                            </div> -->
                             <!--Caratteristiche prodotto-->
                             <div class="col article_detail ms-3 p-3">
                                 <div>
@@ -77,7 +79,7 @@ export default {
                                 </button>
 
                                 <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
+                                                                                                                                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -89,7 +91,7 @@ export default {
                 <!--sezione pagamento-->
                 <div class="payment_container my-5">
                     <h3>
-                        <!-- <div>costo consegna {{ store.delivery_price }}</div> -->
+                        <div>costo consegna {{ store.deliveryPrice }}</div>
                         <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                             <!-- + {{store.delivery_price }} --> €</span>
                         <span v-else>Aggiungi articoli</span>

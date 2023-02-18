@@ -139,7 +139,7 @@ export default {
                         <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
                     </div>
                     <div v-else>
-                        <img class="card-img" src="https://picsum.photos/300/300" alt="placeholder">
+                        <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
                     </div>
                     <!-- DETAILS RESTAURANT -->
                     <div class="card-body d-flex flex-column bg-success">

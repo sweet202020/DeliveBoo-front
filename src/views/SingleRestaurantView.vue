@@ -80,18 +80,18 @@ export default {
       <!-- <div class="col"> -->
       <!-- CARD -->
       <!-- <div class="order_details p-4">
-              <h3>Riepilogo ordine</h3>
-              <div class="font_size mt-3">Prodotti €</div>
-              <div v-if="store.singleRestaurant">
-                <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
-              </div> -->
+                    <h3>Riepilogo ordine</h3>
+                    <div class="font_size mt-3">Prodotti €</div>
+                    <div v-if="store.singleRestaurant">
+                      <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+                    </div> -->
       <!-- BUTTON -->
       <!--    <div class="d-flex justify-content-end pt-3">
-                <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
-                  bg_hover="hover_blu_light" />
-              </div>
-            </div>
-          </div> -->
+                      <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
+                        bg_hover="hover_blu_light" />
+                    </div>
+                  </div>
+                </div> -->
     </div>
 
     <div class="row row-cols-1 row-cols-md-2">
@@ -102,6 +102,8 @@ export default {
         </div>
         <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
           <strong>Non puoi ordinare da due ristoranti diversi</strong>
+          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+            text="Vuoi svuotare il carrello? Clicca qui" />
         </div>
         <!-- PLATES LIST -->
         <section class="plates mb-5 pb-5">

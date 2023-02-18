@@ -62,7 +62,11 @@ export const store = reactive({
                 }
             }
         }
+        /* if (store.cart.includes(plate.id)) {
+            console.log('si');
 
+        }
+ */
 
         for (let i = 0; i < store.cart.length; i++) {
             store.cart[i].quantita = 1

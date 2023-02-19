@@ -25,13 +25,12 @@ export default {
         <div class="container ordine py-5 mt-5">
 
             <div class="article pt-5 mt-5">
-                <!--prodotto-->
+                <!--SECTION ORDER-->
                 <div v-if="store.cart.length !== 0">
                     <div class="card_article my-3" v-for="prodotto, i in store.cart">
                         <div class="row row-cols-1 row-cols-md-2">
-                            <!--Caratteristiche prodotto-->
+                            <!--PRODUCTS DETAIL-->
                             <div class="col article_detail px-4">
-
                                 <div class="my-3">
                                     <h5>{{ prodotto.name }}</h5>
                                 </div>
@@ -42,9 +41,9 @@ export default {
                                 </div>
 
                             </div>
-                            <!-- PREZZO + BTN ADD & BTN REMOVE-->
+                            <!-- PRICE + BTN ADD & BTN REMOVE -->
                             <div class="col my-4 text-end px-4">
-                                <!--TODO IF ELSE PER QUANTITA-->
+                                <!-- TODO IF ELSE PER QUANTITA -->
                                 <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
                                 <span class="me-3" v-else>1</span>
                                 <button class="icon-btn add-btn me-2 mt-3" @click="store.deleteQuantity(prodotto, i)">
@@ -54,6 +53,7 @@ export default {
                                     <div class="add-icon"></div>
                                     <div class="btn-txt">Aggiungi</div>
                                 </button>
+
                             </div>
                         </div>
                     </div>
@@ -62,30 +62,31 @@ export default {
                     <h4 class="text-start ms-5 text-light">Non ci sono articoli {{ store.test }}</h4>
                 </div>
 
-                <!--sezione pagamento-->
+                <!-- SECTION PAYMENT-->
                 <div class="payment_container my-5">
                     <div class="row row-cols-sm-1 row-cols-md-2">
-                        <div class="col">
-                            <h3 class="responsive mb-3">
-                                <div class="mb-2" v-if="store.cart.length > 0">costo consegna {{ store.deliveryPrice }}
-                                </div>
+
+                        <!-- RECAP PRICE-->
+                        <div class="col mb-3">
+                            <h3 class="responsive">
+                                <div class="mb-2">costo consegna {{ store.deliveryPrice }}</div>
+
                                 <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                                     <!-- + {{store.delivery_price }} --> €</span>
                                 <span v-else>Aggiungi articoli</span>
                             </h3>
                         </div>
+                        <!-- BUTTONS -->
                         <div class="col">
-                            <!--bottoni pagamento-->
-                            <div>
-                                <router-link :to="{ name: 'pagamento' }">
-                                    <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
-                                        iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                                        class="mb-3" />
-                                </router-link>
-                                <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
-                                    iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
-                                    class="empty_cart" />
-                            </div>
+                            <router-link :to="{ name: 'pagamento' }">
+                                <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
+                                    iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                                    @click="saveTotPrice()" class="mb-3" />
+                            </router-link>
+                            <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
+                                iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
+                                class="empty_cart" />
+
                         </div>
                     </div>
                 </div>
@@ -98,6 +99,10 @@ export default {
 
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
+
+.debug {
+    border: 1px solid violet;
+}
 
 /* #region common style */
 .bg_cart {
@@ -121,6 +126,12 @@ span {
     color: $deliveboo-dark;
 }
 
+h3{
+    color: $deliveboo-dark;
+    font-size: 1.5rem;
+}
+
+
 p {
     color: $deliveboo-dark;
 }
@@ -139,7 +150,7 @@ p {
     .card_article {
         border-radius: 10px;
         background-color: $deliveboo-white;
-        width: 90%;
+        width: 76%;
         margin: auto;
     }
 }
@@ -150,7 +161,7 @@ p {
     border-radius: 10px;
     padding: 1rem 1rem;
     background-color: $deliveboo-white;
-    width: 90%;
+    width: 76%;
     margin: auto;
     display: flex;
     align-items: center;
@@ -276,6 +287,13 @@ a {
 
     .article {
         width: 90%;
+        .card_article{
+            width:93%
+        }
+    }
+
+    .payment_container{
+        width: 93%;
     }
 
 
@@ -289,9 +307,14 @@ a {
     }
 
     .article {
-        width: 100%;
+        width: 98%;
+        .card_article{
+            width:87%;
+        }
     }
-
+    .payment_container{
+        width: 87%;
+    }
 
 
 }

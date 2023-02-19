@@ -71,16 +71,38 @@ export default {
       </div>
     </div>
 
-
     <!--CONTAINER BOTTOM !!! - PLATES & DRINKS LIST -->
     <div class="container">
-      <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-        <strong>Articolo aggiunto al carrello</strong>
+      <!-- ALERT NEW  -->
+      <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Articolo aggiunto al carrello.</strong>
       </div>
+      <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Non puoi acquistare da due ristorante diversi.</strong><br />
+        Completa l'ordine precedente o svuota il carrello
+        <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
+          class="mt-2" />
+        <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Svuota Carrello"
+          class="mt-2" />
+      </div>
+
+      <!-- ALERT OLD  -->
+
+      <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+
+        <h6>Articolo aggiunto al carrello</h6>
+      </div>
+
       <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-        <strong>Non puoi ordinare da due ristoranti diversi</strong>
-        <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-          text="Vuoi svuotare il carrello? Clicca qui" />
+        <div class="col">
+          <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
+        </div>
+        <div class="col">
+          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+            text="Svuota Carrello" />
+        </div>
       </div>
       <div class="row row-cols-1 row-cols-lg-2 ">
         <!-- ALERTS -->
@@ -146,6 +168,11 @@ export default {
         </div>
       </div>
     </div>
+  </div>
+
+  <div>
+
+
   </div>
 </template>
 

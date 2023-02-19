@@ -257,7 +257,7 @@ h5 {
   opacity: 97%;
   color: $deliveboo-white;
   position: absolute;
-  top: 20%;
+  top: 50%;
   left: 50%;
   width: 40%;
   display: flex;

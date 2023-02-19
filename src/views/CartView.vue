@@ -77,14 +77,14 @@ export default {
                         <div class="col">
                             <!--bottoni pagamento-->
                             <div>
-                                <router-link :to="{ name: 'pagamento' }">
+                                <router-link v-if="store.cart.length > 0" :to="{ name: 'pagamento' }">
                                     <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
                                         iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
                                         class="mb-3" />
                                 </router-link>
-                                <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
-                                    iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
-                                    class="empty_cart" />
+                                <btnCustomRoundedLarge v-if="store.cart.length > 0" @click="store.emptyCart()"
+                                    text="Svuota carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange"
+                                    bg_hover="hover_orange" class="empty_cart" />
                             </div>
                         </div>
                     </div>

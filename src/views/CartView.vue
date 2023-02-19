@@ -10,27 +10,10 @@ export default {
     data() {
         return {
             store,
-            saveTotalPrice: 0,
         }
-    }, methods: {
-        savePrice() {
-            localStorage.setItem('savetotalPrice', this.saveTotalPrice);
-        },
-        saveTotPrice() {
-            const save = store.totalPrice()
-            this.saveTotalPrice = (save)
-            this.savePrice()
-
-        },
     },
     mounted() {
-        if (localStorage.getItem('cart')) {
-            try {
-                store.cart = JSON.parse(localStorage.getItem('cart'));
-            } catch (e) {
-                localStorage.removeItem('cart');
-            }
-        }
+        store.checkCart();
     }
 }
 
@@ -48,14 +31,14 @@ export default {
                             <!--Caratteristiche prodotto-->
                             <div class="col article_detail px-4">
 
-                                    <div class="my-3">
-                                        <h5>{{ prodotto.name }}</h5>
-                                    </div>
-                                    <div class="my-3">
-                                        <!--TODO risolvere bug prezzo-->
-                                        <h6 v-if="!prodotto.prezzoXquantita">prezzo: {{ prodotto.price }}</h6>
-                                        <h6 v-else>prezzo: {{ prodotto.prezzoXquantita }} €</h6>
-                                    </div>
+                                <div class="my-3">
+                                    <h5>{{ prodotto.name }}</h5>
+                                </div>
+                                <div class="my-3">
+                                    <!--TODO risolvere bug prezzo-->
+                                    <h6 v-if="!prodotto.prezzoXquantita">prezzo: {{ prodotto.price }}</h6>
+                                    <h6 v-else>prezzo: {{ prodotto.prezzoXquantita }} €</h6>
+                                </div>
 
                             </div>
                             <!-- PREZZO + BTN ADD & BTN REMOVE-->
@@ -70,9 +53,6 @@ export default {
                                     <div class="add-icon"></div>
                                     <div class="btn-txt">Aggiungi</div>
                                 </button>
-
-                                <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                                                                                                                                                    <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -95,12 +75,10 @@ export default {
                         <div class="col">
                             <!--bottoni pagamento-->
                             <div>
-                                <!--TODO metti bottone props / pagamento-->
-                                <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
                                 <router-link :to="{ name: 'pagamento' }">
                                     <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
                                         iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                                        @click="saveTotPrice()" class="mb-3" />
+                                        class="mb-3" />
                                 </router-link>
                                 <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
                                     iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
@@ -108,8 +86,6 @@ export default {
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
 

@@ -33,7 +33,23 @@ export default {
         }
     },
     methods: {
+
         credit_card_number() {
+            if (this.card.length > 0) {
+
+                if (this.card.length % 4 == 0 && this.card.length % 8 != 0 && this.card.length % 12 != 0) {
+                    this.card += " ";
+                }
+                if (this.card.length % 9 == 0 && this.card.length % 18 != 0) {
+                    this.card += " ";
+                }
+                if (this.card.length % 14 == 0) {
+                    this.card += " ";
+                }
+                if (this.card.length % 19 == 0) {
+                    this.card += " ";
+                }
+            }
 
             const valid = cardValidator;
 
@@ -61,6 +77,11 @@ export default {
             this.array_date_card.forEach(element => {
                 this.card_date_valid = element.isValid
             });
+            if (this.date.length > 0) {
+                if (this.date.length % 2 == 0 && this.date.length % 4 != 0) {
+                    this.date += "/";
+                }
+            }
             console.log(date);
         },
         credit_card_cvv() {
@@ -151,27 +172,32 @@ export default {
                         <img :class="this.cardType == 'american-express' ? 'active' : ''"
                             src="../assets/img/payment/American_Express_logo_(2018).svg.png" alt="">
                     </div>
-                    <input @keyup="credit_card_number()" maxlength="19" type="tel" inputmode="numeric"
-                        pattern="[0-9\s]{13,19}" autocomplete="cc-number" v-model="this.card" class="form-control" name=""
-                        id="ccn" aria-describedby="helpId" placeholder="xxxx xxxx xxxx xxxx" required>
+                    <input @keyup="credit_card_number()" maxlength="19" type="tel" inputmode="numeric" v-model="this.card"
+                        class="form-control" name="" id="ccn" aria-describedby="helpId" placeholder="0000 0000 0000 0000"
+                        required>
                     <span v-for="data in this.array_number_card">
                         <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
+                        <span v-if="data.isValid"><i class="fas fa-check-square fa-lg fa-fw"></i>
+                        </span>
                     </span>
+
                 </div>
                 <!-- SCADENZA CARTA DI CREDITO VISITATORE -->
                 <div class="mb-3">
                     <label for="" class="form-label">Data di scadenza (*)</label>
-                    <input type="month" @change="this.credit_card_date()" class="form-control" v-model="this.date" name=""
-                        id="" aria-describedby="helpId" placeholder="" required>
+                    <input type="text" @keyup="this.credit_card_date()" maxlength="5" class="form-control"
+                        v-model="this.date" name="" id="" aria-describedby="helpId" placeholder="MM/YY" required>
                     <span v-for="data in this.array_date_card">
                         <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
+                        <span v-if="data.isValid"><i class="fas fa-check-square fa-lg fa-fw"></i></span>
                     </span>
+
                 </div>
                 <!-- CVV CARTA DI CREDITO VISITATORE -->
                 <div class="mb-3">
                     <label for="" class="form-label">cvv (*)</label>
-                    <input @keyup="credit_card_cvv()" type="text" v-model="this.cvv" class="form-control" name="" id=""
-                        aria-describedby="helpId" placeholder="" required>
+                    <input @keyup="credit_card_cvv()" maxlength="3" type="text" v-model="this.cvv" class="form-control"
+                        name="" id="" aria-describedby="helpId" placeholder="000" required>
                     <span v-for="data in this.array_cvv_card">
                         <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
                     </span>

@@ -7,18 +7,12 @@ export const store = reactive({
     cart: [],
     platesNew: null,
     restaurants: null,
-    filterTypes: [],
     singleRestaurant: null,
     alert: false,
     error: false,
-    deliveryPrice: '',
+    deliveryPrice: localStorage.getItem('saveDeliveryPrice'),
 
-    callApiPlates(url) {
-        axios.get(url)
-            .then(response => {
-                this.platesNew = response.data.results.plates;
-            })
-    },
+
     callApiRestaurants(url) {
         this.restaurants = ''
         axios.get(url)
@@ -31,18 +25,15 @@ export const store = reactive({
         axios.get(url)
             .then(response => {
                 this.singleRestaurant = response.data.results;
+                this.platesNew = response.data.results.plates;
+                localStorage.setItem('saveDeliveryPrice', this.singleRestaurant.delivery_price);
             })
     },
-
     saveCart() {
         let parsed = JSON.stringify(store.cart);
         localStorage.setItem('cart', parsed);
     },
-
-
     addPlate(plate) {
-
-
 
         if (store.cart.length == 0) {
             store.cart.push(plate);
@@ -76,7 +67,6 @@ export const store = reactive({
         setTimeout(() => {
             this.alert = false
         }, 2000);
-        this.deliveryPrice = localStorage.getItem('saveDeliveryPrice')
         store.saveCart();
     },
     addQuantity(prodotto) {
@@ -111,12 +101,24 @@ export const store = reactive({
         let totalPrice = totalEl.reduce((total, amount) => {
             return total + amount;
         })
-        return Number(totalPrice) + Number(this.deliveryPrice)
 
+        let totale = Number(totalPrice) + Number(this.deliveryPrice);
+        localStorage.setItem('savetotalPrice', totale);
+        return totale
     },
     emptyCart() {
         this.cart = []
         this.deliveryPrice = ''
         localStorage.clear()
     },
+    checkCart(){
+        if (localStorage.getItem('cart')) {
+            try {
+                store.cart = JSON.parse(localStorage.getItem('cart'));
+            } catch (e) {
+                localStorage.removeItem('cart');
+            }
+        }
+    }
+    
 })

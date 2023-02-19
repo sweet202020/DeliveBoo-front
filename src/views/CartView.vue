@@ -46,7 +46,7 @@ export default {
                     <div class="card_article my-3" v-for="prodotto, i in store.cart">
                         <div class="row row-cols-1 row-cols-md-2">
                             <!--Caratteristiche prodotto-->
-                            <div class="col article_detail p-4">
+                            <div class="col article_detail px-4">
 
                                     <div class="my-3">
                                         <h5>{{ prodotto.name }}</h5>
@@ -59,7 +59,7 @@ export default {
 
                             </div>
                             <!-- PREZZO + BTN ADD & BTN REMOVE-->
-                            <div class="col my-4 p-4 text-end">
+                            <div class="col my-4 text-end px-4">
                                 <!--TODO IF ELSE PER QUANTITA-->
                                 <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
                                 <span class="me-3" v-else>1</span>

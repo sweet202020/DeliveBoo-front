@@ -85,8 +85,7 @@ export default {
                             </router-link>
                             
                             <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
-                                iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
-                                class="empty_cart" />
+                                iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange" />
 
                         </div>
                     </div>
@@ -175,11 +174,6 @@ a {
     text-decoration: none;
 }
 
-.empty_cart {
-    font-family: 'Unbounded', cursive;
-    /*  background-color: $deliveboo-primary; */
-
-}
 
 /* #endregion common style */
 

@@ -44,8 +44,8 @@ export default {
                             <!-- PRICE + BTN ADD & BTN REMOVE -->
                             <div class="col my-4 text-end px-4">
                                 <!-- TODO IF ELSE PER QUANTITA -->
-                                <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
-                                <span class="me-3" v-else>1</span>
+                                <span class="me-3 font_qt" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
+                                <span class="me-3 font_qt" v-else>1</span>
                                 <button class="icon-btn add-btn me-2 mt-3" @click="store.deleteQuantity(prodotto, i)">
                                     <div class="btn-txt">Rimuovi</div>
                                 </button>
@@ -129,9 +129,8 @@ span {
 
 h3{
     color: $deliveboo-dark;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
-
 
 p {
     color: $deliveboo-dark;
@@ -153,6 +152,9 @@ p {
         background-color: $deliveboo-white;
         width: 76%;
         margin: auto;
+        .font_qt{
+            font-size: 1.5rem;
+        }
     }
 }
 
@@ -288,7 +290,10 @@ a {
     .article {
         width: 90%;
         .card_article{
-            width:93%
+            width:93%;
+            .font_qt{
+                font-size: 1.5rem;
+            }
         }
     }
 
@@ -305,6 +310,9 @@ a {
         width: 98%;
         .card_article{
             width:87%;
+            .font_qt{
+                font-size: 1.4rem;
+            }
         }
     }
     .payment_container{

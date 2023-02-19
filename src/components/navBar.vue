@@ -23,7 +23,7 @@ window.addEventListener('scroll', (e) => {
 
 <template>
     <div class="bg_nav fixed">
-        <nav class="container navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
+        <nav class="container-fluid navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top max_width">
             <div class="container-fluid">
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -32,7 +32,7 @@ window.addEventListener('scroll', (e) => {
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse d-lg-flex justify-content-between text-uppercase fs-4 fw-bolder "
+                <div class="collapse navbar-collapse d-lg-flex justify-content-between fs-4 fw-bolder "
                     id="navbarSupportedContent">
                     <!--logo-->
                     <div class="d-none d-lg-block logo">
@@ -50,7 +50,7 @@ window.addEventListener('scroll', (e) => {
                             <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
                                 <router-link class="nav-link text-light color_icon" aria-current="page"
                                     :to="{ name: 'restaurants' }">
-                                    <i class="fa-solid fa-utensils me-3 color_icon"></i>ristoranti
+                                    <i class="fa-solid fa-utensils me-3 color_icon"></i>Ristoranti
                                 </router-link>
                             </li>
                         </ul>
@@ -64,14 +64,14 @@ window.addEventListener('scroll', (e) => {
 
                                 <router-link class="nav-link text-light" aria-current="page"
                                     :to="{ name: 'carrello' }"><i
-                                        class="fa-solid fa-cart-shopping me-3 color_icon"></i>carrello</router-link>
+                                        class="fa-solid fa-cart-shopping me-3 color_icon"></i>Carrello</router-link>
                             </li>
 
                             <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
                                 <a class="nav-link text-light" aria-current="page"
                                     href="http://127.0.0.1:8000/"><!-- log-in --> <i
                                         class="fa-solid fa-user-group me-3 color_icon"></i>
-                                    log-in
+                                    Area Riservata
                                 </a>
                             </li>
                         </ul>
@@ -86,6 +86,12 @@ window.addEventListener('scroll', (e) => {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
+*{
+    letter-spacing: 0.06em;
+}
+.max_width{
+    max-width: 1800px;
+}
 .bg_nav {
     background-color: $light-orange;
     position: fixed;

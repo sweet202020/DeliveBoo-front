@@ -10,7 +10,7 @@ export const store = reactive({
     singleRestaurant: null,
     alert: false,
     error: false,
-    deliveryPrice: localStorage.getItem('saveDeliveryPrice'),
+    deliveryPrice: '',
 
 
     callApiRestaurants(url) {
@@ -86,6 +86,9 @@ export const store = reactive({
         else {
             prodotto.quantita--
         }
+        if (store.cart.length === 0) {
+            this.emptyCart()
+        }
         prodotto.prezzoXquantita = prodotto.price * prodotto.quantita
         store.saveCart();
     },
@@ -111,7 +114,7 @@ export const store = reactive({
         this.deliveryPrice = ''
         localStorage.clear()
     },
-    checkCart(){
+    checkCart() {
         if (localStorage.getItem('cart')) {
             try {
                 store.cart = JSON.parse(localStorage.getItem('cart'));
@@ -120,5 +123,5 @@ export const store = reactive({
             }
         }
     }
-    
+
 })

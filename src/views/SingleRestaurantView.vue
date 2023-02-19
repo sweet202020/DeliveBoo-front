@@ -16,9 +16,9 @@ export default {
     return {
       store,
     }
-    
+
   },
- 
+
   mounted() {
     store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     store.checkCart();
@@ -257,7 +257,7 @@ h5 {
   opacity: 97%;
   color: $deliveboo-white;
   position: absolute;
-  top: 0;
+  top: 20%;
   left: 50%;
   width: 40%;
   display: flex;
@@ -286,7 +286,5 @@ h5 {
 .placeholder {
   border: 2px solid $deliveboo-dark;
 }
-
-
 </style>
 

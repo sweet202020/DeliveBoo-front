@@ -14,6 +14,7 @@ export default {
     },
     mounted() {
         store.checkCart();
+        store.deliveryPrice = localStorage.getItem('saveDeliveryPrice')
     }
 }
 
@@ -66,7 +67,8 @@ export default {
                     <div class="row row-cols-sm-1 row-cols-md-2">
                         <div class="col">
                             <h3 class="responsive mb-3">
-                                <div class="mb-2">costo consegna {{ store.deliveryPrice }}</div>
+                                <div class="mb-2" v-if="store.cart.length > 0">costo consegna {{ store.deliveryPrice }}
+                                </div>
                                 <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                                     <!-- + {{store.delivery_price }} --> €</span>
                                 <span v-else>Aggiungi articoli</span>

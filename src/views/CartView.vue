@@ -44,14 +44,10 @@ export default {
                 <!--prodotto-->
                 <div v-if="store.cart.length !== 0">
                     <div class="card_article my-3" v-for="prodotto, i in store.cart">
-                        <div class="row">
-                            <!--img prodotto-->
-                            <!--  <div class="col image p-2 bg-danger">
-                                                                                                                                                                                                <img :src="prodotto.img" alt="">
-                                                                                                                                                                                            </div> -->
+                        <div class="row row-cols-1 row-cols-md-2">
                             <!--Caratteristiche prodotto-->
-                            <div class="col article_detail ms-3 p-3">
-                                <div>
+                            <div class="col article_detail p-4">
+
                                     <div class="my-3">
                                         <h5>{{ prodotto.name }}</h5>
                                     </div>
@@ -60,10 +56,10 @@ export default {
                                         <h6 v-if="!prodotto.prezzoXquantita">prezzo: {{ prodotto.price }}</h6>
                                         <h6 v-else>prezzo: {{ prodotto.prezzoXquantita }} €</h6>
                                     </div>
-                                </div>
+
                             </div>
                             <!-- PREZZO + BTN ADD & BTN REMOVE-->
-                            <div class="col my-4 me-4 text-end">
+                            <div class="col my-4 p-4 text-end">
                                 <!--TODO IF ELSE PER QUANTITA-->
                                 <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
                                 <span class="me-3" v-else>1</span>
@@ -76,7 +72,7 @@ export default {
                                 </button>
 
                                 <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                                                                                                                                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
+                                                                                                                                                                    <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -91,7 +87,7 @@ export default {
                         <div class="col">
                             <h3 class="responsive mb-3">
                                 <div class="mb-2">costo consegna {{ store.deliveryPrice }}</div>
-                                <span  v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
+                                <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                                     <!-- + {{store.delivery_price }} --> €</span>
                                 <span v-else>Aggiungi articoli</span>
                             </h3>
@@ -159,7 +155,7 @@ p {
     border-radius: 10px;
     border: none;
     background-color: $deliveboo-primary-light;
-    width: 90%;
+    width: 60%;
 
 
     .card_article {
@@ -192,6 +188,7 @@ a {
     /*  background-color: $deliveboo-primary; */
 
 }
+
 /* #endregion common style */
 
 /* #region section buttons */
@@ -294,11 +291,14 @@ a {
 /* responsive tablet */
 @media screen and (max-width: 768px) {
     .responsive {
- /*        background-color: lightgreen; */
+        background-color: lightgreen;
         color: $deliveboo-dark;
         font-size: 1.3rem;
     }
 
+    .article {
+        width: 90%;
+    }
 
 
 
@@ -308,6 +308,10 @@ a {
 @media screen and (max-width: 390px) {
     .responsive {
         background-color: violet;
+    }
+
+    .article {
+        width: 100%;
     }
 
 

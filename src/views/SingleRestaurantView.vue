@@ -81,18 +81,18 @@ export default {
         <!-- <div class="col"> -->
         <!-- CARD -->
         <!-- <div class="order_details p-4">
-                                          <h3>Riepilogo ordine</h3>
-                                          <div class="font_size mt-3">Prodotti €</div>
-                                          <div v-if="store.singleRestaurant">
-                                            <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
-                                          </div> -->
+                                            <h3>Riepilogo ordine</h3>
+                                            <div class="font_size mt-3">Prodotti €</div>
+                                            <div v-if="store.singleRestaurant">
+                                              <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
+                                            </div> -->
         <!-- BUTTON -->
         <!--    <div class="d-flex justify-content-end pt-3">
-             <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
-                 bg_hover="hover_blu_light" />
-               </div>
-               </div>
-           </div> -->
+               <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
+                   bg_hover="hover_blu_light" />
+                 </div>
+                 </div>
+             </div> -->
       </div>
     </div>
 
@@ -102,14 +102,14 @@ export default {
       <div class="row row-cols-1 row-cols-lg-2 ">
         <!-- ALERTS -->
         <div class="col">
-          <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-                            <strong>Articolo aggiunto al carrello</strong>
-                          </div>
-                          <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-                            <strong>Non puoi ordinare da due ristoranti diversi</strong>
-                            <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                              text="Vuoi svuotare il carrello? Clicca qui" />
-                          </div> -->
+          <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+            <strong>Articolo aggiunto al carrello</strong>
+          </div>
+          <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
+            <strong>Non puoi ordinare da due ristoranti diversi</strong>
+            <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+              text="Vuoi svuotare il carrello? Clicca qui" />
+          </div>
           <!-- PLATES LIST -->
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Piatti:</h3>
           <div class=" mb-5 pb-5">
@@ -127,7 +127,7 @@ export default {
                   <div class="col-sm-1 col-md-8">
                     <div class="d-flex mb-2">
                       <h5 class="name me-auto">{{ plate.name }}</h5>
-                      <h5 class="price">{{ plate.price }} €</h5>
+                      <h5 class="price ms-auto">{{ plate.price }} €</h5>
                     </div>
                     <p class="ingredients">{{ plate.description }}</p>
                     <div class="btn btn_plate d-flex justify-content-end mt-4" @click="store.addPlate(plate)"><i
@@ -147,7 +147,7 @@ export default {
             <div v-for="plate in store.platesNew">
               <div v-if="plate.category_id === 2">
                 <!-- PRODUCT IMAGE -->
-                <div class="card_plate my-4 mx-1 p-3 row">
+                <div class="card_plate my-4 p-3 row">
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-if="plate.cover_image">
                     <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
@@ -173,37 +173,37 @@ export default {
 
         <!-- DRINKS LIST -->
         <!--  <div class="col">
-                  <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
-                  <div class="row card_plate my-4 mx-2" v-for="plate in store.platesNew">
-                    <div class="col-4 p-3" v-if="plate.category_id === 2">
-                      <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
-                    </div>
-                    <div class="col-8 p-3" v-if="plate.category_id === 2">
-                      <div class="d-flex justify-content-between mb-2">
-                        <h5 class="name">{{ plate.name }}</h5>
-                        <h5 class="price">{{ plate.price }} €</h5>
+                    <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
+                    <div class="row card_plate my-4 mx-2" v-for="plate in store.platesNew">
+                      <div class="col-4 p-3" v-if="plate.category_id === 2">
+                        <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                       </div>
-                      <p class="ingredients">{{ plate.description }}</p>
-                      <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                          class="fa-solid fa-plus"></i>
+                      <div class="col-8 p-3" v-if="plate.category_id === 2">
+                        <div class="d-flex justify-content-between mb-2">
+                          <h5 class="name">{{ plate.name }}</h5>
+                          <h5 class="price">{{ plate.price }} €</h5>
+                        </div>
+                        <p class="ingredients">{{ plate.description }}</p>
+                        <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
+                            class="fa-solid fa-plus"></i>
+                        </div>
                       </div>
-                    </div>
-                  </div> -->
+                    </div> -->
         <!--  <section class=" mb-5 pb-5">
-                            <div v-for="plate in store.platesNew">
-                              <div v-if="plate.category_id === 2">
-                                <div class="card_plate my-4 p-3">
-                                  <div class="d-flex justify-content-between mb-2">
-                                    <h5 class="name">{{ plate.name }}</h5>
-                                    <h5 class="price">{{ plate.price }} €</h5>
+                              <div v-for="plate in store.platesNew">
+                                <div v-if="plate.category_id === 2">
+                                  <div class="card_plate my-4 p-3">
+                                    <div class="d-flex justify-content-between mb-2">
+                                      <h5 class="name">{{ plate.name }}</h5>
+                                      <h5 class="price">{{ plate.price }} €</h5>
+                                    </div>
+                                    <p class="ingredients">{{ plate.description }}</p>
+                                    <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
+                                        class="fa-solid fa-plus"></i></div>
                                   </div>
-                                  <p class="ingredients">{{ plate.description }}</p>
-                                  <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                                      class="fa-solid fa-plus"></i></div>
                                 </div>
                               </div>
-                            </div>
-                          </section> -->
+                            </section> -->
         <!-- </div> -->
       </div>
     </div>
@@ -347,6 +347,7 @@ h5 {
 .placeholder {
   border: 2px solid $deliveboo-dark;
 }
+
 
 </style>
 

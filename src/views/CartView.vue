@@ -47,8 +47,8 @@ export default {
                         <div class="row">
                             <!--img prodotto-->
                             <!--  <div class="col image p-2 bg-danger">
-                                                                                                                                                                                            <img :src="prodotto.img" alt="">
-                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                <img :src="prodotto.img" alt="">
+                                                                                                                                                                                            </div> -->
                             <!--Caratteristiche prodotto-->
                             <div class="col article_detail ms-3 p-3">
                                 <div>
@@ -62,7 +62,7 @@ export default {
                                     </div>
                                 </div>
                             </div>
-                            <!-- prezzo + add & remuve -->
+                            <!-- PREZZO + BTN ADD & BTN REMOVE-->
                             <div class="col my-4 me-4 text-end">
                                 <!--TODO IF ELSE PER QUANTITA-->
                                 <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
@@ -76,7 +76,7 @@ export default {
                                 </button>
 
                                 <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                                                                                                                                            <button @click="store.addQuantity(prodotto, i)">+</button> -->
+                                                                                                                                                                <button @click="store.addQuantity(prodotto, i)">+</button> -->
                             </div>
                         </div>
                     </div>
@@ -87,28 +87,34 @@ export default {
 
                 <!--sezione pagamento-->
                 <div class="payment_container my-5">
-                    <h3>
-                        <div>costo consegna {{ store.deliveryPrice }}</div>
-                        <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
-                            <!-- + {{store.delivery_price }} --> €</span>
-                        <span v-else>Aggiungi articoli</span>
-                    </h3>
-                    <!--bottoni pagamento-->
-                    <div>
-                        <!--TODO metti bottone props / pagamento-->
-                        <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
-                        <router-link :to="{ name: 'pagamento' }">
-                            <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
-                                iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                                @click="saveTotPrice()" />
-                        </router-link>
-                        <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
-                            iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
-                            class="empty_cart" />
+                    <div class="row row-cols-sm-1 row-cols-md-2">
+                        <div class="col">
+                            <h3 class="responsive mb-3">
+                                <div class="mb-2">costo consegna {{ store.deliveryPrice }}</div>
+                                <span  v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
+                                    <!-- + {{store.delivery_price }} --> €</span>
+                                <span v-else>Aggiungi articoli</span>
+                            </h3>
+                        </div>
+                        <div class="col">
+                            <!--bottoni pagamento-->
+                            <div>
+                                <!--TODO metti bottone props / pagamento-->
+                                <!-- <button class="btn btn-primary mx-3" @click="saveTotPrice()">Vai al pagamento</button> -->
+                                <router-link :to="{ name: 'pagamento' }">
+                                    <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
+                                        iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                                        @click="saveTotPrice()" class="mb-3" />
+                                </router-link>
+                                <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
+                                    iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
+                                    class="empty_cart" />
+                            </div>
+                        </div>
                     </div>
 
-                </div>
 
+                </div>
             </div>
 
         </div>
@@ -119,6 +125,7 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
+/* #region common style */
 .bg_cart {
     background-image: url('../assets/img/sfondo_ristoranti_2.jpg');
     background-size: contain;
@@ -152,7 +159,7 @@ p {
     border-radius: 10px;
     border: none;
     background-color: $deliveboo-primary-light;
-    width: 60%;
+    width: 90%;
 
 
     .card_article {
@@ -182,11 +189,12 @@ a {
 
 .empty_cart {
     font-family: 'Unbounded', cursive;
-   /*  background-color: $deliveboo-primary; */
+    /*  background-color: $deliveboo-primary; */
 
 }
+/* #endregion common style */
 
-/* section buttons */
+/* #region section buttons */
 .icon-btn {
     width: 50px;
     height: 50px;
@@ -279,4 +287,30 @@ a {
     right: 15px;
     height: 4px;
     top: calc(50% - 2px);
-}</style>
+}
+
+/* #endregion section buttons */
+
+/* responsive tablet */
+@media screen and (max-width: 768px) {
+    .responsive {
+ /*        background-color: lightgreen; */
+        color: $deliveboo-dark;
+        font-size: 1.3rem;
+    }
+
+
+
+
+}
+
+/* responsive mobile */
+@media screen and (max-width: 390px) {
+    .responsive {
+        background-color: violet;
+    }
+
+
+
+}
+</style>

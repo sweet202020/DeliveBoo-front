@@ -176,6 +176,9 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
+img{
+    object-fit: cover;
+}
 .card_test {
     flex-direction: column;
 }
@@ -231,7 +234,7 @@ h2 {
 
 h4 {
     color: $deliveboo-primary;
-    font-size: 1.7rem;
+    font-size: 1.4rem;
 }
 
 h5,
@@ -244,7 +247,7 @@ h5,
 }
 
 .text_description {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
 }
 
 .card_category {
@@ -315,11 +318,11 @@ a {
 
     .text_categories {
 
-        font-size: 1.4rem;
+        font-size: 1.3rem;
     }
 
     .text_description {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 
 }
@@ -329,7 +332,6 @@ a {
     /*     .prova {
         background-color: violet;
     } */
-
 
     h6 {
         font-size: 0.7rem;
@@ -346,7 +348,7 @@ a {
     }
 
     .text_description {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 }
 </style>

@@ -35,7 +35,7 @@ export default {
 
     <!--CONTAINER TOP !!! - RESTAURANT DETAILS -->
     <div class="container">
-      <div class="row row-cols-1 row-cols-lg-2 g-5">
+      <div class="row row-cols-1 row-cols-lg-2">
         <!--RESTAURANT DETAILS -->
         <div class="col restaurant_details p-4" v-if="store.singleRestaurant">
           <div class="row row-cols-1 row-cols-lg-2 g-4">
@@ -94,19 +94,19 @@ export default {
       <!-- ALERT ADD PLATE OLD  -->
 
       <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-            <h6>Articolo aggiunto al carrello</h6>
-          </div> -->
+              <h6>Articolo aggiunto al carrello</h6>
+            </div> -->
       <!-- ALERT ERROR  OLD !!! -->
 
       <!-- <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-            <div class="col">
-              <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
-            </div>
-            <div class="col">
-              <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                text="Svuota Carrello" />
-            </div>
-          </div> -->
+              <div class="col">
+                <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
+              </div>
+              <div class="col">
+                <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                  text="Svuota Carrello" />
+              </div>
+            </div> -->
       <div class="row row-cols-1 row-cols-lg-2 ">
         <div class="col position-realtive">
 
@@ -277,7 +277,7 @@ h5 {
     height: 100%;
     max-height: 150px;
     margin: auto;
-
+    object-fit: cover;
   }
 }
 

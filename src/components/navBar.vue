@@ -49,8 +49,9 @@ window.addEventListener('scroll', (e) => {
 
                             <li class="nav-item me-auto mb-2 mb-lg-0 gap-4">
                                 <router-link class="nav-link text-light color_icon" aria-current="page"
-                                    :to="{ name: 'restaurants' }"><i
-                                        class="fa-solid fa-utensils me-3 color_icon"></i>ristoranti</router-link>
+                                    :to="{ name: 'restaurants' }">
+                                    <i class="fa-solid fa-utensils me-3 color_icon"></i>ristoranti
+                                </router-link>
                             </li>
                         </ul>
 
@@ -58,11 +59,6 @@ window.addEventListener('scroll', (e) => {
                     <!--nav-dx-->
                     <div>
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-4  d-flex">
-                            <!-- 
-                                    capire se basta il v-fi per farlo apparire quando viene cliccato un articolo o se serve un v:bind
-                                    v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"
-                                    v-bind:class="[isActive ? activeClass : '', errorClass]"
-                                -->
                             <li class="nav-item d-flex position-relative">
                                 <div v-if="store.cart.length !== 0"><i class="fa-solid fa-circle cart"></i></div>
 
@@ -132,6 +128,11 @@ a {
     bottom: 25px;
 }
 
+
+.color_mobile{
+ color: red;
+ background-color: green;
+}
 /* .color_icon {
     color: $deliveboo-primary;
 } */

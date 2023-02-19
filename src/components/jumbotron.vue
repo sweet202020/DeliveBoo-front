@@ -58,10 +58,10 @@ export default {
 
                 <div class="bg-jumbo col d-flex justify-content-center align-items-center">
                     <div>
-                        <h1 class="fw-bolder">Il cibo che vuoi tu, <br> dove vuoi tu</h1>
+                        <h1 class="fw-bolder mb-5">Il cibo che vuoi tu, <br> dove vuoi tu</h1>
                         <router-link :to="{ name: 'restaurants' }">
                                     <btnCustomRounded text="Ristoranti" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
-                                        bg_hover="hover_blu_light" />
+                                        bg_hover="hover_blu_light"/>
                                 </router-link>
                        
                             <!--elimina w-100 se vuoi l'imput piu piccolo-->

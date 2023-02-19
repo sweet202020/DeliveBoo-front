@@ -129,56 +129,69 @@ export default {
         </div>
         <!-- ELENCO RISTORANTI -->
         <div class="container bg_img my-5 text-start">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 ">
                 <div class="col my-3 d-flex align-items-stretch" v-for="restaurant in store.restaurants">
-                    <div class="card restaurant">
+                    <div class="card restaurant bg-danger ">
+                        <div class="row card_test">
+                            <div class="col">
+                                <!-- COVER IMAGE -->
+                                <div v-if="restaurant.cover_image">
+                                    <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
+                                </div>
+                                <div v-else>
+                                    <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png"
+                                        alt="placeholder">
+                                </div>
+                            </div>
+                            <div class="col bg-primary"><!-- DETAILS RESTAURANT -->
+                                <div class="card-body d-flex flex-column">
+                                    <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
+                                    <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> <span
+                                            class="text_description">{{ restaurant.address }}</span></div>
+                                    <div class="text"><i class="fa-regular fa-clock aspect_ratio me-2"></i> <span
+                                            class="text_description"> {{
+                                                restaurant.opening_time }}</span></div>
+                                    <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> <span
+                                            class="text_description">{{
+                                                restaurant.delivery_price }} €</span></div>
+                                </div>
+                            </div>
+                            <div class="col bg-secondary">
+                                <!-- PLATE CATEGORY RESTAURANT -->
+                                <div class="categories px-3">
+                                    <h5 class="mb-1">Cosa trovi da loro:</h5>
+                                    <div class="row" v-for="type in restaurant.types">
+                                        <div class="col text-start text_categories"> {{ type.name }} </div>
+                                    </div>
 
-                        <!-- COVER IMAGE -->
-                        <div v-if="restaurant.cover_image">
-                            <img class="card-img" :src="store.API_URL + 'storage/' + restaurant.cover_image" alt="">
-                        </div>
-                        <div v-else>
-                            <img class="card-img" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
-                        </div>
 
-                        <!-- DETAILS RESTAURANT -->
-                        <div class="card-body d-flex flex-column">
-                            <h4 class="card-title">{{ restaurant.restaurant_name }}</h4>
-                            <div class="text"><i class="fa-solid fa-location-dot aspect_ratio me-2"></i> <span
-                                    class="text_description">{{ restaurant.address }}</span></div>
-                            <div class="text"><i class="fa-regular fa-clock aspect_ratio me-2"></i> <span
-                                    class="text_description"> {{
-                                        restaurant.opening_time }}</span></div>
-                            <div class="text mb-5"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> <span
-                                    class="text_description">{{
-                                        restaurant.delivery_price }} €</span></div>
-                        </div>
-
-                        <!-- PLATE CATEGORY RESTAURANT -->
-                        <div class="categories px-3">
-                            <h5 class="mb-1">Cosa trovi da loro:</h5>
-                            <div class="row" v-for="type in restaurant.types">
-                                <div class="col text-start text_categories"> {{ type.name }} </div>
+                                </div>
                             </div>
 
-
-
-
-                            <div class="bg-dark">
-                                <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                                    <btnCustomRoundedSmall @click="saveTotDelivery()" text="Menu"
-                                        iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" />
-                                </router-link>
+                            <div class="col bg-dark"> <!-- BUTTON MENU -->
+                                <div class="my-3">
+                                    <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                                        <btnCustomRoundedSmall @click="saveTotDelivery()" text="Menu"
+                                            iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" />
+                                    </router-link>
+                                </div>
                             </div>
                         </div>
+
+
+
+
+
+
+
                     </div>
                 </div>
 
 
                 <!-- <div v-else>
-                                                      Ops No restaurants available for these types!
-                                                     Change your Filter
-                                                      </div> -->
+                        Ops No restaurants available for these types!
+                        Change your Filter
+                    </div> -->
             </div>
         </div>
     </div>
@@ -188,6 +201,10 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
+.card_test {
+    flex-direction: column;
+
+}
 
 .title_category {
     display: flex;

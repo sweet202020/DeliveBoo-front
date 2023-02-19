@@ -43,14 +43,14 @@ export default {
                         </ul>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col mb-3">
                     <h4>Seguici sui social</h4>
                     <a href=""><i class="fa-brands fa-facebook me-2"></i></a>
                     <a href=""><i class="fa-brands fa-instagram me-2"></i></a>
                     <a href=""><i class="fa-brands fa-tiktok me-2"></i></a>
                 </div>
             </div>
-            <span>Copyright © 2019 FoodMood by WebGeniusLab. All Rights Reserved.</span>
+            <span >Copyright © 2019 FoodMood by WebGeniusLab. All Rights Reserved.</span>
         </div>
     </div>
 

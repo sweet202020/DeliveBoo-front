@@ -26,6 +26,7 @@ export default {
             customer_name: '',
             delivery_address: '',
             phone_number: '',
+            cardType: '',
             totalPrice: localStorage.getItem('savetotalPrice'),
             success: false,
 
@@ -40,8 +41,13 @@ export default {
             console.log(numberValidation);
             this.array_number_card = []
             this.array_number_card.push(numberValidation)
+            console.log(this.array_number_card);
             this.array_number_card.forEach(element => {
                 this.card_number_valid = element.isValid
+                if (element.card) {
+                    this.cardType = element.card.type
+
+                }
             });
             console.log(this.card_number_valid);
             console.log(this.array_number_card);
@@ -131,14 +137,23 @@ export default {
                 <!-- TELEFONO VISITATORE -->
                 <div class="mb-3">
                     <label for="phone_number" class="form-label">Numero di telefono (*)</label>
-                    <input v-model="phone_number" type="text" name="phone_number" id="phone_number" class="form-control"
+                    <input v-model="phone_number" type="tel" name="phone_number" id="phone_number" class="form-control"
                         required>
                 </div>
                 <!-- N° CARTA DI CREDITO VISITATORE -->
                 <div class="mb-3">
                     <label for="" class="form-label">Numero carta di credito (*)</label>
-                    <input @keyup="credit_card_number()" type="text" v-model="this.card" class="form-control" name="" id=""
-                        aria-describedby="helpId" placeholder="" required>
+                    <div class="loghi m-3">
+                        <img :class="this.cardType == 'visa' ? 'active' : ''"
+                            src="../assets/img/payment/Visa_Inc._logo.svg.webp" alt="">
+                        <img :class="this.cardType == 'mastercard' ? 'active' : ''"
+                            src="../assets/img/payment/Maestro_logo.png" alt="">
+                        <img :class="this.cardType == 'american-express' ? 'active' : ''"
+                            src="../assets/img/payment/American_Express_logo_(2018).svg.png" alt="">
+                    </div>
+                    <input @keyup="credit_card_number()" maxlength="19" type="tel" inputmode="numeric"
+                        pattern="[0-9\s]{13,19}" autocomplete="cc-number" v-model="this.card" class="form-control" name=""
+                        id="ccn" aria-describedby="helpId" placeholder="xxxx xxxx xxxx xxxx" required>
                     <span v-for="data in this.array_number_card">
                         <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
                     </span>
@@ -230,5 +245,16 @@ label {
     font-weight: bold;
     letter-spacing: 0.25rem;
     font-family: 'Unbounded', cursive;
+}
+
+img {
+    width: 60px;
+    margin: 0 0.5rem;
+    opacity: 0.3;
+
+}
+
+img.active {
+    opacity: 1;
 }
 </style>

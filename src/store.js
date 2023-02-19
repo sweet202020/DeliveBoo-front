@@ -49,7 +49,7 @@ export const store = reactive({
                     this.error = true
                     setTimeout(() => {
                         this.error = false
-                    }, 3000);
+                    }, 1500);
                 }
             }
         }

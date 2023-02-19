@@ -31,7 +31,7 @@ export default {
   <navBar />
   <jumbotronMenu />
 
-  <div class="container py-1 position-realtive">
+  <div class="container py-1">
 
     <!--CONTAINER TOP !!! - RESTAURANT DETAILS -->
     <div class="container">
@@ -76,7 +76,7 @@ export default {
     <div class="container">
       <div class="row row-cols-1 row-cols-lg-2 ">
         <!-- ALERTS -->
-        <div class="col">
+        <div class="col position-realtive">
           <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
             <strong>Articolo aggiunto al carrello</strong>
           </div>
@@ -254,12 +254,12 @@ h5 {
 
 .fixed_alert {
   background-color: $deliveboo-secondary;
-  opacity: 97%;
   color: $deliveboo-white;
-  position: absolute;
-  top: 20%;
+  position: relative;
+  top: 0;
   left: 50%;
-  width: 40%;
+  transform: translate(-50%, -50%);
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,11 +271,10 @@ h5 {
   background-color: $deliveboo-primary-light;
   opacity: 97%;
   color: $deliveboo-white;
-  width: 100%;
-  aspect-ratio: 1/1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  position: relative;
+  width: 50%;
+  top: -50%;
+  right: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;

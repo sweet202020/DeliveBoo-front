@@ -79,36 +79,35 @@ export default {
         <strong>Articolo aggiunto al carrello.</strong>
       </div>
       <!-- ALERT ERROR !!! -->
-      <div class="alert alert-primary alert-dismissible fade show" role="alert" v-if="store.error">
+      <div class="alert alert-primary alert-dismissible fade show alert_danger" role="alert" v-if="store.error">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <strong>Non puoi acquistare da due ristorante diversi.</strong><br />
         Completa l'ordine precedente o svuota il carrello
         <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }">
           <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
-          iconFw="fa-solid fa-cart-shopping" class="mt-3" />
+            iconFw="fa-solid fa-cart-shopping" class="mt-3" />
         </router-link>
         <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Svuota Carrello"
-        iconFw="fa-solid fa-cart-shopping" class="mt-3" />
+          iconFw="fa-solid fa-cart-shopping" class="mt-3" />
       </div>
 
       <!-- ALERT ADD PLATE OLD  -->
 
-     <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-        <h6>Articolo aggiunto al carrello</h6>
-      </div> -->
+      <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+            <h6>Articolo aggiunto al carrello</h6>
+          </div> -->
       <!-- ALERT ERROR  OLD !!! -->
 
       <!-- <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-        <div class="col">
-          <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
-        </div>
-        <div class="col">
-          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-            text="Svuota Carrello" />
-        </div>
-      </div> -->
+            <div class="col">
+              <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
+            </div>
+            <div class="col">
+              <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                text="Svuota Carrello" />
+            </div>
+          </div> -->
       <div class="row row-cols-1 row-cols-lg-2 ">
-        <!-- ALERTS -->
         <div class="col position-realtive">
 
           <!-- PLATES LIST -->
@@ -282,7 +281,15 @@ h5 {
   }
 }
 
-.fixed_alert {
+.alert_danger {
+  background-color: $deliveboo-primary-light;
+  opacity: 85%;
+  color: white;
+
+}
+
+/* @region alert old */
+/* .fixed_alert {
   background-color: $deliveboo-secondary;
   color: $deliveboo-white;
   position: relative;
@@ -304,7 +311,9 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
+
+/* @endregion alert old */
 
 .placeholder {
   border: 2px solid $deliveboo-dark;

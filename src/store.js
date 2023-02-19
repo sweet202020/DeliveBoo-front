@@ -47,9 +47,9 @@ export const store = reactive({
                 }
                 else {
                     this.error = true
-                    setTimeout(() => {
+                   /*  setTimeout(() => {
                         this.error = false
-                    }, 1500);
+                    }, 6000); */
                 }
             }
         }
@@ -66,7 +66,7 @@ export const store = reactive({
         this.alert = true
         setTimeout(() => {
             this.alert = false
-        }, 2000);
+        }, 6000);
         store.saveCart();
     },
     addQuantity(prodotto) {

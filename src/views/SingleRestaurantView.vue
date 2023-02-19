@@ -74,17 +74,18 @@ export default {
 
     <!--CONTAINER BOTTOM !!! - PLATES & DRINKS LIST -->
     <div class="container">
+      <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+        <strong>Articolo aggiunto al carrello</strong>
+      </div>
+      <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
+        <strong>Non puoi ordinare da due ristoranti diversi</strong>
+        <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+          text="Vuoi svuotare il carrello? Clicca qui" />
+      </div>
       <div class="row row-cols-1 row-cols-lg-2 ">
         <!-- ALERTS -->
-        <div class="col position-realtive">
-          <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-            <strong>Articolo aggiunto al carrello</strong>
-          </div>
-          <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-            <strong>Non puoi ordinare da due ristoranti diversi</strong>
-            <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-              text="Vuoi svuotare il carrello? Clicca qui" />
-          </div>
+        <div class="col position-realtive debug">
+
           <!-- PLATES LIST -->
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Piatti:</h3>
           <div class=" mb-5 pb-5">
@@ -112,11 +113,10 @@ export default {
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- DRINKS LIST -->
-        <div class="col">
+        <div class="col debug_2">
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Bibite:</h3>
           <div class=" mb-5 pb-5">
             <div v-for="plate in store.platesNew">
@@ -256,30 +256,24 @@ h5 {
   background-color: $deliveboo-secondary;
   color: $deliveboo-white;
   position: relative;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: medium;
-
 }
 
 .fixed_alert_danger {
   background-color: $deliveboo-primary-light;
-  opacity: 97%;
   color: $deliveboo-white;
   position: relative;
-  width: 50%;
-  top: -50%;
-  right: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: x-large;
 }
 
 .placeholder {

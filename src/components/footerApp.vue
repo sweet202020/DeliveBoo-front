@@ -43,21 +43,21 @@ export default {
                         </ul>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col mb-3">
                     <h4>Seguici sui social</h4>
-                    <a href=""><i class="fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram"></i></a>
-                    <a href=""><i class="fa-brands fa-tiktok"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook me-2"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram me-2"></i></a>
+                    <a href=""><i class="fa-brands fa-tiktok me-2"></i></a>
                 </div>
             </div>
-            <span>Copyright © 2019 FoodMood by WebGeniusLab. All Rights Reserved.</span>
+            <span >Copyright © 2019 FoodMood by WebGeniusLab. All Rights Reserved.</span>
         </div>
     </div>
 
 
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
 .bg_footer {
@@ -95,6 +95,7 @@ export default {
 
         &:hover {
             background-color: transparent;
+            color: $deliveboo-primary;
         }
     }
 

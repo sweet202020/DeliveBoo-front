@@ -60,7 +60,7 @@ button .text {
 button .icon {
     position: absolute;
     border-left: 1px solid $deliveboo-white;
-    transform: translateX(165px);
+    transform: translateX(175px);
     height: 40px;
     width: 40px;
     display: flex;

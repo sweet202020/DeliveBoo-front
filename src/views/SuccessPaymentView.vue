@@ -11,7 +11,7 @@ export default {
 <template>
     <jumbotronRestaurants />
     <div class="container-fluid success">
-        <div class="container title_category">
+        <div class="container title_category text-center">
             <h3>PAGAMENTO AVVENUTO CON SUCCESSO</h3>
         </div>
         <div class="pt-5">
@@ -20,7 +20,7 @@ export default {
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
 .success{

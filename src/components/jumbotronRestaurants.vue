@@ -63,7 +63,6 @@ export default {
 
 
 
-
 /*#region jumbo-effect */
 .wrapper span {
     position: absolute;
@@ -185,4 +184,21 @@ export default {
 }
 
 /*#endregion jumbo-effect*/
+
+
+/* responsive tablet */
+@media screen and (max-width: 768px) {
+    .jumbotron-bg {
+    height: 300px;
+}
+
+}
+
+/* responsive mobile */
+@media screen and (max-width: 390px) {
+    .jumbotron-bg {
+    height: 250px;
+}
+
+}
 </style>

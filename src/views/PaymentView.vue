@@ -217,7 +217,7 @@ a {
 .container {
     background-color: $deliveboo-primary-light;
     border-radius: 1.5rem;
-    width: 800px;
+    max-width: 800px;
 }
 
 .form-control {

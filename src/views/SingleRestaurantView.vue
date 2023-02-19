@@ -73,29 +73,32 @@ export default {
 
     <!--CONTAINER BOTTOM !!! - PLATES & DRINKS LIST -->
     <div class="container">
-      <!-- ALERT NEW  -->
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <!-- ALERT ADD PLATE -->
+      <div class="alert alert-primary alert-dismissible fade show" role="alert" v-if="store.alert && !store.error">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
         <strong>Articolo aggiunto al carrello.</strong>
       </div>
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
+      <!-- ALERT ERROR !!! -->
+      <div class="alert alert-primary alert-dismissible fade show" role="alert" v-if="store.error">
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <strong>Non puoi acquistare da due ristorante diversi.</strong><br />
         Completa l'ordine precedente o svuota il carrello
-        <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
-          class="mt-2" />
+        <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }">
+          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
+          iconFw="fa-solid fa-cart-shopping" class="mt-3" />
+        </router-link>
         <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Svuota Carrello"
-          class="mt-2" />
+        iconFw="fa-solid fa-cart-shopping" class="mt-3" />
       </div>
 
-      <!-- ALERT OLD  -->
+      <!-- ALERT ADD PLATE OLD  -->
 
-      <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-
+     <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
         <h6>Articolo aggiunto al carrello</h6>
-      </div>
+      </div> -->
+      <!-- ALERT ERROR  OLD !!! -->
 
-      <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
+      <!-- <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
         <div class="col">
           <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
         </div>
@@ -103,10 +106,10 @@ export default {
           <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
             text="Svuota Carrello" />
         </div>
-      </div>
+      </div> -->
       <div class="row row-cols-1 row-cols-lg-2 ">
         <!-- ALERTS -->
-        <div class="col position-realtive debug">
+        <div class="col position-realtive">
 
           <!-- PLATES LIST -->
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Piatti:</h3>
@@ -138,7 +141,7 @@ export default {
         </div>
 
         <!-- DRINKS LIST -->
-        <div class="col debug_2">
+        <div class="col">
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Bibite:</h3>
           <div class=" mb-5 pb-5">
             <div v-for="plate in store.platesNew">

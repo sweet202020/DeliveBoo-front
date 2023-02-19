@@ -10,27 +10,11 @@ export default {
     data() {
         return {
             store,
-            saveTotalPrice: 0,
         }
-    }, methods: {
-        savePrice() {
-            localStorage.setItem('savetotalPrice', this.saveTotalPrice);
-        },
-        saveTotPrice() {
-            const save = store.totalPrice()
-            this.saveTotalPrice = (save)
-            this.savePrice()
-
-        },
     },
     mounted() {
-        if (localStorage.getItem('cart')) {
-            try {
-                store.cart = JSON.parse(localStorage.getItem('cart'));
-            } catch (e) {
-                localStorage.removeItem('cart');
-            }
-        }
+        store.checkCart();
+        store.deliveryPrice = localStorage.getItem('saveDeliveryPrice')
     }
 }
 
@@ -69,8 +53,7 @@ export default {
                                     <div class="add-icon"></div>
                                     <div class="btn-txt">Aggiungi</div>
                                 </button>
-                                <!-- <button @click="store.deleteQuantity(prodotto, i)">-</button>
-                                                             <button @click="store.addQuantity(prodotto, i)">+</button> -->
+
                             </div>
                         </div>
                     </div>
@@ -82,10 +65,12 @@ export default {
                 <!-- SECTION PAYMENT-->
                 <div class="payment_container my-5">
                     <div class="row row-cols-sm-1 row-cols-md-2">
+
                         <!-- RECAP PRICE-->
                         <div class="col mb-3">
                             <h3 class="responsive">
                                 <div class="mb-2">costo consegna {{ store.deliveryPrice }}</div>
+
                                 <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                                     <!-- + {{store.delivery_price }} --> €</span>
                                 <span v-else>Aggiungi articoli</span>
@@ -101,10 +86,9 @@ export default {
                             <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
                                 iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange"
                                 class="empty_cart" />
+
                         </div>
                     </div>
-
-
                 </div>
             </div>
 

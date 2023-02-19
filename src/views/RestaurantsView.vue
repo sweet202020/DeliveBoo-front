@@ -75,25 +75,14 @@ export default {
                 },
             ],
             filter: [],
-            saveDeliveryPrice: 0,
-
-
         }
     },
     methods: {
         getImageUrl(name) {
             return new URL(`../assets/img/categories/${name}`, import.meta.url).href
         },
-        saveDelivery() {
-            localStorage.setItem('saveDeliveryPrice', this.saveDeliveryPrice);
-        },
-        saveTotDelivery() {
-            const save = store.singleRestaurant.delivery_price
-            this.saveDeliveryPrice = (save)
-            this.saveDelivery()
+    },
 
-        },
-    }
 }
 </script>
 
@@ -161,8 +150,8 @@ export default {
                             <div class="col">
                                 <div class="mx-3 mb-4">
                                     <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
-                                        <btnCustomRoundedSmall @click="saveTotDelivery()" text="Menu"
-                                            iconFw="fa-solid fa-utensils" bg_btn="bg_blue" bg_hover="hover_blu_light" />
+                                        <btnCustomRoundedSmall text="Menu" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                                            bg_hover="hover_blu_light" />
                                     </router-link>
                                 </div>
                             </div>
@@ -175,8 +164,6 @@ export default {
                                     </div>
                                 </div>
                             </div>
-                            
-
                         </div>
                     </div>
                 </div>

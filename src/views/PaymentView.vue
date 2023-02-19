@@ -46,11 +46,6 @@ export default {
             console.log(this.card_number_valid);
             console.log(this.array_number_card);
 
-            /* const nameCard = valid.cardholderName('mastercard')
-            console.log(nameCard); */
-            /* var numberValidation = valid.number("41111");
- */
-
         },
         credit_card_date() {
             const valid = cardValidator;
@@ -77,11 +72,6 @@ export default {
 
             let shopping_basket = JSON.parse(localStorage.getItem('cart'))
             console.log(shopping_basket);
-            // for (let i = 0; i < shopping_basket.length; i++) {
-            //     const element = shopping_basket[i]
-            //     order_plate.push([element.id, element.quantita])
-            //     console.log(element.id);
-            // }
             const data = {
                 customer_name: this.customer_name,
                 delivery_address: this.delivery_address,

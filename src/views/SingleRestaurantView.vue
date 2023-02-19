@@ -16,19 +16,12 @@ export default {
     return {
       store,
     }
+
   },
 
   mounted() {
-    store.callApiPlates(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
     store.callApiSingleRestaurant(store.API_URL + 'api/restaurants/' + this.$route.params.slug);
-    //DON'T TOUCH!!
-    if (localStorage.getItem('cart')) {
-      try {
-        store.cart = JSON.parse(localStorage.getItem('cart'));
-      } catch (e) {
-        localStorage.removeItem('cart');
-      }
-    }
+    store.checkCart();
   },
 
 }
@@ -74,25 +67,7 @@ export default {
               </div>
             </div>
           </div>
-
         </div>
-
-        <!-- ORDER DETAILS -->
-        <!-- <div class="col"> -->
-        <!-- CARD -->
-        <!-- <div class="order_details p-4">
-                                            <h3>Riepilogo ordine</h3>
-                                            <div class="font_size mt-3">Prodotti €</div>
-                                            <div v-if="store.singleRestaurant">
-                                              <div class="font_size mt-3">Consegna {{ store.singleRestaurant.delivery_price }} €</div>
-                                            </div> -->
-        <!-- BUTTON -->
-        <!--    <div class="d-flex justify-content-end pt-3">
-               <btnCustomRounded text="vai al carrello" iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue"
-                   bg_hover="hover_blu_light" />
-                 </div>
-                 </div>
-             </div> -->
       </div>
     </div>
 
@@ -168,43 +143,7 @@ export default {
               </div>
             </div>
           </div>
-
         </div>
-
-        <!-- DRINKS LIST -->
-        <!--  <div class="col">
-                    <h3 class="mb-3"><i class="fa-solid fa-champagne-glasses me-3"></i>Le nostre bibite:</h3>
-                    <div class="row card_plate my-4 mx-2" v-for="plate in store.platesNew">
-                      <div class="col-4 p-3" v-if="plate.category_id === 2">
-                        <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
-                      </div>
-                      <div class="col-8 p-3" v-if="plate.category_id === 2">
-                        <div class="d-flex justify-content-between mb-2">
-                          <h5 class="name">{{ plate.name }}</h5>
-                          <h5 class="price">{{ plate.price }} €</h5>
-                        </div>
-                        <p class="ingredients">{{ plate.description }}</p>
-                        <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                            class="fa-solid fa-plus"></i>
-                        </div>
-                      </div>
-                    </div> -->
-        <!--  <section class=" mb-5 pb-5">
-                              <div v-for="plate in store.platesNew">
-                                <div v-if="plate.category_id === 2">
-                                  <div class="card_plate my-4 p-3">
-                                    <div class="d-flex justify-content-between mb-2">
-                                      <h5 class="name">{{ plate.name }}</h5>
-                                      <h5 class="price">{{ plate.price }} €</h5>
-                                    </div>
-                                    <p class="ingredients">{{ plate.description }}</p>
-                                    <div class="btn btn_plate d-flex justify-content-end mt-5" @click="store.addPlate(plate)"><i
-                                        class="fa-solid fa-plus"></i></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </section> -->
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -318,7 +257,7 @@ h5 {
   opacity: 97%;
   color: $deliveboo-white;
   position: absolute;
-  top: 0;
+  top: 20%;
   left: 50%;
   width: 40%;
   display: flex;
@@ -347,7 +286,5 @@ h5 {
 .placeholder {
   border: 2px solid $deliveboo-dark;
 }
-
-
 </style>
 

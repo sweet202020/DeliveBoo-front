@@ -101,7 +101,6 @@ export default {
             <div v-for="plate in store.platesNew">
 
               <div v-if="plate.category_id === 1">
-                <div v-if="plate == 0">
                 
                 <div class="card_plate my-4 mx-1 p-3 row">
                   <!-- PRODUCT IMAGE -->
@@ -123,9 +122,9 @@ export default {
                   </div>
                 </div>
               </div>
-              <div v-else>no ristoranti</div>
+
               
-              </div>
+           
 
 
             </div>

@@ -172,35 +172,39 @@ export default {
                         <img :class="this.cardType == 'american-express' ? 'active' : ''"
                             src="../assets/img/payment/American_Express_logo_(2018).svg.png" alt="">
                     </div>
-                    <input @keyup="credit_card_number()" maxlength="19" type="tel" inputmode="numeric" v-model="this.card"
-                        class="form-control" name="" id="ccn" aria-describedby="helpId" placeholder="0000 0000 0000 0000"
-                        required>
-                    <span v-for="data in this.array_number_card">
-                        <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
-                        <span v-if="data.isValid"><i class="fas fa-check-square fa-lg fa-fw"></i>
-                        </span>
-                    </span>
-
+                    <div class="d-flex aling-items-center gap-3">
+                        <input @keyup="credit_card_number()" maxlength="19" type="tel" inputmode="numeric"
+                            v-model="this.card" class="form-control" name="" id="ccn" aria-describedby="helpId"
+                            placeholder="0000 0000 0000 0000" required>
+                        <div v-for="data in this.array_number_card" class="d-flex align-items-center">
+                            <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation fa-xl"></i></span>
+                            <span v-if="data.isValid"><i class="fas fa-check-square fa-xl fa-fw text-primary"></i></span>
+                        </div>
+                    </div>
                 </div>
                 <!-- SCADENZA CARTA DI CREDITO VISITATORE -->
                 <div class="mb-3">
                     <label for="" class="form-label">Data di scadenza (*)</label>
-                    <input type="text" @keyup="this.credit_card_date()" maxlength="5" class="form-control"
-                        v-model="this.date" name="" id="" aria-describedby="helpId" placeholder="MM/YY" required>
-                    <span v-for="data in this.array_date_card">
-                        <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
-                        <span v-if="data.isValid"><i class="fas fa-check-square fa-lg fa-fw"></i></span>
-                    </span>
-
+                    <div class="d-flex aling-items-center gap-3">
+                        <input type="text" @keyup="this.credit_card_date()" maxlength="5" class="form-control"
+                            v-model="this.date" name="" id="" aria-describedby="helpId" placeholder="MM/YY" required>
+                        <div v-for="data in this.array_date_card" class="d-flex align-items-center">
+                            <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation fa-xl"></i></span>
+                            <span v-if="data.isValid"><i class="fas fa-check-square fa-xl fa-fw  text-primary"></i></span>
+                        </div>
+                    </div>
                 </div>
                 <!-- CVV CARTA DI CREDITO VISITATORE -->
                 <div class="mb-3">
                     <label for="" class="form-label">cvv (*)</label>
-                    <input @keyup="credit_card_cvv()" maxlength="3" type="text" v-model="this.cvv" class="form-control"
-                        name="" id="" aria-describedby="helpId" placeholder="000" required>
-                    <span v-for="data in this.array_cvv_card">
-                        <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation"></i></span>
-                    </span>
+                    <div class="d-flex aling-items-center gap-3">
+                        <input @keyup="credit_card_cvv()" maxlength="3" type="text" v-model="this.cvv" class="form-control"
+                            name="" id="" aria-describedby="helpId" placeholder="000" required>
+                        <div v-for="data in this.array_cvv_card" class="d-flex align-items-center">
+                            <span v-if="!data.isPotentiallyValid"><i class="fa-solid fa-exclamation fa-xl"></i></span>
+                            <span v-if="data.isValid"><i class="fas fa-check-square fa-xl fa-fw  text-primary"></i></span>
+                        </div>
+                    </div>
                 </div>
                 <!-- BTN PAGA -->
 

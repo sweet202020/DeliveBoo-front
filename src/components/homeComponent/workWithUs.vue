@@ -1,12 +1,12 @@
 <script>
-import btnCustomRounded from '../btnCustomRounded.vue';
+import btnCustomRoundedMedium from '../btnCustomRoundedMedium.vue';
 
 
 
 export default {
     name: 'workWithUs',
     components: {
-        btnCustomRounded,
+        btnCustomRoundedMedium,
     }
 }
 
@@ -28,9 +28,11 @@ export default {
                             Diventa un rider: flessibilità, ottimi guadagni e un mondo di vantaggi per te.
                         </p>
                     </div>
-                    <btnCustomRounded text="Diventa Rider" iconFw="fa-solid fa-motorcycle" bg_btn="bg_blue"
-                        bg_hover="hover_blu_light" class="my-5 ms-3" />
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere<i class="fa-solid fa-motorcycle"></i></a> -->
+                    <div class="max_witdh">
+                        <btnCustomRoundedMedium text="Diventa Rider" iconFw="fa-solid fa-motorcycle" bg_btn="bg_blue"
+                            bg_hover="hover_blu_light" class="my-5 ms-3 " />
+                    </div>
+    
                 </div>
             </div>
 
@@ -46,9 +48,9 @@ export default {
                             cibo.
                         </p>
                     </div>
-                    <btnCustomRounded text="Diventa Partner" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
+                    <btnCustomRoundedMedium text="Diventa Partner" iconFw="fa-solid fa-utensils" bg_btn="bg_blue"
                         bg_hover="hover_blu_light" class="my-5 ms-3" />
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+ 
                 </div>
             </div>
 
@@ -64,9 +66,9 @@ export default {
                         </p>
                     </div>
                     
-                        <btnCustomRounded text="Lavora con noi" iconFw="fa-solid fa-users-line" bg_btn="bg_blue"
+                        <btnCustomRoundedMedium text="Lavora con noi" iconFw="fa-solid fa-users-line" bg_btn="bg_blue"
                         bg_hover="hover_blu_light" class="my-5 ms-3" />
-                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+
                 </div>
             </div>
         </div>
@@ -79,6 +81,9 @@ export default {
 
 //TODO cambiare lo stile delle card
 
+.max_witdh{
+    max-width: 60%;
+}
 
 h2 {
     color: $deliveboo-secondary;

@@ -27,6 +27,7 @@ export const store = reactive({
                 this.singleRestaurant = response.data.results;
                 this.platesNew = response.data.results.plates;
                 localStorage.setItem('saveDeliveryPrice', this.singleRestaurant.delivery_price);
+                console.log(this.platesNew);
             })
     },
     saveCart() {

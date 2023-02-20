@@ -91,30 +91,18 @@ export default {
           iconFw="fa-solid fa-cart-shopping" class="mt-3" />
       </div>
 
-      <!-- ALERT ADD PLATE OLD  -->
-
-      <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-              <h6>Articolo aggiunto al carrello</h6>
-            </div> -->
-      <!-- ALERT ERROR  OLD !!! -->
-
-      <!-- <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-              <div class="col">
-                <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
-              </div>
-              <div class="col">
-                <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                  text="Svuota Carrello" />
-              </div>
-            </div> -->
       <div class="row row-cols-1 row-cols-lg-2 ">
         <div class="col position-realtive">
 
           <!-- PLATES LIST -->
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Piatti:</h3>
           <div class=" mb-5 pb-5">
+
             <div v-for="plate in store.platesNew">
+
               <div v-if="plate.category_id === 1">
+                <div v-if="plate == 0">
+                
                 <div class="card_plate my-4 mx-1 p-3 row">
                   <!-- PRODUCT IMAGE -->
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-if="plate.cover_image">
@@ -135,6 +123,11 @@ export default {
                   </div>
                 </div>
               </div>
+              <div v-else>no ristoranti</div>
+              
+              </div>
+
+
             </div>
           </div>
         </div>

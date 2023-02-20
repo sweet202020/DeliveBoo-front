@@ -94,7 +94,7 @@ export default {
 .burger {
     img {
         object-fit: contain;
-        width: 400px;
+        max-width: 100%;
         height: 500px;
         margin: auto;
     }
@@ -198,7 +198,7 @@ a {
 }
 
 .wrapper span:nth-child(10) {
-    left: 90%;
+    left: 80%;
     animation-delay: 4s;
 }
 

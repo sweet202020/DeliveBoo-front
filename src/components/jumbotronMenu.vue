@@ -123,7 +123,7 @@ export default {
 }
 
 .wrapper span:nth-child(10) {
-    left: 90%;
+    left: 80%;
     animation-delay: 4s;
 }
 

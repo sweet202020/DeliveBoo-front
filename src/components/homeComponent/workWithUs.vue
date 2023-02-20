@@ -16,7 +16,7 @@ export default {
 
     <div class="container pb-5">
         <h2 class=" text-center pt-5 mt-5">VOI E NOI</h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 py-5 mx-2">
+        <div class="row row-cols-1 row-cols-md-3 py-5 mx-2">
 
             <!-- SECTION RIDER -->
             <div class="col my-3">

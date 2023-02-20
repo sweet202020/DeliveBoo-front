@@ -66,17 +66,17 @@ export default {
                     // console.log(response.data.results.data, 'io');
                 })
         },
-        fixImage(input){
-            if(input){
+        fixImage(input) {
+            if (input) {
                 return store.API_URL + 'storage/' + input
-            } else{
+            } else {
                 return new URL(`../../assets/img/placeholder/placehorder_tondo.png`, import.meta.url).href
             }
         }
     },
 
     mounted() {
-this.callApi('http://127.0.0.1:8000/api/restaurants')
+        this.callApi('http://127.0.0.1:8000/api/restaurants')
     }
 } 
 </script>
@@ -95,20 +95,24 @@ this.callApi('http://127.0.0.1:8000/api/restaurants')
             </div>
             <div class="row row-cols-1 row-cols-md-3 row-cols-lg-auto g-3 justify-content-center">
                 <div class="col d-flex justify-content-around top_restaurant" v-for="restaurant in restaurants">
-                    <div class="custom_card">
-                        <img :src=" fixImage(restaurant.cover_image)" alt="">
 
-                        <div class="card_content">
-                            <span class="card_title">{{ restaurant.restaurant_name }}</span>
-                            <span class="card_subtitle">
-                                <p>{{ restaurant.address }}</p>
-                            </span>
-                            <p class="card_description">Cosa puoi mangiare da loro: <br /></p>
-                            <span class="me-1" v-for="type in restaurant.types"> {{ type.name }} </span>       
+                    <router-link :to="{ name: 'single-restaurant', params: { slug: restaurant.slug } }">
+                        <div class="custom_card">
+                            <img :src="fixImage(restaurant.cover_image)" alt="">
+
+                            <div class="card_content">
+                                <span class="card_title">{{ restaurant.restaurant_name }}</span>
+                                <span class="card_subtitle">
+                                    <p>{{ restaurant.address }}</p>
+                                </span>
+                                <p class="card_description">Cosa puoi mangiare da loro: <br /></p>
+                                <span class="me-1" v-for=" type in restaurant.types"> {{ type.name }} </span>
+                            </div>
                         </div>
-                    </div>
+                    </router-link>
                 </div>
             </div>
+
 
         </div>
         <div class="pt-5 mb-5">
@@ -155,6 +159,10 @@ this.callApi('http://127.0.0.1:8000/api/restaurants')
     }
 
     .custom_card {
+        &:hover {
+            cursor: pointer;
+        }
+
         img {
             width: 100%;
             aspect-ratio: 1/1;

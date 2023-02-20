@@ -45,7 +45,7 @@ export default {
                 {
                     url: 'mexicali.jpg',
                     name: 'Mexicali',
-                    address: 'Via Messio, 1',
+                    address: 'Via Messico, 1',
                     description: 'messicano ● carne ● insalate'
                 }
             ]
@@ -84,32 +84,36 @@ export default {
 
         <!-- RISTORANTI DEL MESE -->
         <div class="container-fluid text-center my-5">
-            <h3>I RISTORANTI DEL MESE</h3>
-        
-        <div class="col my-5 d-flex justify-content-around top_restaurant">
-            <div class="custom_card" v-for="restaurant in top_restaurants">
-                <img :src="getImageUrl(restaurant.url)" alt="">
+            <div class="container my-5">
+                <h3>I RISTORANTI DEL MESE</h3>
+            </div>
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-auto g-3">
+                <div class="col d-flex justify-content-around top_restaurant" v-for="restaurant in top_restaurants">
+                    <div class="custom_card">
+                        <img :src="getImageUrl(restaurant.url)" alt="">
 
-                <div class="card_content">
-                    <span class="card_title">{{ restaurant.name }}</span>
-                    <span class="card_subtitle">
-                        <p>{{ restaurant.address }}</p>
-                    </span>
-                    <p class="card_description">Cosa puoi mangiare da loro: <br /> {{ restaurant.description }}</p>
+                        <div class="card_content">
+                            <span class="card_title">{{ restaurant.name }}</span>
+                            <span class="card_subtitle">
+                                <p>{{ restaurant.address }}</p>
+                            </span>
+                            <p class="card_description">Cosa puoi mangiare da loro: <br /> {{ restaurant.description }}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
-    </div>
         <!-- card ristoranti
-                <div class="container bg_img my-5 p-5 text-center">
-                    <h2>I nostri suggerimenti</h2>
-                    <h3 class="my-5">Ristoranti popolari</h3>
-                    <div class="row row-cols-2 row-cols-md-3">
-                        card ristoranti TODO fare cilco componente
-                        <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
-                            info="info" description="bello bello" />
-                    </div>
-                </div> -->
+                    <div class="container bg_img my-5 p-5 text-center">
+                        <h2>I nostri suggerimenti</h2>
+                        <h3 class="my-5">Ristoranti popolari</h3>
+                        <div class="row row-cols-2 row-cols-md-3">
+                            card ristoranti TODO fare cilco componente
+                            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
+                                info="info" description="bello bello" />
+                        </div>
+                    </div> -->
         <!--onde bot-->
         <div class="pt-5 mb-5">
             <img class="standard" src="../../assets/img/wave.png" alt="">
@@ -125,8 +129,6 @@ export default {
 .box {
     background: rgb(245, 97, 44);
     background: linear-gradient(180deg, rgba(245, 97, 44, 1) 0%, rgba(255, 158, 69, 1) 50%, rgba(245, 97, 44, 1) 100%);
-    max-width: 1800px;
-
 
     .rotate {
         width: 100%;
@@ -184,7 +186,7 @@ export default {
 .temporary_text {
     font-weight: bold;
     font-size: 24px;
-    padding: 6px 12px;
+    /* padding: 6px 12px; */
     color: #f8f8f8;
 }
 
@@ -268,6 +270,9 @@ export default {
             height: 80px;
         }
 
+        h3 {
+            font-size: 1.5rem;
+        }
     }
 }
 

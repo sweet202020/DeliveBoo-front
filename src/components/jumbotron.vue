@@ -15,6 +15,10 @@ export default {
 </script>
 
 <template>
+
+    <div class="container">
+        
+    </div>
     <div class="jumbotron-bg pt-5 position-relative">
         <!--Effetto bg bolle-->
         <div class="wrapper">

@@ -97,12 +97,8 @@ export default {
           <!-- PLATES LIST -->
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Piatti:</h3>
           <div class=" mb-5 pb-5">
-
             <div v-for="plate in store.platesNew">
-
               <div v-if="plate.category_id === 1">
-                <div v-if="plate == 0">
-                
                 <div class="card_plate my-4 mx-1 p-3 row">
                   <!-- PRODUCT IMAGE -->
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-if="plate.cover_image">
@@ -123,11 +119,6 @@ export default {
                   </div>
                 </div>
               </div>
-              <div v-else>no ristoranti</div>
-              
-              </div>
-
-
             </div>
           </div>
         </div>
@@ -175,12 +166,8 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
-.debug {
-  border: 2px solid green;
-}
-
-.debug_2 {
-  border: 3px solid red;
+.font_size {
+  font-size: 1.3rem;
 }
 
 .color {
@@ -244,10 +231,6 @@ h5 {
   }
 }
 
-.font_size {
-  font-size: 1.3rem;
-}
-
 .card_plate {
   border: 1px solid #d3d3d3;
   border-radius: 10px;
@@ -278,36 +261,8 @@ h5 {
   background-color: $deliveboo-primary-light;
   opacity: 85%;
   color: white;
-
 }
 
-/* @region alert old */
-/* .fixed_alert {
-  background-color: $deliveboo-secondary;
-  color: $deliveboo-white;
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fixed_alert_danger {
-  background-color: $deliveboo-primary-light;
-  color: $deliveboo-white;
-  position: relative;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-
-/* @endregion alert old */
 
 .placeholder {
   border: 2px solid $deliveboo-dark;

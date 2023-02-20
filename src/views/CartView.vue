@@ -69,7 +69,8 @@ export default {
                         <!-- RECAP PRICE-->
                         <div class="col mb-3 mt-3">
                             <h3 class="responsive">
-                                <div class="mb-2"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{ store.deliveryPrice }} €</div>
+                                <div class="mb-2"><!-- <i class="fa-solid fa-bicycle aspect_ratio me-2"></i>  -->
+                                   <p>Consegna {{ store.deliveryPrice }}  €</p> </div>
 
                                 <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                                     <!-- + {{store.delivery_price }} --> €</span>
@@ -86,18 +87,6 @@ export default {
                             
                             <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
                                 iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange" />
-
-
-                            <!--bottoni pagamento-->
-                            <div>
-                                <router-link :to="{ name: 'pagamento' }">
-                                    <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
-                                        iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
-                                        class="mb-3" />
-                                </router-link>
-                                <btnCustomRoundedLarge @click="store.emptyCart()" iconFw="fa-solid fa-cart-shopping"
-                                    bg_btn="bg_orange" class="empty_cart" />
-                            </div>
                         </div>
                     </div>
                 </div>

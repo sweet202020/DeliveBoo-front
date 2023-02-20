@@ -12,7 +12,7 @@ export default {
     data() {
         return {
             store,
-            test: null,
+            restaurants: null,
             /* TOP_RESTARUNAT */
             top_restaurants: [
                 {
@@ -61,16 +61,22 @@ export default {
         callApi(url) {
             axios.get(url)
                 .then(response => {
-                    this.test = response.data.results.data;
-                    console.log(this.test, 'test');
-                    console.log(response.data.results.data, 'io');
+                    this.restaurants = response.data.results.data;
+                    // console.log(this.test, 'test');
+                    // console.log(response.data.results.data, 'io');
                 })
+        },
+        fixImage(input){
+            if(input){
+                return store.API_URL + 'storage/' + input
+            } else{
+                return new URL(`../../assets/img/placeholder/placehorder_tondo.png`, import.meta.url).href
+            }
         }
-
     },
 
     mounted() {
-
+this.callApi('http://127.0.0.1:8000/api/restaurants')
     }
 } 
 </script>
@@ -87,34 +93,24 @@ export default {
             <div class="container my-5">
                 <h3>I RISTORANTI DEL MESE</h3>
             </div>
-            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-auto g-3">
-                <div class="col d-flex justify-content-around top_restaurant" v-for="restaurant in top_restaurants">
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-auto g-3 justify-content-center">
+                <div class="col d-flex justify-content-around top_restaurant" v-for="restaurant in restaurants">
                     <div class="custom_card">
-                        <img :src="getImageUrl(restaurant.url)" alt="">
+                        <img :src=" fixImage(restaurant.cover_image)" alt="">
 
                         <div class="card_content">
-                            <span class="card_title">{{ restaurant.name }}</span>
+                            <span class="card_title">{{ restaurant.restaurant_name }}</span>
                             <span class="card_subtitle">
                                 <p>{{ restaurant.address }}</p>
                             </span>
-                            <p class="card_description">Cosa puoi mangiare da loro: <br /> {{ restaurant.description }}</p>
+                            <p class="card_description">Cosa puoi mangiare da loro: <br /></p>
+                            <span class="me-1" v-for="type in restaurant.types"> {{ type.name }} </span>       
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-        <!-- card ristoranti
-                    <div class="container bg_img my-5 p-5 text-center">
-                        <h2>I nostri suggerimenti</h2>
-                        <h3 class="my-5">Ristoranti popolari</h3>
-                        <div class="row row-cols-2 row-cols-md-3">
-                            card ristoranti TODO fare cilco componente
-                            <cardRestaurant v-for="prova in test" img="https://picsum.photos/300/300" :name="prova.restaurant_name"
-                                info="info" description="bello bello" />
-                        </div>
-                    </div> -->
-        <!--onde bot-->
         <div class="pt-5 mb-5">
             <img class="standard" src="../../assets/img/wave.png" alt="">
         </div>

@@ -87,6 +87,17 @@ export default {
                             <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
                                 iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange" />
 
+
+                            <!--bottoni pagamento-->
+                            <div>
+                                <router-link :to="{ name: 'pagamento' }">
+                                    <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
+                                        iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                                        class="mb-3" />
+                                </router-link>
+                                <btnCustomRoundedLarge @click="store.emptyCart()" iconFw="fa-solid fa-cart-shopping"
+                                    bg_btn="bg_orange" class="empty_cart" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,7 +137,7 @@ span {
     color: $deliveboo-dark;
 }
 
-h3{
+h3 {
     color: $deliveboo-dark;
     font-size: 1.3rem;
 }
@@ -288,10 +299,11 @@ a {
             .font_qt{
                 font-size: 1.5rem;
             }
+
         }
     }
 
-    .payment_container{
+    .payment_container {
         width: 93%;
     }
 
@@ -302,14 +314,17 @@ a {
 
     .article {
         width: 98%;
+
         .card_article{
             width:87%;
             .font_qt{
                 font-size: 1.4rem;
             }
+
         }
     }
-    .payment_container{
+
+    .payment_container {
         width: 87%;
     }
 

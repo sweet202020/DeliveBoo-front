@@ -31,11 +31,11 @@ export default {
   <navBar />
   <jumbotronMenu />
 
-  <div class="container py-1 position-realtive">
+  <div class="container py-1">
 
     <!--CONTAINER TOP !!! - RESTAURANT DETAILS -->
     <div class="container">
-      <div class="row row-cols-1 row-cols-lg-2 g-5">
+      <div class="row row-cols-1 row-cols-lg-2">
         <!--RESTAURANT DETAILS -->
         <div class="col restaurant_details p-4" v-if="store.singleRestaurant">
           <div class="row row-cols-1 row-cols-lg-2 g-4">
@@ -71,20 +71,45 @@ export default {
       </div>
     </div>
 
-
     <!--CONTAINER BOTTOM !!! - PLATES & DRINKS LIST -->
     <div class="container">
+      <!-- ALERT ADD PLATE -->
+      <div class="alert alert-primary alert-dismissible fade show" role="alert" v-if="store.alert && !store.error">
+        <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
+        <strong>Articolo aggiunto al carrello.</strong>
+      </div>
+      <!-- ALERT ERROR !!! -->
+      <div class="alert alert-primary alert-dismissible fade show alert_danger" role="alert" v-if="store.error">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Non puoi acquistare da due ristorante diversi.</strong><br />
+        Completa l'ordine precedente o svuota il carrello
+        <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }">
+          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
+            iconFw="fa-solid fa-cart-shopping" class="mt-3" />
+        </router-link>
+        <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Svuota Carrello"
+          iconFw="fa-solid fa-cart-shopping" class="mt-3" />
+      </div>
+
+      <!-- ALERT ADD PLATE OLD  -->
+
+      <!--  <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
+              <h6>Articolo aggiunto al carrello</h6>
+            </div> -->
+      <!-- ALERT ERROR  OLD !!! -->
+
+      <!-- <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
+              <div class="col">
+                <h6>Non puoi ordinare da due ristoranti diversi, concludi l'ordine o svuota il carrello</h6>
+              </div>
+              <div class="col">
+                <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                  text="Svuota Carrello" />
+              </div>
+            </div> -->
       <div class="row row-cols-1 row-cols-lg-2 ">
-        <!-- ALERTS -->
-        <div class="col">
-          <div class="alert alert-primary fixed_alert" role="alert" v-if="store.alert && !store.error">
-            <strong>Articolo aggiunto al carrello</strong>
-          </div>
-          <div class="alert alert-danger fixed_alert_danger" role="alert" v-if="store.error">
-            <strong>Non puoi ordinare da due ristoranti diversi</strong>
-            <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light"
-              text="Vuoi svuotare il carrello? Clicca qui" />
-          </div>
+        <div class="col position-realtive">
+
           <!-- PLATES LIST -->
           <h3 class="mb-3"><i class="fa-solid fa-utensils me-3"></i> Piatti:</h3>
           <div class=" mb-5 pb-5">
@@ -112,7 +137,6 @@ export default {
               </div>
             </div>
           </div>
-
         </div>
 
         <!-- DRINKS LIST -->
@@ -146,6 +170,11 @@ export default {
         </div>
       </div>
     </div>
+  </div>
+
+  <div>
+
+
   </div>
 </template>
 
@@ -248,40 +277,44 @@ h5 {
     height: 100%;
     max-height: 150px;
     margin: auto;
-
+    object-fit: cover;
   }
 }
 
-.fixed_alert {
+.alert_danger {
+  background-color: $deliveboo-primary-light;
+  opacity: 85%;
+  color: white;
+
+}
+
+/* @region alert old */
+/* .fixed_alert {
   background-color: $deliveboo-secondary;
-  opacity: 97%;
   color: $deliveboo-white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 40%;
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: medium;
-
 }
 
 .fixed_alert_danger {
   background-color: $deliveboo-primary-light;
-  opacity: 97%;
   color: $deliveboo-white;
+  position: relative;
   width: 100%;
-  aspect-ratio: 1/1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: x-large;
-}
+} */
+
+/* @endregion alert old */
 
 .placeholder {
   border: 2px solid $deliveboo-dark;

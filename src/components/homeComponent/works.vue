@@ -18,14 +18,7 @@ export default{
 
         <div class="container py-3">
             <div class="row row-cols-1 row-cols-md-2 row-cols-xxl-4 g-4 nowrap">
-                <div class="col text-center">
-                    <div class="icons ">
-                        <img src="../../assets/img/location.svg" alt="">
-                        <h3>Indica dove sei</h3>
-                    </div>
-                    <p>inserisci il tuo indirizzo e scegli tra consegna a domicio o ritiro personale dell'ordine</p>
-                </div>
-
+              
                 <div class="col text-center">
                     <div class="icons">
                         <img src="../../assets/img/ristorante.svg" alt="">
@@ -37,7 +30,7 @@ export default{
                 <div class="col text-center">
                     <div class="icons">
                         <img src="../../assets/img/menu.svg" alt="">
-                        <h3>Cosa mangiare</h3>
+                        <h3>Scegli i piatti</h3>
                     </div>
                     <p>Dal menu del ristorante aggiungi al carrello tutti i piatti che hai voglia di gustare</p>
                 </div>
@@ -45,10 +38,18 @@ export default{
                 <div class="col text-center">
                     <div class="icons">
                         <img src="../../assets/img/conferma.svg" alt="">
-                        <h3>Conferma L'ordine</h3>
+                        <h3>Completa l'ordine</h3>
                     </div>
-                    <p>Ci prenderemo cura della consegna o, se hai scelto il ritiro personale, troverai il tuo ordine pronto al ristorante</p>
+                    <p>Controlla il carrello, effettua il pagamento e noi ci prenderemo cura di far avere il tuo ordine al ristorante scelto</p>
                 </div>
+
+                <div class="col text-center">
+                    <div class="icons">
+                        <img src="../../assets/img/location.svg" alt="">
+                        <h3>La consegna</h3>
+                    </div>
+                    <p>Inserisci i tuoi dati nel modulo di pagamento e aspetta comodamente a casa il tuo ordine</p>
+                </div>          
             </div>
         </div>
 </template>

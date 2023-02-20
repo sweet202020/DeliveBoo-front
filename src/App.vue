@@ -16,7 +16,6 @@ export default {
 <template>
 
     <navBar />
-    <!-- <jumbotron /> -->
 
     <router-view></router-view>
 

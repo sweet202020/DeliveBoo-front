@@ -44,8 +44,8 @@ export default {
                             <!-- PRICE + BTN ADD & BTN REMOVE -->
                             <div class="col my-4 text-end px-4">
                                 <!-- TODO IF ELSE PER QUANTITA -->
-                                <span class="me-3" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
-                                <span class="me-3" v-else>1</span>
+                                <span class="me-3 font_qt" v-if="prodotto.quantita">{{ prodotto.quantita }}</span>
+                                <span class="me-3 font_qt" v-else>1</span>
                                 <button class="icon-btn add-btn me-2 mt-3" @click="store.deleteQuantity(prodotto, i)">
                                     <div class="btn-txt">Rimuovi</div>
                                 </button>
@@ -67,9 +67,9 @@ export default {
                     <div class="row row-cols-sm-1 row-cols-md-2">
 
                         <!-- RECAP PRICE-->
-                        <div class="col mb-3">
+                        <div class="col mb-3 mt-3">
                             <h3 class="responsive">
-                                <div class="mb-2">costo consegna {{ store.deliveryPrice }}</div>
+                                <div class="mb-2"><i class="fa-solid fa-bicycle aspect_ratio me-2"></i> {{ store.deliveryPrice }} €</div>
 
                                 <span v-if="store.cart.length != 0">Totale: {{ store.totalPrice() }}
                                     <!-- + {{store.delivery_price }} --> €</span>
@@ -78,6 +78,15 @@ export default {
                         </div>
                         <!-- BUTTONS -->
                         <div class="col">
+                            <router-link :to="{ name: 'pagamento' }">
+                                <btnCustomRoundedLarge :disabled="store.cart.length == 0" text="Effettua pagamento"
+                                    iconFw="fa-solid fa-cart-shopping" bg_btn="bg_blue" bg_hover="hover_blu_light"
+                                    @click="saveTotPrice()" class="mb-3" />
+                            </router-link>
+                            
+                            <btnCustomRoundedLarge @click="store.emptyCart()" text="Svuota carrello"
+                                iconFw="fa-solid fa-cart-shopping" bg_btn="bg_orange" bg_hover="hover_orange" />
+
 
                             <!--bottoni pagamento-->
                             <div>
@@ -130,9 +139,8 @@ span {
 
 h3 {
     color: $deliveboo-dark;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
-
 
 p {
     color: $deliveboo-dark;
@@ -154,6 +162,9 @@ p {
         background-color: $deliveboo-white;
         width: 76%;
         margin: auto;
+        .font_qt{
+            font-size: 1.5rem;
+        }
     }
 }
 
@@ -174,11 +185,6 @@ a {
     text-decoration: none;
 }
 
-.empty_cart {
-    font-family: 'Unbounded', cursive;
-    /*  background-color: $deliveboo-primary; */
-
-}
 
 /* #endregion common style */
 
@@ -282,16 +288,18 @@ a {
 /* responsive tablet */
 @media screen and (max-width: 768px) {
     .responsive {
-        background-color: lightgreen;
         color: $deliveboo-dark;
         font-size: 1.3rem;
     }
 
     .article {
         width: 90%;
+        .card_article{
+            width:93%;
+            .font_qt{
+                font-size: 1.5rem;
+            }
 
-        .card_article {
-            width: 93%
         }
     }
 
@@ -299,21 +307,20 @@ a {
         width: 93%;
     }
 
-
-
 }
 
 /* responsive mobile */
 @media screen and (max-width: 390px) {
-    .responsive {
-        background-color: violet;
-    }
 
     .article {
         width: 98%;
 
-        .card_article {
-            width: 87%;
+        .card_article{
+            width:87%;
+            .font_qt{
+                font-size: 1.4rem;
+            }
+
         }
     }
 

@@ -46,10 +46,11 @@ export const store = reactive({
                     break
                 }
                 else {
+                    /* alert no multi restaurant */
                     this.error = true
-                    setTimeout(() => {
-                        this.error = false
-                    }, 3000);
+                    /*  setTimeout(() => {
+                         this.error = false
+                     }, 1500); */
                 }
             }
         }
@@ -64,6 +65,7 @@ export const store = reactive({
 
         }
         this.alert = true
+        /* alert add plat */
         setTimeout(() => {
             this.alert = false
         }, 2000);

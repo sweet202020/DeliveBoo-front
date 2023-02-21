@@ -102,7 +102,7 @@ export default {
                 <div class="card_plate my-4 mx-1 p-3 row">
                   <!-- PRODUCT IMAGE -->
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-if="plate.cover_image">
-                    <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
+                    <img class="cover_img_restaurant" :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-else>
                     <img class="placeholder_plate" src="../assets/img/placeholder/placeholder_restaurant.png" alt="">
@@ -211,6 +211,11 @@ h5 {
 
 }
 
+.cover_img_restaurant{
+  width: 50px;
+
+}
+
 .restaurant_details,
 .order_details {
   background-color: #fcfcfc;
@@ -232,13 +237,13 @@ h5 {
     font-weight: 400;
   }
 
- /*  img {
+  img {
     border-radius: 0.5rem;
     width: 100%;
-    height: 150px;
+    height: 200px;
     aspect-ratio: 1/1;
     margin: auto;
-  } */
+  }
 }
 
 .card_plate {

@@ -105,7 +105,7 @@ export default {
                     <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-else>
-                    <img src="../assets/img/placeholder/placeholder_restaurant.png" alt="">
+                    <img class="placeholder_plate" src="../assets/img/placeholder/placeholder_restaurant.png" alt="">
                   </div>
                   <!-- PRODUCT DESCRIPTION -->
                   <div class="col-sm-1 col-md-8">
@@ -204,7 +204,7 @@ h5 {
   border: 2px solid $deliveboo-dark;
 }
 
-.placeholder_drink{
+.placeholder_drink, .placeholder_plate{
   max-width: 100%;
   aspect-ratio: 1/1;
   object-fit: contain;

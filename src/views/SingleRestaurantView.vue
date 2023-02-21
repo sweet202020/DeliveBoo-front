@@ -45,7 +45,7 @@ export default {
                 <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
               </div>
               <div v-else>
-                <img class="placeholder" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
+                <img class="placeholder_restaurant" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
               </div>
             </div>
             <!-- DESCRIPTION -->
@@ -191,16 +191,17 @@ h5 {
   color: $deliveboo-dark;
 }
 
-.placeholder {
+.placeholder_restaurant {
   background-color: #a5a5a5;
   color: grey;
   border-radius: 0.5rem;
   width: 200px;
   aspect-ratio: 1/1;
-  object-fit: contain;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid $deliveboo-dark;
 }
 
 .restaurant_details,
@@ -224,13 +225,13 @@ h5 {
     font-weight: 400;
   }
 
-  img {
+ /*  img {
     border-radius: 0.5rem;
     width: 100%;
     height: 150px;
     aspect-ratio: 1/1;
     margin: auto;
-  }
+  } */
 }
 
 .card_plate {
@@ -255,7 +256,7 @@ h5 {
     width: 100%;
     height: 150px;
     margin: auto;
-    object-fit: contain;
+    object-fit: cover;
   }
 }
 
@@ -265,9 +266,5 @@ h5 {
   color: white;
 }
 
-
-.placeholder {
-  border: 2px solid $deliveboo-dark;
-}
 </style>
 

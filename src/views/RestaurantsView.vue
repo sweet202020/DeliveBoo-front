@@ -289,7 +289,7 @@ h5,
     border-bottom-right-radius: 0;
     width: 100%;
     aspect-ratio: 1/1;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 

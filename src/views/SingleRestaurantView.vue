@@ -135,7 +135,7 @@ export default {
                     <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-else>
-                    <img src="../assets/img/placeholder/placeholder_drink_2.png" alt="">
+                    <img class="placeholder_drink" src="../assets/img/placeholder/placeholder_drink_2.png" alt="">
                   </div>
                   <!-- PRODUCT DESCRIPTION -->
                   <div class="col-sm-1 col-md-8 prova">
@@ -204,6 +204,13 @@ h5 {
   border: 2px solid $deliveboo-dark;
 }
 
+.placeholder_drink{
+  max-width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: contain;
+
+}
+
 .restaurant_details,
 .order_details {
   background-color: #fcfcfc;
@@ -252,12 +259,12 @@ h5 {
     }
   }
 
-  img {
+/*   img {
     width: 100%;
     height: 150px;
     margin: auto;
     object-fit: cover;
-  }
+  } */
 }
 
 .alert_danger {

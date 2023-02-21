@@ -42,10 +42,12 @@ export default {
             <!-- COVER IMAGE -->
             <div class="col">
               <div v-if="store.singleRestaurant.cover_image">
-                <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
+                <img class="cover_img_restaurant" :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image"
+                  alt="">
               </div>
               <div v-else>
-                <img class="placeholder_restaurant" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
+                <img class="placeholder_restaurant" src="../assets/img/placeholder/placehorder_tondo.png"
+                  alt="placeholder">
               </div>
             </div>
             <!-- DESCRIPTION -->
@@ -102,7 +104,7 @@ export default {
                 <div class="card_plate my-4 mx-1 p-3 row">
                   <!-- PRODUCT IMAGE -->
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-if="plate.cover_image">
-                    <img class="cover_img_restaurant" :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
+                    <img class="product_img" :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-else>
                     <img class="placeholder_plate" src="../assets/img/placeholder/placeholder_restaurant.png" alt="">
@@ -132,7 +134,7 @@ export default {
                 <!-- PRODUCT IMAGE -->
                 <div class="card_plate my-4 p-3 row">
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-if="plate.cover_image">
-                    <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
+                    <img class="product_img" :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-else>
                     <img class="placeholder_drink" src="../assets/img/placeholder/placeholder_drink_2.png" alt="">
@@ -191,33 +193,7 @@ h5 {
   color: $deliveboo-dark;
 }
 
-.placeholder_restaurant {
-  background-color: #a5a5a5;
-  color: grey;
-  border-radius: 0.5rem;
-  width: 200px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid $deliveboo-dark;
-}
-
-.placeholder_drink, .placeholder_plate{
-  max-width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: contain;
-
-}
-
-.cover_img_restaurant{
-  width: 50px;
-
-}
-
-.restaurant_details,
-.order_details {
+.restaurant_details {
   background-color: #fcfcfc;
   border: 3px solid $deliveboo-primary-light;
   border-radius: 10px;
@@ -236,19 +212,12 @@ h5 {
     color: $deliveboo-dark;
     font-weight: 400;
   }
-
-  img {
-    border-radius: 0.5rem;
-    width: 100%;
-    height: 200px;
-    aspect-ratio: 1/1;
-    margin: auto;
-  }
 }
 
 .card_plate {
   border: 1px solid #d3d3d3;
   border-radius: 10px;
+  min-height: 200px;
 
   .btn_plate {
     background-color: $deliveboo-secondary;
@@ -263,13 +232,6 @@ h5 {
       opacity: 100%;
     }
   }
-
-/*   img {
-    width: 100%;
-    height: 150px;
-    margin: auto;
-    object-fit: cover;
-  } */
 }
 
 .alert_danger {
@@ -278,5 +240,52 @@ h5 {
   color: white;
 }
 
+
+/* #region placeholder & image */
+
+.cover_img_restaurant {
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin: auto;
+}
+.placeholder_restaurant {
+  border: 2px solid $deliveboo-dark;
+  background-color: #a5a5a5;
+  border-radius: 0.5rem;
+  width: 200px;
+  object-fit: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product_img {
+  width: 100%;
+  max-height: 130px;
+  object-fit: contain;
+  margin: auto;
+}
+
+
+.placeholder_drink {
+  width: 100%;
+  max-height: 130px;
+  object-fit: contain;
+  margin: auto;
+}
+
+.placeholder_plate {
+  width: 100%;
+  max-height: 130px;
+  object-fit: cover;
+  margin: auto;
+}
+
+
+
+
+/* #endregion placeholder & image */
 </style>
 

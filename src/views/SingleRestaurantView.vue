@@ -266,6 +266,8 @@ h5 {
   max-height: 130px;
   object-fit: cover;
   margin: auto;
+  border-radius: 0.5rem;
+
 }
 
 .product_drink {
@@ -273,6 +275,7 @@ h5 {
   max-height: 130px;
   object-fit: contain;
   margin: auto;
+  border-radius: 0.5rem;
 }
 
 
@@ -281,6 +284,7 @@ h5 {
   max-height: 130px;
   object-fit: contain;
   margin: auto;
+  border-radius: 0.5rem;
 }
 
 .placeholder_plate {
@@ -288,10 +292,8 @@ h5 {
   max-height: 130px;
   object-fit: cover;
   margin: auto;
+  border-radius: 0.5rem;
 }
-
-
-
 
 /* #endregion placeholder & image */
 </style>

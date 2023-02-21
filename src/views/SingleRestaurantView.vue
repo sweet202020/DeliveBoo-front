@@ -45,7 +45,7 @@ export default {
                 <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
               </div>
               <div v-else>
-                <img class="placeholder" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
+                <img class="placeholder" src="../assets/img/placeholder/placeholder_drink_2.png" alt="placeholder">
               </div>
             </div>
             <!-- DESCRIPTION -->
@@ -250,8 +250,8 @@ h5 {
   }
 
   img {
-    height: 100%;
-    max-height: 150px;
+    width: 100%;
+    height: 150px;
     margin: auto;
     object-fit: cover;
   }

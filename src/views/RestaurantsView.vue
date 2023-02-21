@@ -36,7 +36,7 @@ export default {
                     id: 3
                 },
                 {
-                    url: 'sushi.png',
+                    url: 'sushi_2.png',
                     name: 'sushi',
                     id: 4
                 },
@@ -176,9 +176,7 @@ export default {
 <style lang="scss" scoped>
 @use '../styles/partials/variables.scss' as *;
 
-img{
-    object-fit: cover;
-}
+
 .card_test {
     flex-direction: column;
 }
@@ -213,11 +211,6 @@ img{
     margin-bottom: 1rem;
 }
 
-.standard {
-    width: 100%;
-    height: 100px;
-    //-webkit-transform: scaleX(-1);
-}
 
 .bg_img {
     // TODO trovare img come background
@@ -264,7 +257,8 @@ h5,
 
     img {
         width: 100%;
-        max-width: 100px;
+        height: 90px;
+        object-fit: contain;
         margin: auto;
         transition: 0.5s;
     }
@@ -293,6 +287,9 @@ h5,
 .card-img {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
 }
 
 
@@ -304,6 +301,7 @@ a {
     margin-left: -0.9rem;
     margin-top: 1rem;
 }
+
 
 
 /* responsive tablet */

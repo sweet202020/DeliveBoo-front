@@ -267,7 +267,6 @@ h5 {
   object-fit: cover;
   margin: auto;
   border-radius: 0.5rem;
-
 }
 
 .product_drink {

@@ -197,6 +197,7 @@ h5 {
   border-radius: 0.5rem;
   width: 200px;
   aspect-ratio: 1/1;
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;

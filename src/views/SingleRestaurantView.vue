@@ -197,7 +197,7 @@ h5 {
   border-radius: 0.5rem;
   width: 200px;
   aspect-ratio: 1/1;
-  object-fit: cover;
+  object-fit: contain;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -227,6 +227,7 @@ h5 {
   img {
     border-radius: 0.5rem;
     width: 100%;
+    height: 150px;
     aspect-ratio: 1/1;
     margin: auto;
   }
@@ -254,7 +255,7 @@ h5 {
     width: 100%;
     height: 150px;
     margin: auto;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 

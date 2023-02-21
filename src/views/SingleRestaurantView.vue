@@ -45,7 +45,7 @@ export default {
                 <img :src="store.API_URL + 'storage/' + store.singleRestaurant.cover_image" alt="">
               </div>
               <div v-else>
-                <img class="placeholder" src="../assets/img/placeholder/placeholder_drink_2.png" alt="placeholder">
+                <img class="placeholder" src="../assets/img/placeholder/placehorder_tondo.png" alt="placeholder">
               </div>
             </div>
             <!-- DESCRIPTION -->
@@ -135,7 +135,7 @@ export default {
                     <img :src="store.API_URL + 'storage/' + plate.cover_image" alt="">
                   </div>
                   <div class="col-sm-1 col-md-4 p-1 my-1" v-else>
-                    <img src="../assets/img/placeholder/placeholder_drink.png" alt="">
+                    <img src="../assets/img/placeholder/placeholder_drink_2.png" alt="">
                   </div>
                   <!-- PRODUCT DESCRIPTION -->
                   <div class="col-sm-1 col-md-8 prova">

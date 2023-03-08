@@ -86,7 +86,7 @@ export default {
         <strong>Non puoi acquistare da due ristorante diversi.</strong><br />
         Completa l'ordine precedente o svuota il carrello
         <router-link class="nav-link text-light" aria-current="page" :to="{ name: 'carrello' }">
-          <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
+          <btnCustomRounded bg_btn="bg_blue" bg_hover="hover_blu_light" text="Concludi oridne"
             iconFw="fa-solid fa-cart-shopping" class="mt-3" />
         </router-link>
         <btnCustomRounded @click="store.emptyCart()" bg_btn="bg_blue" bg_hover="hover_blu_light" text="Svuota Carrello"
@@ -250,6 +250,7 @@ h5 {
   object-fit: cover;
   margin: auto;
 }
+
 .placeholder_restaurant {
   border: 2px solid $deliveboo-dark;
   background-color: #a5a5a5;
